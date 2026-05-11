@@ -1,7 +1,7 @@
 # LLM Providers Table
 
->[!WARNING]
-> **USE ADBLOCK.** I DON'T GET ANYTHING FROM THE ADVERTISING THAT SHOWS HERE.
+> 🛑 **WARNING: USE ADBLOCK.**
+> I DON'T GET ANYTHING FROM THE ADVERTISING THAT SHOWS HERE.
 
 ## Table of Contents
 * [How to use the table](#how-to-use-the-table)
@@ -10,22 +10,19 @@
 * [Paid](#paid)
 * [Dangerous / Not Recommended](#dangerous--not-recommended)
 
-> [!NOTE]
-> **What is this for?**
+> ℹ️ **What is this for?**
 > Here you will find free, freemium, and paid providers, that provide access to large language models. It includes limits, registration requirements, the ability to quickly copy the Base URL, and direct links for registration/getting an API key.
 
-> [!TIP]
-> **Help tablet!**
-> **Share it!** The more people who use it, the more motivated I’ll be to update it, add new providers, and keep everything up to date.
+> 📣 **Help tablet! Share it!**
+> The more people who use it, the more motivated I’ll be to update it, add new providers, and keep everything up to date.
 > **Post a link to the table in chat, in repo, in comments, or on Discord server - anywhere 🙏**
 
-> [!CAUTION]
-> **Relevance**
+> ⚠️ **Relevance**
 > Providers change limits, models, and sometimes even die...
 > *I am just one person, but there are many providers*, so I don't always have time to update table.  
-> If there are any discrepancies with the real situation at the provider, **please inform me!** Via on [Telegram](https://t.me/ner_kun_off) or [DS](https://discord.gg/mqch59Bbmw) - Ner_Kun.
+> If there are any discrepancies with the real situation at the provider, **please inform me!** Via on [Telegram](https://t.me/ner_kun_off) or[DS](https://discord.gg/mqch59Bbmw) - Ner_Kun.
 
-> **For roleplayers**: Friends, if you, like me, roleplay with AI in languages other than English and lorebooks don't work or you translate them yourself, check out my project[Lorebook Gemini Translator](https://github.com/Ner-Kun/Lorebook-Gemini-Translator) (It works not only with Gemini).
+> **For roleplayers**: Friends, if you, like me, roleplay with AI in languages other than English and lorebooks don't work or you translate them yourself, check out my project [Lorebook Gemini Translator](https://github.com/Ner-Kun/Lorebook-Gemini-Translator) (It works not only with Gemini).
 
 ---
 
@@ -59,7 +56,7 @@
 
 ## Freemium providers
 
-> [!NOTE]
+> ℹ️ **NOTE**
 > Providers that are not completely free, but provide credits/money to your account and similar pleasant bonuses upon registration.
 
 ---
@@ -74,8 +71,7 @@
 | :---: | :---: | :---: |
 | [🌐](https://discord.gg/p2e7q34PBt) |[🌐](https://crowllm.com/keys) | `https://crowllm.com/v1` |
 
-> [!TIP]
-> **Features**
+> 💡 **Features**
 > - Model library is actively expanding - more options coming soon.
 > - Complete simple tasks to earn balance credits (not just another API provider!).
 > - If you sign up using my link, 🟢 **you'll receive a $10 bonus in your account**.
@@ -92,14 +88,12 @@
 |:---:|:---:|:---:|
 | [🌐](https://openrouter.ai/) | [🌐](https://openrouter.ai/settings/keys) | `https://openrouter.ai/api/v1` |
 
-> [!TIP]
-> **Features**
+> 💡 **Features**
 > - 🟢 **Very large list of models.**
 > - 🟢 **Different companies very often publicly test their models, and most of the time they are free.**
 > - Not exactly a provider and not exactly a proxy; OpenRouter doesn't host models itself, but uses only official providers.
 
->[!WARNING]
-> **Disadvantages**
+> 🛑 **Disadvantages**
 > - 🔴 **To get an RPD higher than 50, you need to add $10 to your account, and you will get 1000 RPD.**
 > - Stability depends on the providers.
 
@@ -115,13 +109,11 @@
 |:---:|:---:|:---:|
 | [🌐](https://agentrouter.org/register?aff=CirT) | [🌐](https://agentrouter.org/console/token) | `https://agentrouter.org/v1` |
 
-> [!TIP]
-> **Features**
+> 💡 **Features**
 > - Gives 🟢 **from $100 to $225** for registration **via the link**
 > - 🟢 **You can log in and out of your account once a day and you will be given $25.**
 
-> [!WARNING]
-> **Disadvantages**
+> 🛑 **Disadvantages**
 > - Few models available
 > - Exclusively intended for coding; you'll most likely get banned for roleplaying.
 
@@ -135,10 +127,9 @@
 
 | 🔗 Registration | 🔗 API key | 🔗 Base URL |
 | :---: | :---: | :---: |
-| [🌐](https://cloud.sambanova.ai/dashboard) | [🌐](https://cloud.sambanova.ai/apis) | `https://api.sambanova.ai/v1` |
+|[🌐](https://cloud.sambanova.ai/dashboard) | [🌐](https://cloud.sambanova.ai/apis) | `https://api.sambanova.ai/v1` |
 
-> [!TIP]
-> **Features**
+> 💡 **Features**
 > - 🟢 **Gives $5 upon registration**
 
 ---
@@ -153,11 +144,10 @@
 |:---:|:---:|:---:|
 | [🌐](https://api.navy/) | [🌐](https://api.navy/dashboard/keys) | `https://api.navy` |
 
-> [!NOTE]
+> ℹ️ **NOTE**
 > * Limits are shown only for the free plan.
 
-> [!TIP]
-> **Features**
+> 💡 **Features**
 > - Stability and speed
 > - Even the cheapest plan has 12m TPD (!!!), which is very generous.
 
@@ -167,7 +157,7 @@
 
 ## Free providers
 
-> [!NOTE]
+> ℹ️ **NOTE**
 > Providers in this list offer access to models absolutely for free, but may have certain restrictions (limits).
 
 ### NVIDIA NIM
@@ -180,8 +170,7 @@
 |:---:|:---:|:---:|
 | [🌐](https://build.nvidia.com/explore/discover) | [🌐](https://build.nvidia.com/settings/api-keys) | `https://integrate.api.nvidia.com/v1` |
 
->[!WARNING]
-> **Disadvantages**
+> 🛑 **Disadvantages**
 > - Problematic phone verification (SMS can be delayed)
 > - 🔴 **Models are unstable during peak hours (US daytime)**
 > - Requires an Nvidia account 🟢 **(no graphics card needed)**
@@ -198,8 +187,7 @@
 |:---:|:---:|:---:|
 | [🌐](https://token.llm7.io/) | [🌐](https://token.llm7.io/) | `https://api.llm7.io/v1` |
 
-> [!WARNING]
-> **Disadvantages**
+> 🛑 **Disadvantages**
 > - Few models available.
 > - 🟡 **Unstable list of models (they may disappear).**
 
@@ -209,14 +197,13 @@
 
 | Requirements | Limits | 🔗Models | Reliability | Testing |
 | :---: | :---: | :---: | :---: | :---: |
-| ✉️ <br> 🔑 | Individual limits for each model<br> [🌐](https://aistudio.google.com/app/rate-limit) | [🌐](https://aistudio.google.com/app/rate-limit)<br> • Gemini 3 Flash/Flash Lite <br> • Gemma 4 31B/26B | ⭐⭐⭐⭐⭐ | ✅ |
+| ✉️ <br> 🔑 | Individual limits for each model<br>[🌐](https://aistudio.google.com/app/rate-limit) | [🌐](https://aistudio.google.com/app/rate-limit)<br> • Gemini 3 Flash/Flash Lite <br> • Gemma 4 31B/26B | ⭐⭐⭐⭐⭐ | ✅ |
 
 | 🔗 Registration | 🔗 API key | 🔗 Base URL |
 | :---: | :---: | :---: |
 | [🌐](https://aistudio.google.com/) | [🌐](https://aistudio.google.com/app/api-keys) | `https://generativelanguage.googleapis.com/v1beta/openai/` |
 
-> [!WARNING]
-> **Disadvantages**
+> 🛑 **Disadvantages**
 > - The best models are not available
 
 ---
@@ -231,12 +218,10 @@
 |:---:|:---:|:---:|
 | [🌐](https://panel.api.airforce/signup?ref=5zffkQvQGyPPESv6) | [🌐](https://panel.api.airforce/dashboard) | `https://api.airforce/v1` |
 
-> [!TIP]
-> **Features**
+> 💡 **Features**
 > - Sign up using my link to get 1 day of Premium
 
->[!WARNING]
-> **Disadvantages**
+> 🛑 **Disadvantages**
 > - Very low RPM.
 
 ---
@@ -251,12 +236,10 @@
 |:---:|:---:|:---:|
 | [🌐](https://logfare.ai/register) | [🌐](https://logfare.ai/dashboard) | `https://logfare.ai/v1` |
 
-> [!TIP]
-> **Features**
+> 💡 **Features**
 > - 🟢 **There are no limits.**
 
-> [!WARNING]
-> **Disadvantages**
+> 🛑 **Disadvantages**
 > - They collect your data such as IP, promt and more. They then transfer it to third parties (anonymously). Keep this in mind if this is important to you.
 > - NSFW is allowed, but only if it's not prohibited by law. Otherwise, ban
 
@@ -272,14 +255,12 @@
 | :---: | :---: | :---: |
 | [🌐](https://zydit.in/) | [🌐](https://zydit.in/dashboard) | `https://api.zydit.in/v1` |
 
-> [!TIP]
-> **Features**
+> 💡 **Features**
 > - Not exactly a provider and not exactly a proxy; Zydit doesn't host models itself, but uses only official providers.
 > - 🟢 **Very large list of models**
 > - 🟢 **Currently in testing, completely free**
 
-> [!WARNING]
-> **Disadvantages**
+> 🛑 **Disadvantages**
 > - Very low RPM.
 
 ---
@@ -292,10 +273,9 @@
 
 | 🔗 Registration | 🔗 API key | 🔗 Base URL |
 | :---: | :---: | :---: |
-| [🌐](https://console.groq.com/home) | [🌐](https://console.groq.com/keys) | `https://api.groq.com/openai/v1` |
+|[🌐](https://console.groq.com/home) | [🌐](https://console.groq.com/keys) | `https://api.groq.com/openai/v1` |
 
-> [!WARNING]
-> **Disadvantages**
+> 🛑 **Disadvantages**
 > - Few models available
 
 ---
@@ -310,8 +290,7 @@
 |:---:|:---:|:---:|
 | [🌐](https://cloud.cerebras.ai/) | [🌐](https://cloud.cerebras.ai/) | `https://api.cerebras.ai/v1` |
 
-> [!WARNING]
-> **Disadvantages**
+> 🛑 **Disadvantages**
 > - 🔴 **Some models have a smaller context than the official provider.**
 > - Besides request limits, 🔴 **there are token limits.**
 
@@ -327,8 +306,7 @@
 | :---: | :---: | :---: |
 | [🌐](https://mistral.ai/) | [🌐](https://console.mistral.ai/home?profile_dialog=api-keys) | `https://api.mistral.ai/v1/` |
 
-> [!WARNING]
-> **Disadvantages**
+> 🛑 **Disadvantages**
 > - To get the free tier, you must consent to the use of your data.
 
 ---
@@ -343,29 +321,28 @@
 | :---: | :---: | :---: |
 | [🌐](https://blazeai.boxu.dev/#dashboard) | [🌐](https://blazeai.boxu.dev/#dashboard) | `https://blazeai.boxu.dev/api/` |
 
-> [!WARNING]
-> **Disadvantages**
+> 🛑 **Disadvantages**
 > - There are issues with the qwen 3.6 model family. It detects the tools but cannot use them. 🟢 **(If you're only into roleplay, this won't be a problem for you.)**
 
 ---
 
-> *More here[free-llm-api-resources](https://github.com/cheahjs/free-llm-api-resources) - just a list.*
+> *More here [free-llm-api-resources](https://github.com/cheahjs/free-llm-api-resources) - just a list.*
 
 ---
 
 ## Paid
 
-> [!NOTE]
+> ℹ️ **NOTE**
 > This section includes services that require payment or operate on a credit-based system.
 > They may offer higher reliability, better performance, priority access, or fewer limitations compared to free providers.
 
-> [!WARNING]
+> ⚠️ **WARNING**
 > Some of these services have been personally tested or used during evaluation. This section reflects my own observations and impressions, which may include both positive and negative feedback depending on the service. It is not intended as a recommendation - always review pricing, limits, and data/privacy policies before use.
 
 ---
 
 ## Dangerous / Not Recommended
 
-> [!CAUTION]
+> 🛑 **CAUTION**
 > These providers are listed here due to serious community concerns, repeated accusations, unethical behavior, or major trust issues.
 > 🔴 **I do not recommend using them, and I intentionally do not provide direct links to their services.**
