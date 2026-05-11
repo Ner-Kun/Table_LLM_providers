@@ -1,7 +1,5 @@
 # LLM Providers Table
 
-> 🛑 **WARNING: USE ADBLOCK.**
-> I DON'T GET ANYTHING FROM THE ADVERTISING THAT SHOWS HERE.
 
 ## Table of Contents
 * [How to use the table](#how-to-use-the-table)
