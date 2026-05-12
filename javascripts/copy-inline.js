@@ -12,17 +12,14 @@ document.addEventListener("DOMContentLoaded", function () {
       wrapper.style.gap = "6px";
       wrapper.setAttribute("data-inline-code-wrapper", "true");
 
-      // Переносим код в wrapper
       const parent = code.parentNode;
       parent.insertBefore(wrapper, code);
       wrapper.appendChild(code);
 
-      // Делаем код кликабельным
       code.style.cursor = "pointer";
       code.style.transition = "all 0.2s ease";
       code.setAttribute("title", "Click to copy");
 
-      // Создаем кнопку
       const button = document.createElement("button");
       button.className = "md-clipboard md-icon";
       button.setAttribute("aria-label", "Copy");
