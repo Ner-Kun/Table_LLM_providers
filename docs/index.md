@@ -45,13 +45,12 @@
 
 ---
 
+
 ## Latest Updates
 
-* **2026-05-12** - Initial changelog created
+* **2026-05-12** — Initial changelog created
 
-[View all updates](changelog.md)
-
----
+[View all updates →](changelog.md)
 
 ## Categories
 
