@@ -5,31 +5,37 @@ site_description: Free, freemium, and paid LLM API providers table
 
 copyright: Made with ❤️ by Ner_Kun
 
+nav:
+- Home: index.md
+- Freemium: freemium.md
+- Free: free.md
+- Paid: paid.md
+- Dangerous: dangerous.md
+- Changelog: changelog.md
+
 theme:
   name: material
   custom_dir: overrides
   palette:
-  - media: "(prefers-color-scheme: light)"
-    scheme: default
-    primary: blue grey
-    accent: cyan
-    toggle:
-      icon: material/brightness-7
-      name: Switch to dark mode
-  - media: "(prefers-color-scheme: dark)"
-    scheme: slate
+  - scheme: slate
     primary: blue grey
     accent: cyan
     toggle:
       icon: material/brightness-4
       name: Switch to light mode
+  - scheme: default
+    primary: blue grey
+    accent: cyan
+    toggle:
+      icon: material/brightness-7
+      name: Switch to dark mode
   features:
+  - navigation.footer
   - navigation.top
   - search.suggest
   - search.highlight
   - content.code.copy
   - content.code.annotate
-  - toc.follow
   - toc.integrate
 
 plugins:
@@ -43,12 +49,12 @@ markdown_extensions:
 - pymdownx.superfences
 - pymdownx.emoji:
     emoji_index: !!python/name:material.extensions.emoji.twemoji ""
-    emoji_generator:
-
-      !!python/name:material.extensions.emoji.to_svg ""
+    emoji_generator: !!python/name:material.extensions.emoji.to_svg ""
 extra:
   generator: false
   social:
+  - icon: fontawesome/brands/github
+    link: https://github.com/Ner-Kun/Table_LLM_providers
   - icon: fontawesome/brands/telegram
     link: https://t.me/ner_kun_off
   - icon: fontawesome/brands/discord
