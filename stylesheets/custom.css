@@ -1,0 +1,29 @@
+.text-green {
+  color: #4caf50;
+  font-weight: 500;
+}
+
+.text-red {
+  color: #f44336;
+  font-weight: 500;
+}
+
+.text-orange {
+  color: #ff9800;
+  font-weight: 500;
+}
+
+.text-blue {
+  color: #2196f3;
+  font-weight: 500;
+}
+
+.text-yellow {
+  color: #ffc107;
+  font-weight: 500;
+}
+
+.text-purple {
+  color: #9c27b0;
+  font-weight: 500;
+}
