@@ -1,0 +1,61 @@
+site_name: LLM Providers Table
+site_url: https://ner-kun.github.io/Table_LLM_providers
+site_author: Ner_Kun
+site_description: Free, freemium, and paid LLM API providers table
+
+copyright: Made with ❤️ by Ner_Kun
+
+theme:
+  name: material
+  custom_dir: overrides
+  palette:
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    primary: blue grey
+    accent: cyan
+    toggle:
+      icon: material/brightness-7
+      name: Switch to dark mode
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    primary: blue grey
+    accent: cyan
+    toggle:
+      icon: material/brightness-4
+      name: Switch to light mode
+  features:
+  - navigation.top
+  - search.suggest
+  - search.highlight
+  - content.code.copy
+  - content.code.annotate
+  - toc.follow
+  - toc.integrate
+
+plugins:
+- search
+
+markdown_extensions:
+- tables
+- attr_list
+- admonition
+- pymdownx.details
+- pymdownx.superfences
+- pymdownx.emoji:
+    emoji_index: !!python/name:material.extensions.emoji.twemoji ""
+    emoji_generator:
+
+      !!python/name:material.extensions.emoji.to_svg ""
+extra:
+  generator: false
+  social:
+  - icon: fontawesome/brands/telegram
+    link: https://t.me/ner_kun_off
+  - icon: fontawesome/brands/discord
+    link: https://discord.gg/mqch59Bbmw
+
+extra_javascript:
+- javascripts/copy-inline.js
+
+extra_css:
+- stylesheets/custom.css
