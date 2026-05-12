@@ -1,9 +1,9 @@
 # LLM Providers Table
 
-!!! info What is this for?
+!!! info "What is this for?"
     Here you will find free, freemium, and paid providers, that provide access to large language models. It includes limits, registration requirements, the ability to quickly copy the Base URL, and direct links for registration/getting an API key.
 
-!!! tip Help tablet! Share it!
+!!! tip "Help tablet! Share it!"
     The more people who use it, the more motivated I'll be to update it, add new providers, and keep everything up to date.
     **Post a link to the table in chat, in repo, in comments, or on Discord server - anywhere 🙏**
 
