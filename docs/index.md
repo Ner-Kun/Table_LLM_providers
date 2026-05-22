@@ -53,6 +53,7 @@ Click or tap the badges and requirement icons to see short explanations.
 ---
 
 
+
 ## Latest Updates
 
 * **2026-05-12** — Initial changelog created
