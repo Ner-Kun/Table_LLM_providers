@@ -1231,6 +1231,12 @@
 
 /* DRAWER STATS (mobile sidebar)─ */
 
+@media screen and (min-width: 769px) {
+  .drawer-stats {
+    display: none;
+  }
+}
+
 .drawer-stats {
   display: flex;
   align-items: center;
