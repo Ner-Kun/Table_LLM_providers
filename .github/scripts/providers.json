@@ -1,16 +1,1 @@
-[
-    {
-        "name": "Zydit",
-        "limits": "-",
-        "features": [
-        "Aggregator / API gateway for LLM providers."
-        ]
-    },
-    {
-        "name": "OpenRouter",
-        "features": [
-        "[green]Very large list of models.[/green]",
-        "Different companies very often publicly test their models, and most of the time they are free.",
-        "Aggregator / API gateway for LLM providers."]
-    }
-]
+[]
