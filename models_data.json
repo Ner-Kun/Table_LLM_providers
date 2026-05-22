@@ -299,7 +299,7 @@
       }
     },
     "models_text": "+123 more models. <a class=\"models-show-all\" data-provider=\"NVIDIA NIM\">Show all</a>",
-    "timestamp": "2026-05-22T13:28:38.903285+00:00",
+    "timestamp": "2026-05-22T14:27:07.897315+00:00",
     "total_count": 123
   },
   "LLM7": {
@@ -356,120 +356,120 @@
       }
     },
     "models_text": "+8 more models. <a class=\"models-show-all\" data-provider=\"LLM7\">Show all</a>",
-    "timestamp": "2026-05-22T13:28:40.294200+00:00",
+    "timestamp": "2026-05-22T14:27:09.217253+00:00",
     "total_count": 8
   },
   "Airforce": {
     "all": [
-      "gemma3-270m:free",
-      "nano-banana-2",
-      "mimo-v2-pro",
-      "gemini-3-flash",
-      "claude-sonnet-4.6-test",
-      "gemma-4-31b-it",
-      "flux-2-klein-4b",
-      "eleven-flash-v2-5",
-      "grok-4.20-beta",
-      "z-image",
-      "flux-2-dev",
-      "llama-4-scout",
-      "claude-sonnet-4.6",
-      "nemotron-3-nano-30b-a3b",
-      "nemotron-3-super-120b-a12b",
-      "qwen3.5",
-      "ring-2.6-1t",
-      "flux.1-schnell",
-      "suno-v4.5",
-      "gemini-2.0-flash",
+      "gpt-5.2-chat",
+      "kimi-k2-0905",
       "claude-3-7-ch-exp",
-      "glm-4.7-flash",
-      "gemini-3-pro",
-      "gemini-2.5-pro",
-      "gemini-3.1-flash-lite",
-      "nemotron-nano-9b-v2",
-      "lfm-2.5-1.2b-instruct",
-      "seed-rp",
-      "elevenlabs-dubbing",
-      "venice",
-      "expensive",
-      "veo-3.1-fast",
-      "kimi-k2",
-      "glm-5",
-      "kimi-k2.5",
-      "grok-4-heavy",
-      "gpt-4o-mini",
       "lfm-2.5-1.2b-thinking",
-      "suno-v5.5",
+      "eleven-multilingual-v2",
+      "grok-4.1-fast-non-reasoning",
+      "grok-4.1-expert",
+      "mistral-small-creative",
+      "moirai-agent",
       "voiceover-v3",
-      "elevenlabs-scribe",
-      "flux-2-pro",
+      "flux-2-klein-4b",
       "rnj-1",
-      "eleven-v3",
+      "nemotron-3-super",
+      "suno-v5.5",
+      "elevenlabs-sfx",
+      "flux.1-dev",
+      "qwen3.6-plus",
+      "venice",
+      "unmoderated-gpt",
+      "glm-4.5-air",
+      "llama-4-scout",
+      "gemini-3-pro",
+      "cobuddy",
       "deepseek-v3-0324",
       "eleven-turbo-v2-5",
-      "glm-5.1",
-      "flux.1-dev",
-      "grok-4.1-fast",
-      "nano-banana-pro",
-      "grok-4.1-fast-reasoning",
-      "gemini-2.5-flash",
-      "grok-3-mini",
-      "eleven-multilingual-v2",
-      "unmoderated-gpt",
-      "kimi-k2-thinking",
-      "elevenlabs-music",
-      "kimi-k2-0905",
-      "nemotron-3-nano-omni-30b-a3b-reasoning",
-      "grok-3",
-      "mistral-small-creative",
-      "voiceover-multilingual",
-      "moirai-agent",
-      "mimo-v2-omni-sub",
-      "grok-4.1-thinking",
-      "claude-4-ch-exp",
-      "gpt-oss-20b",
-      "grok-3-thinking",
-      "imagen-4",
-      "imagen-3",
-      "glm-4.6",
-      "claude-opus-4.6-rp",
       "sonar-deepresearch",
-      "glm-4.5",
-      "step-3.5-flash:free",
-      "grok-4",
-      "grok-4.1-fast-non-reasoning",
-      "minimax-m2.7",
-      "flux-2-klein-9b",
-      "nemotron-nano-12b-v2-vl",
-      "plutotext-r3-emotional",
-      "qwen3.6-plus",
-      "qwen3-235b",
-      "grok-4-thinking",
-      "claude-sonnet-4.6-rp",
-      "deepseek-v3.2",
-      "elevenlabs-isolation",
-      "gpt-oss-120b",
-      "glm-4.5-air",
-      "gpt-5.2-chat",
-      "minimax-m2.5",
-      "glm-4.7",
-      "nano-banana-2-search",
-      "gpt-image-1.5",
-      "elevenlabs-sfx",
-      "minimax-m2.5-sub",
-      "cobuddy",
-      "nemotron-3-super",
-      "qianfan-ocr-fast",
-      "claude-opus-4.5-rp",
-      "elevenlabs-voice-changer",
-      "claude-sonnet-4.5-rp",
-      "grok-4.1-expert",
-      "gpt-image-2",
-      "gpt-5.1-chat",
-      "translategemma-27b",
-      "grok-4.1-mini:free",
-      "kimi-k2.6-thinking",
       "suno-v5",
+      "claude-4-ch-exp",
+      "grok-4-heavy",
+      "mimo-v2-omni-sub",
+      "elevenlabs-voice-changer",
+      "plutotext-r3-emotional",
+      "glm-5",
+      "glm-4.6",
+      "eleven-v3",
+      "imagen-4",
+      "glm-4.5",
+      "minimax-m2.7",
+      "gemma3-270m:free",
+      "grok-4.1-mini:free",
+      "elevenlabs-music",
+      "gemini-2.5-flash",
+      "grok-4.1-fast-reasoning",
+      "grok-4.20-beta",
+      "grok-3-thinking",
+      "elevenlabs-isolation",
+      "nemotron-nano-9b-v2",
+      "gpt-oss-20b",
+      "gpt-image-1.5",
+      "claude-sonnet-4.6",
+      "ring-2.6-1t",
+      "mimo-v2-pro",
+      "kimi-k2.6-thinking",
+      "minimax-m2.5",
+      "kimi-k2",
+      "gemini-2.0-flash",
+      "flux.1-schnell",
+      "claude-sonnet-4.5-rp",
+      "lfm-2.5-1.2b-instruct",
+      "grok-3",
+      "flux-2-pro",
+      "nano-banana-pro",
+      "flux-2-dev",
+      "glm-5.1",
+      "grok-3-mini",
+      "step-3.5-flash:free",
+      "nemotron-nano-12b-v2-vl",
+      "nemotron-3-nano-30b-a3b",
+      "gpt-4o-mini",
+      "qwen3.5",
+      "kimi-k2.5",
+      "glm-4.7",
+      "gemma-4-31b-it",
+      "nemotron-3-super-120b-a12b",
+      "grok-4",
+      "nano-banana-2",
+      "claude-sonnet-4.6-rp",
+      "elevenlabs-dubbing",
+      "minimax-m2.5-sub",
+      "qianfan-ocr-fast",
+      "deepseek-v3.2",
+      "claude-opus-4.6-rp",
+      "gemini-3.1-flash-lite",
+      "grok-4-thinking",
+      "grok-4.1-thinking",
+      "nano-banana-2-search",
+      "gemini-2.5-pro",
+      "z-image",
+      "claude-sonnet-4.6-test",
+      "translategemma-27b",
+      "gpt-image-2",
+      "gpt-oss-120b",
+      "gpt-5.1-chat",
+      "grok-4.1-fast",
+      "claude-opus-4.5-rp",
+      "seed-rp",
+      "voiceover-multilingual",
+      "flux-2-klein-9b",
+      "gemini-3-flash",
+      "elevenlabs-scribe",
+      "glm-4.7-flash",
+      "expensive",
+      "eleven-flash-v2-5",
+      "imagen-3",
+      "suno-v4.5",
+      "kimi-k2-thinking",
+      "nemotron-3-nano-omni-30b-a3b-reasoning",
+      "veo-3.1-fast",
+      "qwen3-235b",
       "gemini-3.5-flash-p2g",
       "claude-opus-4.7",
       "kimi-k2.6-p2g",
@@ -494,74 +494,34 @@
       "gpt-5.4-p2g"
     ],
     "families": {
-      "gemma": {
+      "gpt": {
         "models": [
-          "gemma3-270m:free",
-          "gemma-4-31b-it",
-          "translategemma-27b"
+          "gpt-5.2-chat",
+          "unmoderated-gpt",
+          "gpt-5.1-chat",
+          "gpt-5.4-nano-p2g",
+          "gpt-5.5-p2g",
+          "gpt-5.3-codex-p2g",
+          "gpt-5.4-p2g"
         ]
       },
-      "other": {
+      "kimi": {
         "models": [
-          "nano-banana-2",
-          "flux-2-klein-4b",
-          "eleven-flash-v2-5",
-          "flux-2-dev",
-          "flux.1-schnell",
-          "suno-v4.5",
-          "seed-rp",
-          "elevenlabs-dubbing",
-          "venice",
-          "expensive",
-          "lfm-2.5-1.2b-thinking",
-          "suno-v5.5",
-          "voiceover-v3",
-          "elevenlabs-scribe",
-          "flux-2-pro",
-          "rnj-1",
-          "eleven-v3",
-          "eleven-turbo-v2-5",
-          "eleven-multilingual-v2",
-          "voiceover-multilingual",
-          "moirai-agent",
-          "sonar-deepresearch",
-          "step-3.5-flash:free",
-          "flux-2-klein-9b",
-          "plutotext-r3-emotional",
-          "elevenlabs-isolation",
-          "nano-banana-2-search",
-          "elevenlabs-sfx",
-          "cobuddy",
-          "qianfan-ocr-fast",
-          "elevenlabs-voice-changer",
-          "suno-v5",
-          "flux-2-flex"
-        ]
-      },
-      "mimo": {
-        "models": [
-          "mimo-v2-pro",
-          "mimo-v2-omni-sub",
-          "mimo-v2.5-p2g",
-          "mimo-v2.5-pro-p2g"
-        ]
-      },
-      "gemini-flash": {
-        "models": [
-          "gemini-3-flash",
-          "gemini-2.0-flash",
-          "gemini-2.5-flash"
+          "kimi-k2-0905",
+          "kimi-k2.6-thinking",
+          "kimi-k2",
+          "kimi-k2.6-p2g"
         ]
       },
       "claude": {
         "models": [
-          "claude-sonnet-4.6-test",
           "claude-3-7-ch-exp",
           "claude-4-ch-exp",
-          "claude-opus-4.6-rp",
-          "claude-sonnet-4.6-rp",
-          "claude-opus-4.5-rp",
           "claude-sonnet-4.5-rp",
+          "claude-sonnet-4.6-rp",
+          "claude-opus-4.6-rp",
+          "claude-sonnet-4.6-test",
+          "claude-opus-4.5-rp",
           "claude-opus-4.6-p2g",
           "claude-opus-4.5-p2g",
           "claude-haiku-4.5-p2g",
@@ -569,26 +529,89 @@
           "claude-sonnet-4.6-p2g"
         ]
       },
-      "grok": {
+      "other": {
         "models": [
-          "grok-4.20-beta",
-          "grok-4-heavy",
-          "grok-4.1-fast",
-          "grok-4.1-fast-reasoning",
-          "grok-3-mini",
-          "grok-3",
-          "grok-4.1-thinking",
-          "grok-3-thinking",
-          "grok-4",
-          "grok-4.1-fast-non-reasoning",
-          "grok-4-thinking",
-          "grok-4.1-expert"
+          "lfm-2.5-1.2b-thinking",
+          "eleven-multilingual-v2",
+          "moirai-agent",
+          "voiceover-v3",
+          "flux-2-klein-4b",
+          "rnj-1",
+          "suno-v5.5",
+          "elevenlabs-sfx",
+          "venice",
+          "cobuddy",
+          "eleven-turbo-v2-5",
+          "sonar-deepresearch",
+          "suno-v5",
+          "elevenlabs-voice-changer",
+          "plutotext-r3-emotional",
+          "eleven-v3",
+          "elevenlabs-isolation",
+          "flux.1-schnell",
+          "flux-2-pro",
+          "flux-2-dev",
+          "step-3.5-flash:free",
+          "nano-banana-2",
+          "elevenlabs-dubbing",
+          "qianfan-ocr-fast",
+          "nano-banana-2-search",
+          "seed-rp",
+          "voiceover-multilingual",
+          "flux-2-klein-9b",
+          "elevenlabs-scribe",
+          "expensive",
+          "eleven-flash-v2-5",
+          "suno-v4.5",
+          "flux-2-flex"
         ]
       },
-      "image": {
+      "grok": {
         "models": [
-          "z-image",
-          "gpt-image-2"
+          "grok-4.1-fast-non-reasoning",
+          "grok-4.1-expert",
+          "grok-4-heavy",
+          "grok-4.1-fast-reasoning",
+          "grok-4.20-beta",
+          "grok-3-thinking",
+          "grok-3",
+          "grok-3-mini",
+          "grok-4",
+          "grok-4-thinking",
+          "grok-4.1-thinking",
+          "grok-4.1-fast"
+        ]
+      },
+      "mistral-small": {
+        "models": [
+          "mistral-small-creative"
+        ]
+      },
+      "nemotron": {
+        "models": [
+          "nemotron-3-super",
+          "nemotron-nano-9b-v2",
+          "nemotron-nano-12b-v2-vl",
+          "nemotron-3-nano-30b-a3b",
+          "nemotron-3-super-120b-a12b",
+          "nemotron-3-nano-omni-30b-a3b-reasoning"
+        ]
+      },
+      "flux": {
+        "models": [
+          "flux.1-dev"
+        ]
+      },
+      "qwen": {
+        "models": [
+          "qwen3.6-plus",
+          "qwen3.5",
+          "qwen3-235b"
+        ]
+      },
+      "glm-air": {
+        "models": [
+          "glm-4.5-air"
         ]
       },
       "llama": {
@@ -596,85 +619,11 @@
           "llama-4-scout"
         ]
       },
-      "claude-sonnet": {
-        "models": [
-          "claude-sonnet-4.6"
-        ]
-      },
-      "nemotron": {
-        "models": [
-          "nemotron-3-nano-30b-a3b",
-          "nemotron-3-super-120b-a12b",
-          "nemotron-nano-9b-v2",
-          "nemotron-3-nano-omni-30b-a3b-reasoning",
-          "nemotron-nano-12b-v2-vl",
-          "nemotron-3-super"
-        ]
-      },
-      "qwen": {
-        "models": [
-          "qwen3.5",
-          "qwen3.6-plus",
-          "qwen3-235b"
-        ]
-      },
-      "ring": {
-        "models": [
-          "ring-2.6-1t"
-        ]
-      },
-      "glm-flash": {
-        "models": [
-          "glm-4.7-flash"
-        ]
-      },
       "gemini-pro": {
         "models": [
           "gemini-3-pro",
           "gemini-2.5-pro",
           "gemini-3.1-pro"
-        ]
-      },
-      "gemini-flash-lite": {
-        "models": [
-          "gemini-3.1-flash-lite"
-        ]
-      },
-      "instruct": {
-        "models": [
-          "lfm-2.5-1.2b-instruct"
-        ]
-      },
-      "veo": {
-        "models": [
-          "veo-3.1-fast"
-        ]
-      },
-      "kimi": {
-        "models": [
-          "kimi-k2",
-          "kimi-k2-0905",
-          "kimi-k2.6-thinking",
-          "kimi-k2.6-p2g"
-        ]
-      },
-      "glm": {
-        "models": [
-          "glm-5",
-          "glm-5.1",
-          "glm-4.6",
-          "glm-4.5",
-          "glm-4.7"
-        ]
-      },
-      "kimi-k2.5": {
-        "models": [
-          "kimi-k2.5"
-        ]
-      },
-      "gpt-mini": {
-        "models": [
-          "gpt-4o-mini"
         ]
       },
       "deepseek": {
@@ -685,46 +634,21 @@
           "deepseek-v4-flash-p2g"
         ]
       },
-      "flux": {
+      "mimo": {
         "models": [
-          "flux.1-dev"
+          "mimo-v2-omni-sub",
+          "mimo-v2-pro",
+          "mimo-v2.5-p2g",
+          "mimo-v2.5-pro-p2g"
         ]
       },
-      "nano-banana": {
+      "glm": {
         "models": [
-          "nano-banana-pro"
-        ]
-      },
-      "gpt": {
-        "models": [
-          "unmoderated-gpt",
-          "gpt-5.2-chat",
-          "gpt-5.1-chat",
-          "gpt-5.4-nano-p2g",
-          "gpt-5.5-p2g",
-          "gpt-5.3-codex-p2g",
-          "gpt-5.4-p2g"
-        ]
-      },
-      "kimi-thinking": {
-        "models": [
-          "kimi-k2-thinking"
-        ]
-      },
-      "elevenlabs": {
-        "models": [
-          "elevenlabs-music"
-        ]
-      },
-      "mistral-small": {
-        "models": [
-          "mistral-small-creative"
-        ]
-      },
-      "gpt-oss": {
-        "models": [
-          "gpt-oss-20b",
-          "gpt-oss-120b"
+          "glm-5",
+          "glm-4.6",
+          "glm-4.5",
+          "glm-5.1",
+          "glm-4.7"
         ]
       },
       "imagen": {
@@ -739,9 +663,40 @@
           "minimax-m2.5"
         ]
       },
-      "glm-air": {
+      "gemma": {
         "models": [
-          "glm-4.5-air"
+          "gemma3-270m:free",
+          "gemma-4-31b-it",
+          "translategemma-27b"
+        ]
+      },
+      "mini": {
+        "models": [
+          "grok-4.1-mini:free",
+          "minimax-m2.5-sub",
+          "gemini-3.5-flash-p2g",
+          "gpt-5.1-codex-mini-p2g",
+          "gemini-3.1-flash-lite-p2g",
+          "gemini-3-flash-p2g",
+          "gpt-5.4-mini-p2g"
+        ]
+      },
+      "elevenlabs": {
+        "models": [
+          "elevenlabs-music"
+        ]
+      },
+      "gemini-flash": {
+        "models": [
+          "gemini-2.5-flash",
+          "gemini-2.0-flash",
+          "gemini-3-flash"
+        ]
+      },
+      "gpt-oss": {
+        "models": [
+          "gpt-oss-20b",
+          "gpt-oss-120b"
         ]
       },
       "gpt-image": {
@@ -749,15 +704,60 @@
           "gpt-image-1.5"
         ]
       },
-      "mini": {
+      "claude-sonnet": {
         "models": [
-          "minimax-m2.5-sub",
-          "grok-4.1-mini:free",
-          "gemini-3.5-flash-p2g",
-          "gpt-5.1-codex-mini-p2g",
-          "gemini-3.1-flash-lite-p2g",
-          "gemini-3-flash-p2g",
-          "gpt-5.4-mini-p2g"
+          "claude-sonnet-4.6"
+        ]
+      },
+      "ring": {
+        "models": [
+          "ring-2.6-1t"
+        ]
+      },
+      "instruct": {
+        "models": [
+          "lfm-2.5-1.2b-instruct"
+        ]
+      },
+      "nano-banana": {
+        "models": [
+          "nano-banana-pro"
+        ]
+      },
+      "gpt-mini": {
+        "models": [
+          "gpt-4o-mini"
+        ]
+      },
+      "kimi-k2.5": {
+        "models": [
+          "kimi-k2.5"
+        ]
+      },
+      "gemini-flash-lite": {
+        "models": [
+          "gemini-3.1-flash-lite"
+        ]
+      },
+      "image": {
+        "models": [
+          "z-image",
+          "gpt-image-2"
+        ]
+      },
+      "glm-flash": {
+        "models": [
+          "glm-4.7-flash"
+        ]
+      },
+      "kimi-thinking": {
+        "models": [
+          "kimi-k2-thinking"
+        ]
+      },
+      "veo": {
+        "models": [
+          "veo-3.1-fast"
         ]
       },
       "claude-opus": {
@@ -767,7 +767,7 @@
       }
     },
     "models_text": "+131 more models. <a class=\"models-show-all\" data-provider=\"Airforce\">Show all</a>",
-    "timestamp": "2026-05-22T13:28:44.381039+00:00",
+    "timestamp": "2026-05-22T14:27:12.174850+00:00",
     "total_count": 131
   },
   "Logfare": {
@@ -808,7 +808,7 @@
       }
     },
     "models_text": "+6 more models. <a class=\"models-show-all\" data-provider=\"Logfare\">Show all</a>",
-    "timestamp": "2026-05-22T13:28:47.476344+00:00",
+    "timestamp": "2026-05-22T14:27:13.553448+00:00",
     "total_count": 6
   },
   "Zydit": {
@@ -933,8 +933,10 @@
       "zyphra/zamba2-7b-instruct",
       "chatjimmy/llama3.1-8B",
       "claude-opus-4-7",
+      "deepseek-chat",
       "gemini-2.5-flash",
       "gpt-5.5",
+      "kimi-k2.5",
       "text-embedding-3-small"
     ],
     "families": {
@@ -1122,6 +1124,11 @@
           "claude-opus-4-7"
         ]
       },
+      "deepseek": {
+        "models": [
+          "deepseek-chat"
+        ]
+      },
       "gemini-flash": {
         "models": [
           "gemini-2.5-flash"
@@ -1132,15 +1139,20 @@
           "gpt-5.5"
         ]
       },
+      "kimi-k2.5": {
+        "models": [
+          "kimi-k2.5"
+        ]
+      },
       "text-embedding": {
         "models": [
           "text-embedding-3-small"
         ]
       }
     },
-    "models_text": "+123 more models. <a class=\"models-show-all\" data-provider=\"Zydit\">Show all</a>",
-    "timestamp": "2026-05-22T13:28:48.892845+00:00",
-    "total_count": 123
+    "models_text": "+125 more models. <a class=\"models-show-all\" data-provider=\"Zydit\">Show all</a>",
+    "timestamp": "2026-05-22T14:27:57.486398+00:00",
+    "total_count": 125
   },
   "BlazeAI": {
     "all": [
@@ -1240,7 +1252,7 @@
       }
     },
     "models_text": "+26 more models. <a class=\"models-show-all\" data-provider=\"BlazeAI\">Show all</a>",
-    "timestamp": "2026-05-22T13:28:54.098896+00:00",
+    "timestamp": "2026-05-22T14:28:02.902783+00:00",
     "total_count": 26
   },
   "OpenRouter": {
@@ -2065,7 +2077,7 @@
       }
     },
     "models_text": "+358 more models. <a class=\"models-show-all\" data-provider=\"OpenRouter\">Show all</a>",
-    "timestamp": "2026-05-22T13:28:58.202055+00:00",
+    "timestamp": "2026-05-22T14:28:07.032171+00:00",
     "total_count": 358
   },
   "NavyAI": {
@@ -2650,7 +2662,7 @@
       }
     },
     "models_text": "+182 more models. <a class=\"models-show-all\" data-provider=\"NavyAI\">Show all</a>",
-    "timestamp": "2026-05-22T13:29:07.182429+00:00",
+    "timestamp": "2026-05-22T14:28:17.216289+00:00",
     "total_count": 182
   },
   "_models": {
@@ -4763,188 +4775,132 @@
       "temperature": false,
       "open_weights": false
     },
-    "gemma-4-31b-it": {
-      "family": "gemma",
+    "gpt-5.2-chat": {
+      "family": "gpt",
       "cost": {
-        "input": 0.1,
-        "output": 0.3,
-        "cache_read": 0.02
+        "input": 1.75,
+        "output": 14
+      },
+      "limit": {
+        "context": 400000,
+        "input": 400000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2026-01-01",
+      "reasoning": true,
+      "tool_call": false,
+      "attachment": true,
+      "temperature": null,
+      "open_weights": false
+    },
+    "gpt-5.1-chat": {
+      "family": "gpt",
+      "cost": {
+        "input": 1.25,
+        "output": 10
+      },
+      "limit": {
+        "context": 400000,
+        "input": 400000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2025-11-13",
+      "reasoning": true,
+      "tool_call": false,
+      "attachment": true,
+      "temperature": null,
+      "open_weights": false
+    },
+    "kimi-k2-0905": {
+      "family": "kimi",
+      "cost": {
+        "input": 0.5,
+        "output": 2,
+        "cache_read": 0.39999999999999997
       },
       "limit": {
         "context": 262144,
-        "output": 262144
+        "output": 16384
       },
       "modalities": {
         "input": [
-          "text",
-          "image"
+          "text"
         ],
         "output": [
           "text"
         ]
       },
-      "release_date": "2026-04-02",
-      "reasoning": true,
+      "release_date": "2025-09-05",
+      "reasoning": false,
       "tool_call": true,
-      "attachment": true,
+      "attachment": false,
+      "temperature": true,
+      "open_weights": false
+    },
+    "kimi-k2": {
+      "family": "kimi",
+      "cost": {
+        "input": 0.55,
+        "output": 2.2
+      },
+      "limit": {
+        "context": 131072,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2025-07-11",
+      "reasoning": false,
+      "tool_call": true,
+      "attachment": false,
       "temperature": true,
       "open_weights": true
     },
-    "mimo-v2-pro": {
-      "family": "mimo",
-      "cost": {
-        "input": 1,
-        "output": 3,
-        "cache_read": 0.2,
-        "context_over_200k": {
-          "input": 2,
-          "output": 6,
-          "cache_read": 0.4
-        },
-        "tiers": [
-          {
-            "input": 2,
-            "output": 6,
-            "cache_read": 0.4,
-            "tier": {
-              "type": "context",
-              "size": 256000
-            }
-          }
-        ]
-      },
+    "grok-4.1-fast-non-reasoning": {
+      "family": "grok",
+      "cost": null,
       "limit": {
-        "context": 1048576,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2026-03-18",
-      "reasoning": true,
-      "tool_call": true,
-      "attachment": false,
-      "temperature": true,
-      "open_weights": false
-    },
-    "gemini-3-flash": {
-      "family": "gemini-flash",
-      "cost": {
-        "input": 0.5,
-        "output": 3,
-        "cache_read": 0.05
-      },
-      "limit": {
-        "context": 1048576,
-        "output": 65536
+        "context": 2000000,
+        "output": 30000
       },
       "modalities": {
         "input": [
           "text",
-          "image",
-          "video",
-          "audio",
-          "pdf"
+          "image"
         ],
         "output": [
           "text"
         ]
       },
-      "release_date": "2025-12-17",
-      "reasoning": true,
-      "tool_call": true,
-      "attachment": true,
-      "temperature": true,
-      "open_weights": false
-    },
-    "gemini-2.0-flash": {
-      "family": "gemini-flash",
-      "cost": {
-        "input": 0.1,
-        "output": 0.4,
-        "cache_read": 0.025
-      },
-      "limit": {
-        "context": 1048576,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "audio",
-          "video",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2024-12-11",
+      "release_date": "2025-11-19",
       "reasoning": false,
       "tool_call": true,
       "attachment": true,
-      "temperature": true,
-      "open_weights": false
-    },
-    "gemini-2.5-flash": {
-      "family": "gemini-flash",
-      "cost": {
-        "input": 0.3,
-        "output": 2.5,
-        "cache_read": 0.075,
-        "cache_write": 0.3
-      },
-      "limit": {
-        "context": 1048576,
-        "output": 65535
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2025-06-17",
-      "reasoning": true,
-      "tool_call": true,
-      "attachment": false,
-      "temperature": true,
-      "open_weights": false
-    },
-    "grok-4.1-fast": {
-      "family": "grok",
-      "cost": {
-        "input": 0.2,
-        "output": 0.5
-      },
-      "limit": {
-        "context": 2000000,
-        "input": 2000000,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2025-11-20",
-      "reasoning": true,
-      "tool_call": true,
-      "attachment": true,
-      "temperature": null,
+      "temperature": false,
       "open_weights": false
     },
     "grok-4.1-fast-reasoning": {
@@ -4974,12 +4930,12 @@
       "temperature": null,
       "open_weights": false
     },
-    "grok-3-mini": {
+    "grok-3": {
       "family": "grok",
       "cost": {
-        "input": 0.3,
-        "output": 0.5,
-        "cache_read": 0.075
+        "input": 3,
+        "output": 15,
+        "cache_read": 0.75
       },
       "limit": {
         "context": 131072,
@@ -5000,12 +4956,12 @@
       "temperature": true,
       "open_weights": false
     },
-    "grok-3": {
+    "grok-3-mini": {
       "family": "grok",
       "cost": {
-        "input": 3,
-        "output": 15,
-        "cache_read": 0.75
+        "input": 0.3,
+        "output": 0.5,
+        "cache_read": 0.075
       },
       "limit": {
         "context": 131072,
@@ -5052,12 +5008,16 @@
       "temperature": true,
       "open_weights": false
     },
-    "grok-4.1-fast-non-reasoning": {
+    "grok-4.1-fast": {
       "family": "grok",
-      "cost": null,
+      "cost": {
+        "input": 0.2,
+        "output": 0.5
+      },
       "limit": {
         "context": 2000000,
-        "output": 30000
+        "input": 2000000,
+        "output": 131072
       },
       "modalities": {
         "input": [
@@ -5068,66 +5028,111 @@
           "text"
         ]
       },
-      "release_date": "2025-11-19",
-      "reasoning": false,
-      "tool_call": true,
-      "attachment": true,
-      "temperature": false,
-      "open_weights": false
-    },
-    "llama-4-scout": {
-      "family": "llama",
-      "cost": {
-        "input": 0.08,
-        "output": 0.3
-      },
-      "limit": {
-        "context": 131072,
-        "output": 8192
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2025-01-01",
-      "reasoning": false,
-      "tool_call": true,
-      "attachment": false,
-      "temperature": true,
-      "open_weights": false
-    },
-    "claude-sonnet-4.6": {
-      "family": "claude-sonnet",
-      "cost": {
-        "input": 2.992,
-        "output": 14.993999999999998
-      },
-      "limit": {
-        "context": 1000000,
-        "input": 1000000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2026-02-17",
-      "reasoning": false,
+      "release_date": "2025-11-20",
+      "reasoning": true,
       "tool_call": true,
       "attachment": true,
       "temperature": null,
       "open_weights": false
+    },
+    "mistral-small-creative": {
+      "family": "mistral-small",
+      "cost": {
+        "input": 0.1,
+        "output": 0.3
+      },
+      "limit": {
+        "context": 32768,
+        "input": 32768,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2025-12-16",
+      "reasoning": false,
+      "tool_call": true,
+      "attachment": false,
+      "temperature": null,
+      "open_weights": false
+    },
+    "nemotron-3-super": {
+      "family": "nemotron",
+      "cost": null,
+      "limit": {
+        "context": 262144,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2026-03-11",
+      "reasoning": true,
+      "tool_call": true,
+      "attachment": false,
+      "temperature": null,
+      "open_weights": true
+    },
+    "nemotron-nano-9b-v2": {
+      "family": "nemotron",
+      "cost": {
+        "input": 0.04,
+        "output": 0.16
+      },
+      "limit": {
+        "context": 131072,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2025-09-05",
+      "reasoning": true,
+      "tool_call": true,
+      "attachment": false,
+      "temperature": true,
+      "open_weights": true
+    },
+    "nemotron-nano-12b-v2-vl": {
+      "family": "nemotron",
+      "cost": {
+        "input": 0.2,
+        "output": 0.6
+      },
+      "limit": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2025-12-01",
+      "reasoning": true,
+      "tool_call": true,
+      "attachment": true,
+      "temperature": true,
+      "open_weights": true
     },
     "nemotron-3-nano-30b-a3b": {
       "family": "nemotron",
@@ -5180,31 +5185,6 @@
       "temperature": true,
       "open_weights": true
     },
-    "nemotron-nano-9b-v2": {
-      "family": "nemotron",
-      "cost": {
-        "input": 0.04,
-        "output": 0.16
-      },
-      "limit": {
-        "context": 131072,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2025-09-05",
-      "reasoning": true,
-      "tool_call": true,
-      "attachment": false,
-      "temperature": true,
-      "open_weights": true
-    },
     "nemotron-3-nano-omni-30b-a3b-reasoning": {
       "family": "nemotron",
       "cost": {
@@ -5233,53 +5213,30 @@
       "temperature": true,
       "open_weights": true
     },
-    "nemotron-nano-12b-v2-vl": {
-      "family": "nemotron",
+    "flux.1-dev": {
+      "family": "flux",
       "cost": {
-        "input": 0.2,
-        "output": 0.6
+        "input": 0,
+        "output": 0
       },
       "limit": {
-        "context": 128000,
-        "output": 16384
+        "context": 4096,
+        "output": 0
       },
       "modalities": {
         "input": [
-          "text",
+          "text"
+        ],
+        "output": [
           "image"
-        ],
-        "output": [
-          "text"
         ]
       },
-      "release_date": "2025-12-01",
-      "reasoning": true,
-      "tool_call": true,
-      "attachment": true,
-      "temperature": true,
-      "open_weights": true
-    },
-    "nemotron-3-super": {
-      "family": "nemotron",
-      "cost": null,
-      "limit": {
-        "context": 262144,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2026-03-11",
-      "reasoning": true,
-      "tool_call": true,
+      "release_date": "2024-08-01",
+      "reasoning": false,
+      "tool_call": false,
       "attachment": false,
-      "temperature": null,
-      "open_weights": true
+      "temperature": true,
+      "open_weights": false
     },
     "qwen3.6-plus": {
       "family": "qwen",
@@ -5334,16 +5291,17 @@
       "temperature": true,
       "open_weights": true
     },
-    "ring-2.6-1t": {
-      "family": "ring",
+    "glm-4.5-air": {
+      "family": "glm-air",
       "cost": {
-        "input": 0.075,
-        "output": 0.625,
-        "cache_read": 0.015
+        "input": 0.2,
+        "output": 1.1,
+        "cache_read": 0.03,
+        "cache_write": 0
       },
       "limit": {
-        "context": 262144,
-        "output": 65536
+        "context": 131072,
+        "output": 98304
       },
       "modalities": {
         "input": [
@@ -5353,37 +5311,37 @@
           "text"
         ]
       },
-      "release_date": "2026-05-08",
+      "release_date": "2025-07-28",
       "reasoning": true,
       "tool_call": true,
       "attachment": false,
       "temperature": true,
-      "open_weights": false
+      "open_weights": true
     },
-    "glm-4.7-flash": {
-      "family": "glm-flash",
+    "llama-4-scout": {
+      "family": "llama",
       "cost": {
-        "input": 0.15,
-        "output": 0.5
+        "input": 0.08,
+        "output": 0.3
       },
       "limit": {
-        "context": 203000,
-        "input": 203000,
-        "output": 65535
+        "context": 131072,
+        "output": 8192
       },
       "modalities": {
         "input": [
-          "text"
+          "text",
+          "image"
         ],
         "output": [
           "text"
         ]
       },
-      "release_date": "2026-01-19",
+      "release_date": "2025-01-01",
       "reasoning": false,
-      "tool_call": false,
+      "tool_call": true,
       "attachment": false,
-      "temperature": null,
+      "temperature": true,
       "open_weights": false
     },
     "gemini-3-pro": {
@@ -5489,69 +5447,15 @@
       "temperature": true,
       "open_weights": false
     },
-    "gemini-3.1-flash-lite": {
-      "family": "gemini-flash-lite",
+    "deepseek-v3-0324": {
+      "family": "deepseek",
       "cost": {
-        "input": 0.25,
-        "output": 1.5,
-        "cache_read": 0.025,
-        "input_audio": 0.5
+        "input": 0.551,
+        "output": 1.654
       },
       "limit": {
-        "context": 1048576,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "video",
-          "audio",
-          "pdf"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2026-05-07",
-      "reasoning": true,
-      "tool_call": true,
-      "attachment": true,
-      "temperature": true,
-      "open_weights": false
-    },
-    "veo-3.1-fast": {
-      "family": "veo",
-      "cost": null,
-      "limit": {
-        "context": 480,
-        "output": 0
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "video"
-        ]
-      },
-      "release_date": "2025-10-15",
-      "reasoning": false,
-      "tool_call": true,
-      "attachment": true,
-      "temperature": false,
-      "open_weights": false
-    },
-    "kimi-k2": {
-      "family": "kimi",
-      "cost": {
-        "input": 0.55,
-        "output": 2.2
-      },
-      "limit": {
-        "context": 131072,
-        "output": 32768
+        "context": 128000,
+        "output": 128000
       },
       "modalities": {
         "input": [
@@ -5561,23 +5465,22 @@
           "text"
         ]
       },
-      "release_date": "2025-07-11",
+      "release_date": "2025-03-24",
       "reasoning": false,
       "tool_call": true,
       "attachment": false,
       "temperature": true,
       "open_weights": true
     },
-    "kimi-k2-0905": {
-      "family": "kimi",
+    "deepseek-v3.2": {
+      "family": "deepseek",
       "cost": {
-        "input": 0.5,
-        "output": 2,
-        "cache_read": 0.39999999999999997
+        "input": 0.27,
+        "output": 0.41
       },
       "limit": {
-        "context": 262144,
-        "output": 16384
+        "context": 163840,
+        "output": 65536
       },
       "modalities": {
         "input": [
@@ -5587,8 +5490,50 @@
           "text"
         ]
       },
-      "release_date": "2025-09-05",
+      "release_date": "2025-09-22",
       "reasoning": false,
+      "tool_call": true,
+      "attachment": false,
+      "temperature": true,
+      "open_weights": false
+    },
+    "mimo-v2-pro": {
+      "family": "mimo",
+      "cost": {
+        "input": 1,
+        "output": 3,
+        "cache_read": 0.2,
+        "context_over_200k": {
+          "input": 2,
+          "output": 6,
+          "cache_read": 0.4
+        },
+        "tiers": [
+          {
+            "input": 2,
+            "output": 6,
+            "cache_read": 0.4,
+            "tier": {
+              "type": "context",
+              "size": 256000
+            }
+          }
+        ]
+      },
+      "limit": {
+        "context": 1048576,
+        "output": 131072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2026-03-18",
+      "reasoning": true,
       "tool_call": true,
       "attachment": false,
       "temperature": true,
@@ -5618,32 +5563,6 @@
       "tool_call": false,
       "attachment": false,
       "temperature": null,
-      "open_weights": false
-    },
-    "glm-5.1": {
-      "family": "glm",
-      "cost": {
-        "input": 1.4,
-        "output": 4.4,
-        "cache_read": 0.26
-      },
-      "limit": {
-        "context": 200000,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2026-03-27",
-      "reasoning": true,
-      "tool_call": true,
-      "attachment": false,
-      "temperature": true,
       "open_weights": false
     },
     "glm-4.6": {
@@ -5698,6 +5617,32 @@
       "temperature": true,
       "open_weights": true
     },
+    "glm-5.1": {
+      "family": "glm",
+      "cost": {
+        "input": 1.4,
+        "output": 4.4,
+        "cache_read": 0.26
+      },
+      "limit": {
+        "context": 200000,
+        "output": 131072
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2026-03-27",
+      "reasoning": true,
+      "tool_call": true,
+      "attachment": false,
+      "temperature": true,
+      "open_weights": false
+    },
     "glm-4.7": {
       "family": "glm",
       "cost": {
@@ -5722,314 +5667,6 @@
       "tool_call": false,
       "attachment": false,
       "temperature": null,
-      "open_weights": false
-    },
-    "kimi-k2.5": {
-      "family": "kimi-k2.5",
-      "cost": {
-        "input": 0.5,
-        "output": 2.8
-      },
-      "limit": {
-        "context": 262144,
-        "output": 262144
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image",
-          "video"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2026-01",
-      "reasoning": true,
-      "tool_call": true,
-      "attachment": false,
-      "temperature": false,
-      "open_weights": true
-    },
-    "gpt-4o-mini": {
-      "family": "gpt-mini",
-      "cost": {
-        "input": 0.15,
-        "output": 0.6,
-        "cache_read": 0.075
-      },
-      "limit": {
-        "context": 128000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2024-07-18",
-      "reasoning": false,
-      "tool_call": true,
-      "attachment": false,
-      "temperature": true,
-      "open_weights": false
-    },
-    "deepseek-v3-0324": {
-      "family": "deepseek",
-      "cost": {
-        "input": 0.551,
-        "output": 1.654
-      },
-      "limit": {
-        "context": 128000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2025-03-24",
-      "reasoning": false,
-      "tool_call": true,
-      "attachment": false,
-      "temperature": true,
-      "open_weights": true
-    },
-    "deepseek-v3.2": {
-      "family": "deepseek",
-      "cost": {
-        "input": 0.27,
-        "output": 0.41
-      },
-      "limit": {
-        "context": 163840,
-        "output": 65536
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2025-09-22",
-      "reasoning": false,
-      "tool_call": true,
-      "attachment": false,
-      "temperature": true,
-      "open_weights": false
-    },
-    "flux.1-dev": {
-      "family": "flux",
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "limit": {
-        "context": 4096,
-        "output": 0
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "image"
-        ]
-      },
-      "release_date": "2024-08-01",
-      "reasoning": false,
-      "tool_call": false,
-      "attachment": false,
-      "temperature": true,
-      "open_weights": false
-    },
-    "nano-banana-pro": {
-      "family": "nano-banana",
-      "cost": {
-        "input": 2,
-        "output": 12,
-        "cache_read": 0.2
-      },
-      "limit": {
-        "context": 65536,
-        "output": 0
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "image"
-        ]
-      },
-      "release_date": "2025-11-19",
-      "reasoning": false,
-      "tool_call": true,
-      "attachment": true,
-      "temperature": false,
-      "open_weights": false
-    },
-    "gpt-5.2-chat": {
-      "family": "gpt",
-      "cost": {
-        "input": 1.75,
-        "output": 14
-      },
-      "limit": {
-        "context": 400000,
-        "input": 400000,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2026-01-01",
-      "reasoning": true,
-      "tool_call": false,
-      "attachment": true,
-      "temperature": null,
-      "open_weights": false
-    },
-    "gpt-5.1-chat": {
-      "family": "gpt",
-      "cost": {
-        "input": 1.25,
-        "output": 10
-      },
-      "limit": {
-        "context": 400000,
-        "input": 400000,
-        "output": 128000
-      },
-      "modalities": {
-        "input": [
-          "text",
-          "image"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2025-11-13",
-      "reasoning": true,
-      "tool_call": false,
-      "attachment": true,
-      "temperature": null,
-      "open_weights": false
-    },
-    "kimi-k2-thinking": {
-      "family": "kimi-thinking",
-      "cost": {
-        "input": 0.48,
-        "output": 2
-      },
-      "limit": {
-        "context": 256000,
-        "output": 262144
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2025-11-06",
-      "reasoning": false,
-      "tool_call": true,
-      "attachment": false,
-      "temperature": true,
-      "open_weights": false
-    },
-    "elevenlabs-music": {
-      "family": "elevenlabs",
-      "cost": null,
-      "limit": {
-        "context": 2000,
-        "output": 0
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "audio"
-        ]
-      },
-      "release_date": "2025-08-29",
-      "reasoning": false,
-      "tool_call": true,
-      "attachment": true,
-      "temperature": false,
-      "open_weights": false
-    },
-    "mistral-small-creative": {
-      "family": "mistral-small",
-      "cost": {
-        "input": 0.1,
-        "output": 0.3
-      },
-      "limit": {
-        "context": 32768,
-        "input": 32768,
-        "output": 32768
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2025-12-16",
-      "reasoning": false,
-      "tool_call": true,
-      "attachment": false,
-      "temperature": null,
-      "open_weights": false
-    },
-    "gpt-oss-120b": {
-      "family": "gpt-oss",
-      "cost": {
-        "input": 0.04,
-        "output": 0.16
-      },
-      "limit": {
-        "context": 131072,
-        "output": 131072
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2024-06-01",
-      "reasoning": true,
-      "tool_call": true,
-      "attachment": false,
-      "temperature": true,
       "open_weights": false
     },
     "imagen-4": {
@@ -6128,17 +5765,152 @@
       "temperature": null,
       "open_weights": false
     },
-    "glm-4.5-air": {
-      "family": "glm-air",
+    "gemma-4-31b-it": {
+      "family": "gemma",
       "cost": {
-        "input": 0.2,
-        "output": 1.1,
-        "cache_read": 0.03,
-        "cache_write": 0
+        "input": 0.1,
+        "output": 0.3,
+        "cache_read": 0.02
+      },
+      "limit": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2026-04-02",
+      "reasoning": true,
+      "tool_call": true,
+      "attachment": true,
+      "temperature": true,
+      "open_weights": true
+    },
+    "elevenlabs-music": {
+      "family": "elevenlabs",
+      "cost": null,
+      "limit": {
+        "context": 2000,
+        "output": 0
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "audio"
+        ]
+      },
+      "release_date": "2025-08-29",
+      "reasoning": false,
+      "tool_call": true,
+      "attachment": true,
+      "temperature": false,
+      "open_weights": false
+    },
+    "gemini-2.5-flash": {
+      "family": "gemini-flash",
+      "cost": {
+        "input": 0.3,
+        "output": 2.5,
+        "cache_read": 0.075,
+        "cache_write": 0.3
+      },
+      "limit": {
+        "context": 1048576,
+        "output": 65535
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2025-06-17",
+      "reasoning": true,
+      "tool_call": true,
+      "attachment": false,
+      "temperature": true,
+      "open_weights": false
+    },
+    "gemini-2.0-flash": {
+      "family": "gemini-flash",
+      "cost": {
+        "input": 0.1,
+        "output": 0.4,
+        "cache_read": 0.025
+      },
+      "limit": {
+        "context": 1048576,
+        "output": 8192
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "audio",
+          "video",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2024-12-11",
+      "reasoning": false,
+      "tool_call": true,
+      "attachment": true,
+      "temperature": true,
+      "open_weights": false
+    },
+    "gemini-3-flash": {
+      "family": "gemini-flash",
+      "cost": {
+        "input": 0.5,
+        "output": 3,
+        "cache_read": 0.05
+      },
+      "limit": {
+        "context": 1048576,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video",
+          "audio",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2025-12-17",
+      "reasoning": true,
+      "tool_call": true,
+      "attachment": true,
+      "temperature": true,
+      "open_weights": false
+    },
+    "gpt-oss-120b": {
+      "family": "gpt-oss",
+      "cost": {
+        "input": 0.04,
+        "output": 0.16
       },
       "limit": {
         "context": 131072,
-        "output": 98304
+        "output": 131072
       },
       "modalities": {
         "input": [
@@ -6148,12 +5920,12 @@
           "text"
         ]
       },
-      "release_date": "2025-07-28",
+      "release_date": "2024-06-01",
       "reasoning": true,
       "tool_call": true,
       "attachment": false,
       "temperature": true,
-      "open_weights": true
+      "open_weights": false
     },
     "gpt-image-1.5": {
       "family": "gpt-image",
@@ -6176,6 +5948,246 @@
       "release_date": "2025-11-25",
       "reasoning": false,
       "tool_call": false,
+      "attachment": true,
+      "temperature": false,
+      "open_weights": false
+    },
+    "claude-sonnet-4.6": {
+      "family": "claude-sonnet",
+      "cost": {
+        "input": 2.992,
+        "output": 14.993999999999998
+      },
+      "limit": {
+        "context": 1000000,
+        "input": 1000000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2026-02-17",
+      "reasoning": false,
+      "tool_call": true,
+      "attachment": true,
+      "temperature": null,
+      "open_weights": false
+    },
+    "ring-2.6-1t": {
+      "family": "ring",
+      "cost": {
+        "input": 0.075,
+        "output": 0.625,
+        "cache_read": 0.015
+      },
+      "limit": {
+        "context": 262144,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2026-05-08",
+      "reasoning": true,
+      "tool_call": true,
+      "attachment": false,
+      "temperature": true,
+      "open_weights": false
+    },
+    "nano-banana-pro": {
+      "family": "nano-banana",
+      "cost": {
+        "input": 2,
+        "output": 12,
+        "cache_read": 0.2
+      },
+      "limit": {
+        "context": 65536,
+        "output": 0
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "image"
+        ]
+      },
+      "release_date": "2025-11-19",
+      "reasoning": false,
+      "tool_call": true,
+      "attachment": true,
+      "temperature": false,
+      "open_weights": false
+    },
+    "gpt-4o-mini": {
+      "family": "gpt-mini",
+      "cost": {
+        "input": 0.15,
+        "output": 0.6,
+        "cache_read": 0.075
+      },
+      "limit": {
+        "context": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2024-07-18",
+      "reasoning": false,
+      "tool_call": true,
+      "attachment": false,
+      "temperature": true,
+      "open_weights": false
+    },
+    "kimi-k2.5": {
+      "family": "kimi-k2.5",
+      "cost": {
+        "input": 0.5,
+        "output": 2.8
+      },
+      "limit": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2026-01",
+      "reasoning": true,
+      "tool_call": true,
+      "attachment": false,
+      "temperature": false,
+      "open_weights": true
+    },
+    "gemini-3.1-flash-lite": {
+      "family": "gemini-flash-lite",
+      "cost": {
+        "input": 0.25,
+        "output": 1.5,
+        "cache_read": 0.025,
+        "input_audio": 0.5
+      },
+      "limit": {
+        "context": 1048576,
+        "output": 65536
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "video",
+          "audio",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2026-05-07",
+      "reasoning": true,
+      "tool_call": true,
+      "attachment": true,
+      "temperature": true,
+      "open_weights": false
+    },
+    "glm-4.7-flash": {
+      "family": "glm-flash",
+      "cost": {
+        "input": 0.15,
+        "output": 0.5
+      },
+      "limit": {
+        "context": 203000,
+        "input": 203000,
+        "output": 65535
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2026-01-19",
+      "reasoning": false,
+      "tool_call": false,
+      "attachment": false,
+      "temperature": null,
+      "open_weights": false
+    },
+    "kimi-k2-thinking": {
+      "family": "kimi-thinking",
+      "cost": {
+        "input": 0.48,
+        "output": 2
+      },
+      "limit": {
+        "context": 256000,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2025-11-06",
+      "reasoning": false,
+      "tool_call": true,
+      "attachment": false,
+      "temperature": true,
+      "open_weights": false
+    },
+    "veo-3.1-fast": {
+      "family": "veo",
+      "cost": null,
+      "limit": {
+        "context": 480,
+        "output": 0
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "video"
+        ]
+      },
+      "release_date": "2025-10-15",
+      "reasoning": false,
+      "tool_call": true,
       "attachment": true,
       "temperature": false,
       "open_weights": false
@@ -6321,6 +6333,31 @@
       "temperature": false,
       "open_weights": false
     },
+    "deepseek-chat": {
+      "family": "deepseek",
+      "cost": {
+        "input": 0.32,
+        "output": 0.89
+      },
+      "limit": {
+        "context": 163840,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2025-12-01",
+      "reasoning": false,
+      "tool_call": true,
+      "attachment": false,
+      "temperature": true,
+      "open_weights": true
+    },
     "gpt-5.5": {
       "family": "gpt",
       "cost": {
@@ -6391,6 +6428,32 @@
       "temperature": false,
       "open_weights": false
     },
+    "openai/gpt-oss-safeguard-20b": {
+      "family": "gpt-oss",
+      "cost": {
+        "input": 0.075,
+        "output": 0.3
+      },
+      "limit": {
+        "context": 128000,
+        "input": 128000,
+        "output": 16384
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2025-10-29",
+      "reasoning": true,
+      "tool_call": false,
+      "attachment": false,
+      "temperature": null,
+      "open_weights": false
+    },
     "canopylabs/orpheus-v1-english": {
       "family": "canopylabs",
       "cost": {
@@ -6410,31 +6473,6 @@
         ]
       },
       "release_date": "2025-12-19",
-      "reasoning": false,
-      "tool_call": false,
-      "attachment": false,
-      "temperature": true,
-      "open_weights": false
-    },
-    "canopylabs/orpheus-arabic-saudi": {
-      "family": "canopylabs",
-      "cost": {
-        "input": 40,
-        "output": 0
-      },
-      "limit": {
-        "context": 4000,
-        "output": 50000
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "audio"
-        ]
-      },
-      "release_date": "2025-12-16",
       "reasoning": false,
       "tool_call": false,
       "attachment": false,
@@ -6466,51 +6504,25 @@
       "temperature": true,
       "open_weights": false
     },
-    "openai/gpt-oss-safeguard-20b": {
-      "family": "gpt-oss",
+    "canopylabs/orpheus-arabic-saudi": {
+      "family": "canopylabs",
       "cost": {
-        "input": 0.075,
-        "output": 0.3
+        "input": 40,
+        "output": 0
       },
       "limit": {
-        "context": 128000,
-        "input": 128000,
-        "output": 16384
+        "context": 4000,
+        "output": 50000
       },
       "modalities": {
         "input": [
           "text"
         ],
         "output": [
-          "text"
+          "audio"
         ]
       },
-      "release_date": "2025-10-29",
-      "reasoning": true,
-      "tool_call": false,
-      "attachment": false,
-      "temperature": null,
-      "open_weights": false
-    },
-    "meta-llama/llama-prompt-guard-2-86m": {
-      "family": "llama",
-      "cost": {
-        "input": 0.01,
-        "output": 0.01
-      },
-      "limit": {
-        "context": 512,
-        "output": 2
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2024-10-01",
+      "release_date": "2025-12-16",
       "reasoning": false,
       "tool_call": false,
       "attachment": false,
@@ -6538,6 +6550,31 @@
       "release_date": "2024-12-06",
       "reasoning": false,
       "tool_call": true,
+      "attachment": false,
+      "temperature": true,
+      "open_weights": false
+    },
+    "meta-llama/llama-prompt-guard-2-86m": {
+      "family": "llama",
+      "cost": {
+        "input": 0.01,
+        "output": 0.01
+      },
+      "limit": {
+        "context": 512,
+        "output": 2
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2024-10-01",
+      "reasoning": false,
+      "tool_call": false,
       "attachment": false,
       "temperature": true,
       "open_weights": false
@@ -6592,30 +6629,30 @@
       "temperature": true,
       "open_weights": false
     },
-    "whisper-large-v3-turbo": {
-      "family": "whisper",
+    "allam-2-7b": {
+      "family": "allam",
       "cost": {
         "input": 0,
         "output": 0
       },
       "limit": {
-        "context": 448,
-        "output": 448
+        "context": 4096,
+        "output": 4096
       },
       "modalities": {
         "input": [
-          "audio"
+          "text"
         ],
         "output": [
           "text"
         ]
       },
-      "release_date": "2024-10-01",
+      "release_date": "2024-09",
       "reasoning": false,
       "tool_call": false,
       "attachment": false,
       "temperature": true,
-      "open_weights": true
+      "open_weights": false
     },
     "whisper-large-v3": {
       "family": "whisper",
@@ -6641,6 +6678,56 @@
       "attachment": false,
       "temperature": false,
       "open_weights": true
+    },
+    "whisper-large-v3-turbo": {
+      "family": "whisper",
+      "cost": {
+        "input": 0,
+        "output": 0
+      },
+      "limit": {
+        "context": 448,
+        "output": 448
+      },
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2024-10-01",
+      "reasoning": false,
+      "tool_call": false,
+      "attachment": false,
+      "temperature": true,
+      "open_weights": true
+    },
+    "qwen/qwen3-32b": {
+      "family": "qwen",
+      "cost": {
+        "input": 0.29,
+        "output": 0.59
+      },
+      "limit": {
+        "context": 131072,
+        "output": 40960
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2025-04-28",
+      "reasoning": true,
+      "tool_call": true,
+      "attachment": false,
+      "temperature": true,
+      "open_weights": false
     },
     "meta-llama/llama-4-scout-17b-16e-instruct": {
       "family": "llama",
@@ -6687,56 +6774,6 @@
         ]
       },
       "release_date": "2025-09-04",
-      "reasoning": true,
-      "tool_call": true,
-      "attachment": false,
-      "temperature": true,
-      "open_weights": false
-    },
-    "allam-2-7b": {
-      "family": "allam",
-      "cost": {
-        "input": 0,
-        "output": 0
-      },
-      "limit": {
-        "context": 4096,
-        "output": 4096
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2024-09",
-      "reasoning": false,
-      "tool_call": false,
-      "attachment": false,
-      "temperature": true,
-      "open_weights": false
-    },
-    "qwen/qwen3-32b": {
-      "family": "qwen",
-      "cost": {
-        "input": 0.29,
-        "output": 0.59
-      },
-      "limit": {
-        "context": 131072,
-        "output": 40960
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2025-04-28",
       "reasoning": true,
       "tool_call": true,
       "attachment": false,
@@ -7620,15 +7657,17 @@
       "temperature": null,
       "open_weights": false
     },
-    "nebius/nemotron-3-super-120b-a12b": {
-      "family": "nemotron",
+    "meta-llama/Llama-3.3-70B-Instruct": {
+      "family": "llama",
       "cost": {
-        "input": 0.09,
-        "output": 0.45
+        "input": 0.13,
+        "output": 0.38,
+        "cache_read": 0.065,
+        "cache_write": 0.26
       },
       "limit": {
-        "context": 262144,
-        "output": 262144
+        "context": 128000,
+        "output": 4096
       },
       "modalities": {
         "input": [
@@ -7638,12 +7677,126 @@
           "text"
         ]
       },
-      "release_date": "2026-03-11",
-      "reasoning": true,
+      "release_date": "2024-12-06",
+      "reasoning": false,
       "tool_call": true,
       "attachment": false,
       "temperature": true,
       "open_weights": true
+    },
+    "intfloat/multilingual-e5-large-instruct": {
+      "family": "text-embedding",
+      "cost": {
+        "input": 0.12,
+        "output": 0.12
+      },
+      "limit": {
+        "context": 512,
+        "output": 512
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2024-06-01",
+      "reasoning": false,
+      "tool_call": false,
+      "attachment": false,
+      "temperature": null,
+      "open_weights": true
+    },
+    "openai/gpt-5.5": {
+      "family": "gpt",
+      "cost": {
+        "input": 5,
+        "output": 30,
+        "cache_read": 0.5,
+        "context_over_200k": {
+          "input": 10,
+          "output": 45,
+          "cache_read": 1
+        },
+        "tiers": [
+          {
+            "input": 10,
+            "output": 45,
+            "cache_read": 1,
+            "tier": {
+              "type": "context",
+              "size": 272000
+            }
+          }
+        ]
+      },
+      "limit": {
+        "context": 1050000,
+        "input": 922000,
+        "output": 128000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2026-04-23",
+      "reasoning": true,
+      "tool_call": true,
+      "attachment": true,
+      "temperature": false,
+      "open_weights": false
+    },
+    "grok-4.20-0309-non-reasoning": {
+      "family": "grok",
+      "cost": {
+        "input": 1.25,
+        "output": 2.5,
+        "cache_read": 0.2,
+        "tiers": [
+          {
+            "input": 2.5,
+            "output": 5,
+            "cache_read": 0.4,
+            "tier": {
+              "type": "context",
+              "size": 200000
+            }
+          }
+        ],
+        "context_over_200k": {
+          "input": 2.5,
+          "output": 5,
+          "cache_read": 0.4
+        }
+      },
+      "limit": {
+        "context": 2000000,
+        "output": 30000
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image",
+          "pdf"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2026-03-09",
+      "reasoning": false,
+      "tool_call": true,
+      "attachment": true,
+      "temperature": true,
+      "open_weights": false
     },
     "xai/grok-4.3": {
       "family": "grok",
@@ -7719,50 +7872,82 @@
       "temperature": true,
       "open_weights": false
     },
-    "openai/gpt-5.5": {
-      "family": "gpt",
+    "zai-org/GLM-4.7-FP8": {
+      "family": "glm",
       "cost": {
-        "input": 5,
-        "output": 30,
-        "cache_read": 0.5,
-        "context_over_200k": {
-          "input": 10,
-          "output": 45,
-          "cache_read": 1
-        },
-        "tiers": [
-          {
-            "input": 10,
-            "output": 45,
-            "cache_read": 1,
-            "tier": {
-              "type": "context",
-              "size": 272000
-            }
-          }
-        ]
+        "input": 0.2989,
+        "output": 1.1957,
+        "cache_read": 0.14945
       },
       "limit": {
-        "context": 1050000,
-        "input": 922000,
-        "output": 128000
+        "context": 202752,
+        "output": 65535
       },
       "modalities": {
         "input": [
-          "text",
-          "image",
-          "pdf"
+          "text"
         ],
         "output": [
           "text"
         ]
       },
-      "release_date": "2026-04-23",
+      "release_date": "2026-01-27",
       "reasoning": true,
       "tool_call": true,
-      "attachment": true,
+      "attachment": false,
+      "temperature": true,
+      "open_weights": true
+    },
+    "KBLab/kb-whisper-large": {
+      "family": "whisper",
+      "cost": {
+        "input": 0.00236,
+        "output": 0.00236,
+        "output_audio": 2.36
+      },
+      "limit": {
+        "context": 448,
+        "output": 448
+      },
+      "modalities": {
+        "input": [
+          "audio"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2024-10-01",
+      "reasoning": false,
+      "tool_call": false,
+      "attachment": false,
+      "temperature": null,
+      "open_weights": true
+    },
+    "BAAI/bge-reranker-v2-m3": {
+      "family": "bge",
+      "cost": {
+        "input": 0.01,
+        "output": 0
+      },
+      "limit": {
+        "context": 8192,
+        "output": 1
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2024-03-12",
+      "reasoning": false,
+      "tool_call": false,
+      "attachment": false,
       "temperature": false,
-      "open_weights": false
+      "open_weights": true
     },
     "gemini/gemini-3.5-flash": {
       "family": "gemini-flash",
@@ -7795,6 +7980,57 @@
       "attachment": true,
       "temperature": true,
       "open_weights": false
+    },
+    "google/gemma-4-31B-it": {
+      "family": "gemma",
+      "cost": {
+        "input": 0.13,
+        "output": 0.38
+      },
+      "limit": {
+        "context": 262144,
+        "output": 32768
+      },
+      "modalities": {
+        "input": [
+          "text",
+          "image"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2026-04-02",
+      "reasoning": true,
+      "tool_call": true,
+      "attachment": true,
+      "temperature": true,
+      "open_weights": true
+    },
+    "nebius/nemotron-3-super-120b-a12b": {
+      "family": "nemotron",
+      "cost": {
+        "input": 0.09,
+        "output": 0.45
+      },
+      "limit": {
+        "context": 262144,
+        "output": 262144
+      },
+      "modalities": {
+        "input": [
+          "text"
+        ],
+        "output": [
+          "text"
+        ]
+      },
+      "release_date": "2026-03-11",
+      "reasoning": true,
+      "tool_call": true,
+      "attachment": false,
+      "temperature": true,
+      "open_weights": true
     },
     "qwen/qwen3.7-max": {
       "family": "qwen",
@@ -17760,31 +17996,6 @@
       "temperature": true,
       "open_weights": false
     },
-    "deepseek-chat": {
-      "family": "deepseek",
-      "cost": {
-        "input": 0.32,
-        "output": 0.89
-      },
-      "limit": {
-        "context": 163840,
-        "output": 16384
-      },
-      "modalities": {
-        "input": [
-          "text"
-        ],
-        "output": [
-          "text"
-        ]
-      },
-      "release_date": "2025-12-01",
-      "reasoning": false,
-      "tool_call": true,
-      "attachment": false,
-      "temperature": true,
-      "open_weights": true
-    },
     "deepseek-v3.1-terminus": {
       "family": "deepseek",
       "cost": {
@@ -18423,7 +18634,7 @@
     }
   },
   "_providers_count": 14,
-  "_models_updated": "2026-05-22 13:29 UTC",
+  "_models_updated": "2026-05-22 14:28 UTC",
   "Google AI Studio": {
     "all": [
       "models/gemini-2.5-flash",
@@ -18556,55 +18767,65 @@
       }
     },
     "models_text": "+53 more models. <a class=\"models-show-all\" data-provider=\"Google AI Studio\">Show all</a>",
-    "timestamp": "2026-05-22T13:28:41.443732+00:00",
+    "timestamp": "2026-05-22T14:27:10.350357+00:00",
     "total_count": 53
   },
   "Groq": {
     "all": [
-      "canopylabs/orpheus-v1-english",
-      "openai/gpt-oss-20b",
-      "openai/gpt-oss-safeguard-20b",
-      "meta-llama/llama-prompt-guard-2-86m",
-      "whisper-large-v3-turbo",
-      "meta-llama/llama-4-scout-17b-16e-instruct",
-      "whisper-large-v3",
       "openai/gpt-oss-120b",
+      "canopylabs/orpheus-v1-english",
       "llama-3.3-70b-versatile",
+      "groq/compound",
+      "allam-2-7b",
       "canopylabs/orpheus-arabic-saudi",
+      "whisper-large-v3",
+      "meta-llama/llama-prompt-guard-2-86m",
+      "openai/gpt-oss-safeguard-20b",
+      "openai/gpt-oss-20b",
+      "qwen/qwen3-32b",
+      "meta-llama/llama-4-scout-17b-16e-instruct",
+      "whisper-large-v3-turbo",
       "llama-3.1-8b-instant",
       "groq/compound-mini",
-      "meta-llama/llama-prompt-guard-2-22m",
-      "allam-2-7b",
-      "qwen/qwen3-32b",
-      "groq/compound"
+      "meta-llama/llama-prompt-guard-2-22m"
     ],
     "families": {
+      "gpt-oss": {
+        "models": [
+          "openai/gpt-oss-120b",
+          "openai/gpt-oss-safeguard-20b",
+          "openai/gpt-oss-20b"
+        ]
+      },
       "other": {
         "models": [
           "canopylabs/orpheus-v1-english",
-          "canopylabs/orpheus-arabic-saudi",
-          "groq/compound"
-        ]
-      },
-      "gpt-oss": {
-        "models": [
-          "openai/gpt-oss-20b",
-          "openai/gpt-oss-safeguard-20b",
-          "openai/gpt-oss-120b"
+          "groq/compound",
+          "canopylabs/orpheus-arabic-saudi"
         ]
       },
       "llama": {
         "models": [
-          "meta-llama/llama-prompt-guard-2-86m",
           "llama-3.3-70b-versatile",
+          "meta-llama/llama-prompt-guard-2-86m",
           "llama-3.1-8b-instant",
           "meta-llama/llama-prompt-guard-2-22m"
         ]
       },
+      "allam": {
+        "models": [
+          "allam-2-7b"
+        ]
+      },
       "whisper": {
         "models": [
-          "whisper-large-v3-turbo",
-          "whisper-large-v3"
+          "whisper-large-v3",
+          "whisper-large-v3-turbo"
+        ]
+      },
+      "qwen": {
+        "models": [
+          "qwen/qwen3-32b"
         ]
       },
       "instruct": {
@@ -18616,28 +18837,18 @@
         "models": [
           "groq/compound-mini"
         ]
-      },
-      "allam": {
-        "models": [
-          "allam-2-7b"
-        ]
-      },
-      "qwen": {
-        "models": [
-          "qwen/qwen3-32b"
-        ]
       }
     },
     "models_text": "+16 more models. <a class=\"models-show-all\" data-provider=\"Groq\">Show all</a>",
-    "timestamp": "2026-05-22T13:28:50.052587+00:00",
+    "timestamp": "2026-05-22T14:27:58.620595+00:00",
     "total_count": 16
   },
   "Cerebras": {
     "all": [
       "qwen-3-235b-a22b-instruct-2507",
-      "llama3.1-8b",
+      "gpt-oss-120b",
       "zai-glm-4.7",
-      "gpt-oss-120b"
+      "llama3.1-8b"
     ],
     "families": {
       "qwen": {
@@ -18645,9 +18856,9 @@
           "qwen-3-235b-a22b-instruct-2507"
         ]
       },
-      "llama": {
+      "gpt-oss": {
         "models": [
-          "llama3.1-8b"
+          "gpt-oss-120b"
         ]
       },
       "glm": {
@@ -18655,14 +18866,14 @@
           "zai-glm-4.7"
         ]
       },
-      "gpt-oss": {
+      "llama": {
         "models": [
-          "gpt-oss-120b"
+          "llama3.1-8b"
         ]
       }
     },
     "models_text": "+4 more models. <a class=\"models-show-all\" data-provider=\"Cerebras\">Show all</a>",
-    "timestamp": "2026-05-22T13:28:51.170223+00:00",
+    "timestamp": "2026-05-22T14:27:59.786532+00:00",
     "total_count": 4
   },
   "Mistral": {
@@ -18855,58 +19066,45 @@
       }
     },
     "models_text": "+68 more models. <a class=\"models-show-all\" data-provider=\"Mistral\">Show all</a>",
-    "timestamp": "2026-05-22T13:28:52.798132+00:00",
+    "timestamp": "2026-05-22T14:28:01.379186+00:00",
     "total_count": 68
   },
   "CrowAI": {
     "all": [
-      "nebius/nemotron-3-super-120b-a12b",
-      "grok-4.1-fast",
-      "glm-5",
-      "glm-5.1",
-      "glm-5-thinking",
-      "grok-4.1-thinking",
-      "deepseek-v4-pro",
-      "xai/grok-4.3",
+      "meta-llama/Llama-3.3-70B-Instruct",
       "openai/gpt-5.5",
       "grok-4.20-fast",
       "glm-5v-turbo",
       "deepseek-v4-flash-thinking",
+      "KBLab/kb-whisper-large",
       "gemini/gemini-3.5-flash",
+      "intfloat/multilingual-e5-large-instruct",
       "glm-4.7-flash",
       "deepseek-v4-flash",
       "glm-4.7",
       "glm-5.1-thinking",
-      "glm-4.6"
+      "zai-org/GLM-4.7-FP8",
+      "glm-4.6",
+      "google/gemma-4-31B-it",
+      "nebius/nemotron-3-super-120b-a12b",
+      "grok-4.1-fast",
+      "glm-5",
+      "NbAiLab/nb-whisper-large",
+      "Systran/faster-whisper-large-v3",
+      "glm-5.1",
+      "glm-5-thinking",
+      "grok-4.1-thinking",
+      "deepseek-v4-pro",
+      "grok-4.20-0309-non-reasoning",
+      "xai/grok-4.3",
+      "BAAI/bge-reranker-v2-m3",
+      "intfloat/multilingual-e5-large"
     ],
     "families": {
-      "nemotron": {
+      "instruct": {
         "models": [
-          "nebius/nemotron-3-super-120b-a12b"
-        ]
-      },
-      "grok": {
-        "models": [
-          "grok-4.1-fast",
-          "grok-4.1-thinking",
-          "xai/grok-4.3",
-          "grok-4.20-fast"
-        ]
-      },
-      "glm": {
-        "models": [
-          "glm-5",
-          "glm-5.1",
-          "glm-5-thinking",
-          "glm-5v-turbo",
-          "glm-4.7",
-          "glm-5.1-thinking",
-          "glm-4.6"
-        ]
-      },
-      "deepseek-thinking": {
-        "models": [
-          "deepseek-v4-pro"
+          "meta-llama/Llama-3.3-70B-Instruct",
+          "intfloat/multilingual-e5-large-instruct"
         ]
       },
       "gpt": {
@@ -18914,9 +19112,39 @@
           "openai/gpt-5.5"
         ]
       },
+      "grok": {
+        "models": [
+          "grok-4.20-fast",
+          "grok-4.1-fast",
+          "grok-4.1-thinking",
+          "grok-4.20-0309-non-reasoning",
+          "xai/grok-4.3"
+        ]
+      },
+      "glm": {
+        "models": [
+          "glm-5v-turbo",
+          "glm-4.7",
+          "glm-5.1-thinking",
+          "zai-org/GLM-4.7-FP8",
+          "glm-4.6",
+          "glm-5",
+          "glm-5.1",
+          "glm-5-thinking"
+        ]
+      },
       "deepseek": {
         "models": [
           "deepseek-v4-flash-thinking"
+        ]
+      },
+      "other": {
+        "models": [
+          "KBLab/kb-whisper-large",
+          "NbAiLab/nb-whisper-large",
+          "Systran/faster-whisper-large-v3",
+          "BAAI/bge-reranker-v2-m3",
+          "intfloat/multilingual-e5-large"
         ]
       },
       "mini": {
@@ -18933,10 +19161,25 @@
         "models": [
           "deepseek-v4-flash"
         ]
+      },
+      "gemma": {
+        "models": [
+          "google/gemma-4-31B-it"
+        ]
+      },
+      "nemotron": {
+        "models": [
+          "nebius/nemotron-3-super-120b-a12b"
+        ]
+      },
+      "deepseek-thinking": {
+        "models": [
+          "deepseek-v4-pro"
+        ]
       }
     },
-    "models_text": "+18 more models. <a class=\"models-show-all\" data-provider=\"CrowAI\">Show all</a>",
-    "timestamp": "2026-05-22T13:28:57.058930+00:00",
-    "total_count": 18
+    "models_text": "+28 more models. <a class=\"models-show-all\" data-provider=\"CrowAI\">Show all</a>",
+    "timestamp": "2026-05-22T14:28:05.945924+00:00",
+    "total_count": 28
   }
 }
