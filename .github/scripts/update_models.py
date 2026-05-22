@@ -309,9 +309,9 @@ def fetch_models(
                     if isinstance(data, dict) and "models" in data:
                         return data["models"]
                     if idx == 0:
-                        print(f"  Unexpected JSON format, trying fallbacks...")
+                        print("Unexpected JSON format, trying fallbacks...")
                     else:
-                        print(f"  Unexpected JSON format from {api_url}")
+                        print(f"Unexpected JSON format from {api_url}")
                     break
             except (
                 urllib.error.URLError,

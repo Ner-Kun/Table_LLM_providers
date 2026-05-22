@@ -549,10 +549,261 @@ def sync_provider(file_path: Path, entry: Dict[str, Any], dry_run: bool = False)
         return "ADDED"
 
 
+# Markdown extraction for partial-update merge
+_MD_LINK_RE = re.compile(r"\[([^\]]*)\]\(([^)]*)\)")
+_BACKTICK_RE = re.compile(r"`([^`]+)`")
+_ADMONITION_RE = re.compile(r'^!!!\s+(tip|danger)\s+"(.+)"\s*$')
+_META_STATUS_RE = re.compile(r"provider-meta__status--(\w+)")
+_META_TESTING_RE = re.compile(r"provider-meta__testing--([\w-]+)")
+_MODELS_MARKER_RE = re.compile(r"<!--\s*MODELS_START\s*-->")
+
+
+def _extract_md_link(text: str) -> Optional[str]:
+    """Extract URL from a markdown link like [text](url). Returns None if not found."""
+    m = _MD_LINK_RE.search(text)
+    return m.group(2) if m else None
+
+
+def _extract_backtick(text: str) -> Optional[str]:
+    """Extract content between backticks like `content`. Returns None if not found."""
+    m = _BACKTICK_RE.search(text)
+    return m.group(1) if m else None
+
+
+def _find_table_row(lines: List[str], start: int, header: str) -> Optional[int]:
+    """Find a table header line starting at `start` and return index of data row (header+2)."""
+    for i in range(start, len(lines)):
+        if header in lines[i] and lines[i].strip().startswith("|"):
+            data_idx = i + 2
+            if data_idx < len(lines) and lines[data_idx].strip().startswith("|"):
+                return data_idx
+    return None
+
+
+def _split_table_row(line: str) -> List[str]:
+    """Split a markdown table row into cell values, stripping leading/trailing whitespace."""
+    return [cell.strip() for cell in line.strip().strip("|").split("|")]
+
+
+def _parse_first_table(
+    lines: List[str], start: int
+) -> Dict[str, Any]:
+    """Parse the Requirements | Limits | Models table."""
+    data: Dict[str, Any] = {}
+    row_idx = _find_table_row(lines, start, "Requirements")
+    if row_idx is None:
+        return data
+
+    cells = _split_table_row(lines[row_idx])
+    if len(cells) < 3:
+        return data
+
+    _, limits_raw, models_raw = cells[0], cells[1], cells[2]
+
+    limits_url = _extract_md_link(limits_raw)
+    if limits_url:
+        data["limits_url"] = limits_url
+        limits_text = _MD_LINK_RE.sub("", limits_raw).strip()
+        limits_text = limits_text.replace('<span class="link-icon">', "").replace("</span>", "")
+        limits_text = limits_text.replace("[]( )", "").strip()
+        limits_text = limits_text.lstrip("<br>").lstrip("<br/>").lstrip("<br />").strip()
+        limits_text = limits_text.rstrip("<br>").rstrip("<br/>").rstrip("<br />").strip()
+        limits_text = re.sub(r'\s*<svg[^>]*>.*?</svg>\s*', "", limits_text, flags=re.DOTALL).strip()
+        if limits_text:
+            data["limits"] = limits_text
+    else:
+        data["limits"] = limits_raw
+
+    models_url = _extract_md_link(models_raw)
+    if models_url:
+        data["models_url"] = models_url
+
+    data["auto_update_models"] = bool(_MODELS_MARKER_RE.search(models_raw))
+
+    manual_models = []
+    for part in re.split(r"<br\s*/?>", models_raw):
+        part = part.strip()
+        part_no_link = _MD_LINK_RE.sub("", part).strip()
+        part_no_link = re.sub(r'\s*<span class="link-icon">.*?</span>\s*', "", part_no_link, flags=re.DOTALL).strip()
+        if part_no_link.startswith("•") or part_no_link.startswith("-"):
+            item = part_no_link[1:].strip()
+            if item:
+                manual_models.append(item)
+    if manual_models:
+        data["manual_models"] = manual_models
+
+    return data
+
+
+def _parse_links_table(
+    lines: List[str], start: int
+) -> Dict[str, Any]:
+    """Parse the Registration | API key | Base URL table."""
+    data: Dict[str, Any] = {}
+    row_idx = _find_table_row(lines, start, "Registration")
+    if row_idx is None:
+        return data
+
+    cells = _split_table_row(lines[row_idx])
+    if len(cells) < 3:
+        return data
+
+    reg_raw, api_raw, base_raw = cells[0], cells[1], cells[2]
+
+    reg_url = _extract_md_link(reg_raw)
+    if reg_url:
+        data["registration_url"] = reg_url
+
+    if api_raw and api_raw != "—":
+        api_url = _extract_md_link(api_raw)
+        if api_url:
+            data["api_key_url"] = api_url
+
+    base_url = _extract_backtick(base_raw)
+    if base_url:
+        data["base_url"] = base_url
+
+    return data
+
+
+def _parse_heading_badges(
+    line: str,
+) -> Dict[str, Any]:
+    """Parse provider heading to extract service_status and testing_status from badges."""
+    data: Dict[str, Any] = {}
+
+    m = _META_STATUS_RE.search(line)
+    if m:
+        data["service_status"] = m.group(1)
+
+    m = _META_TESTING_RE.search(line)
+    if m:
+        val = m.group(1)
+        if val == "tested":
+            data["testing_status"] = "tested"
+        elif val == "untested":
+            data["testing_status"] = "untested"
+        elif val == "in-progress":
+            data["testing_status"] = "in-progress"
+
+    return data
+
+
+def _parse_admonition_blocks(
+    lines: List[str], start: int, end: int
+) -> Dict[str, Any]:
+    """Extract features and disadvantages from admonition blocks (tip/danger)."""
+    data: Dict[str, Any] = {}
+    current_key: Optional[str] = None
+    items: List[str] = []
+
+    for i in range(start, end):
+        line = lines[i].strip()
+        m = _ADMONITION_RE.match(line)
+        if m:
+            if current_key and items:
+                data[current_key] = items
+            admon_type, title = m.group(1), m.group(2)
+            if admon_type == "tip" and title == "Features":
+                current_key = "features"
+            elif admon_type == "danger" and title == "Disadvantages":
+                current_key = "disadvantages"
+            else:
+                current_key = None
+            items = []
+        elif current_key and line.startswith("-"):
+            item_text = line[1:].strip()
+            if item_text:
+                items.append(item_text)
+
+    if current_key and items:
+        data[current_key] = items
+
+    return data
+
+
+def _get_block_range(
+    lines: List[str], provider_name: str
+) -> Optional[Tuple[int, int]]:
+    """Find the start and end line indices of a provider block."""
+    start_idx = None
+    for i, line in enumerate(lines):
+        m = HEADING_RE.match(line.strip())
+        if m:
+            plain = get_plain_provider_name(m.group(1).strip())
+            if plain.lower() == provider_name.lower():
+                start_idx = i
+                break
+    if start_idx is None:
+        return None
+
+    for i in range(start_idx + 1, len(lines)):
+        if lines[i].strip() == "---":
+            return (start_idx, i)
+
+    next_heading_idx = None
+    for i in range(start_idx + 1, len(lines)):
+        if HEADING_RE.match(lines[i].strip()):
+            next_heading_idx = i
+            break
+
+    if next_heading_idx is not None:
+        return (start_idx, next_heading_idx - 1)
+
+    return (start_idx, len(lines) - 1)
+
+
+def extract_existing_provider_data(provider_name: str) -> Optional[Dict[str, Any]]:
+    """Extract existing provider data from category markdown files.
+
+    Returns a dict with all extractable fields, or None if provider not found.
+    """
+    for category, file_name in CATEGORY_MAP.items():
+        file_path = DOCS_DIR / file_name
+        if not file_path.exists():
+            continue
+        content = file_path.read_text(encoding="utf-8")
+        lines = content.splitlines(keepends=True)
+
+        block_range = _get_block_range(lines, provider_name)
+        if block_range is None:
+            continue
+
+        start_idx, end_idx = block_range
+        data: Dict[str, Any] = {"category": category}
+        block_lines = [ln.rstrip("\n").rstrip("\r") for ln in lines[start_idx:end_idx]]
+        heading_line = block_lines[0] if block_lines else ""
+        data.update(_parse_heading_badges(heading_line))
+        data.update(_parse_first_table(block_lines, 0))
+        data.update(_parse_links_table(block_lines, 0))
+        data.update(_parse_admonition_blocks(block_lines, 0, len(block_lines)))
+
+        return data
+
+    return None
+
+
+def merge_with_existing(entry: Dict[str, Any]) -> Dict[str, Any]:
+    """Merge a partial JSON entry with existing provider data from markdown.
+
+    JSON fields take precedence over existing data.
+    """
+    provider_name = entry.get("name", "")
+    if not provider_name:
+        return entry
+
+    existing = extract_existing_provider_data(provider_name)
+    if existing is None:
+        return entry
+
+    merged = {**existing, **entry}
+    return merged
+
+
 # Main
 
 def load_providers(json_path: Path) -> List[Dict[str, Any]]:
-    """Load and validate all providers from the JSON file."""
+    """Load, merge with existing markdown data, and validate all providers."""
     try:
         data = json.loads(json_path.read_text(encoding="utf-8"))
     except json.JSONDecodeError as e:
@@ -566,9 +817,14 @@ def load_providers(json_path: Path) -> List[Dict[str, Any]]:
         )
         sys.exit(1)
 
+    merged_providers = []
     for i, entry in enumerate(data):
+        merged = merge_with_existing(entry)
+        merged_providers.append(merged)
+
+    for i, entry in enumerate(merged_providers):
         validate_provider(entry, i)
-    return data
+    return merged_providers
 
 
 def main() -> None:
