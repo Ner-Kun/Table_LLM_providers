@@ -20,6 +20,7 @@ elif sys.platform == "win32" and hasattr(stdout, "buffer"):
     sys.stdout = io.TextIOWrapper(stdout.buffer, encoding="utf-8")
 
 import urllib.error  # noqa: E402
+import urllib.parse  # noqa: E402
 import urllib.request  # noqa: E402
 from datetime import datetime, timezone  # noqa: E402
 from pathlib import Path  # noqa: E402
@@ -243,61 +244,88 @@ def has_markers(section: str) -> bool:
     )
 
 
-# API URL
-def build_models_url(base_url: str) -> str:
+# API URLs
+FALLBACK_MODELS_PATHS = ["/v1beta/models", "/api/models", "/models"]
+
+
+def build_models_urls(base_url: str) -> List[str]:
     """
-    Build /v1/models endpoint from Base URL.
+    Build model endpoint URLs to try, ordered by preference.
+    Primary: standard /v1/models path.
+    Fallbacks: alternative paths from the server root.
     """
     base = base_url.rstrip("/")
+    urls: List[str] = []
+
     if base.endswith("/v1"):
-        return f"{base}/models"
-    if "/v1" in base:
-        return f"{base}/models"
-    return f"{base}/v1/models"
+        urls.append(f"{base}/models")
+    elif "/v1" in base:
+        urls.append(f"{base}/models")
+    else:
+        urls.append(f"{base}/v1/models")
+
+    parsed = urllib.parse.urlparse(base)
+    root = f"{parsed.scheme}://{parsed.netloc}"
+
+    for path in FALLBACK_MODELS_PATHS:
+        full = f"{root}{path}"
+        if full not in urls:
+            urls.append(full)
+
+    return urls
 
 
 # fetch models
 def fetch_models(
-    api_url: str,
+    api_urls: List[str],
     headers: Optional[Dict[str, str]] = None,
     timeout: int = 15,
     max_retries: int = 2,
 ) -> Optional[List[Dict[str, Any]]]:
     """
-    Fetch model list from an OpenAI-compatible /v1/models endpoint.
-    Returns list of model dicts, or None on failure.
+    Fetch model list from model endpoint URLs, trying each in sequence.
+    Falls back to alternative paths if the primary URL fails.
+    Returns list of model dicts, or None if all URLs fail.
     """
-    req = urllib.request.Request(api_url, method="GET")
-    if headers:
-        for k, v in headers.items():
-            req.add_header(k, v)
-    req.add_header("Accept", "application/json")
+    for idx, api_url in enumerate(api_urls):
+        if idx > 0:
+            print(f"  Fallback {idx}: trying {api_url}")
 
-    for attempt in range(max_retries + 1):
-        try:
-            with urllib.request.urlopen(req, timeout=timeout) as resp:
-                data = json.loads(resp.read().decode())
-                if isinstance(data, list):
-                    return data
-                if isinstance(data, dict) and "data" in data:
-                    return data["data"]
-                if isinstance(data, dict) and "models" in data:
-                    return data["models"]
-                return None
-        except (
-            urllib.error.URLError,
-            urllib.error.HTTPError,
-            json.JSONDecodeError,
-            OSError,
-        ) as e:
-            print(f"[WARN] Attempt {attempt + 1}/{max_retries + 1} failed: {e}")
-            if attempt < max_retries:
-                wait = 2 ** attempt
-                print(f"  Retrying in {wait}s...")
-                time.sleep(wait)
-            else:
-                print(f"[ERR] Failed to fetch {api_url}")
-                return None
+        retries = max_retries if idx == 0 else 0
+        for attempt in range(retries + 1):
+            try:
+                req = urllib.request.Request(api_url, method="GET")
+                if headers:
+                    for k, v in headers.items():
+                        req.add_header(k, v)
+                req.add_header("Accept", "application/json")
+
+                with urllib.request.urlopen(req, timeout=timeout) as resp:
+                    data = json.loads(resp.read().decode())
+                    if isinstance(data, list):
+                        return data
+                    if isinstance(data, dict) and "data" in data:
+                        return data["data"]
+                    if isinstance(data, dict) and "models" in data:
+                        return data["models"]
+                    if idx == 0:
+                        print(f"  Unexpected JSON format, trying fallbacks...")
+                    else:
+                        print(f"  Unexpected JSON format from {api_url}")
+                    break
+            except (
+                urllib.error.URLError,
+                urllib.error.HTTPError,
+                json.JSONDecodeError,
+                OSError,
+            ) as e:
+                print(f"[WARN] {'Attempt ' + str(attempt + 1) + '/' + str(retries + 1) + ' for ' if retries > 0 else ''}{api_url} failed: {e}")
+                if attempt < retries:
+                    wait = 2 ** attempt
+                    print(f"  Retrying in {wait}s...")
+                    time.sleep(wait)
+                else:
+                    print(f"[ERR] Failed to fetch {api_url}")
     return None
 
 
@@ -496,8 +524,10 @@ def process_provider(
         return False, msg, section
 
     print(f"Base URL: {base_url}")
-    api_url = build_models_url(base_url)
-    print(f"API URL:  {api_url}")
+    api_urls = build_models_urls(base_url)
+    print(f"API URL:  {api_urls[0]}")
+    if len(api_urls) > 1:
+        print(f"Fallbacks: {', '.join(api_urls[1:])}")
 
     headers = { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" }
     auth = get_auth_headers(provider_name)
@@ -507,7 +537,7 @@ def process_provider(
     else:
         print("[AUTH] No API key, requesting without auth")
 
-    models = fetch_models(api_url, headers=headers, timeout=SETTINGS["timeout_seconds"])
+    models = fetch_models(api_urls, headers=headers, timeout=SETTINGS["timeout_seconds"])
     plain_name = get_plain_provider_name(provider_name)
 
     if models is None:
