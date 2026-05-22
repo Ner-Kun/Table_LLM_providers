@@ -480,10 +480,17 @@ def _build_families_structure(
     return families
 
 
+def count_manual_models(section: str) -> int:
+    """Count manually listed models in section (before MODELS_START)."""
+    idx = section.find(SETTINGS["marker_start"])
+    before = section[:idx] if idx != -1 else section
+    return len(re.findall(r'•\s+\S+', before))
+
+
 def _handle_api_failure(
     plain_name: str, cache: dict, section: str, provider_name: str
 ) -> Tuple[bool, Optional[str], str]:
-    """Try cache fallback on API failure."""
+    """Try cache fallback on API failure, then check for manual models."""
     cached = cache.get(plain_name)
     if cached and cached.get("models_text"):
         print(f"[WARN] Using cached data from {cached.get('timestamp', 'unknown')}")
@@ -492,9 +499,16 @@ def _handle_api_failure(
         )
         print("[OK] Updated with cached models")
         return True, None, section
-    msg = f"API unavailable and no cache for '{provider_name}'"
-    print(f"[ERR] {msg}")
-    return False, msg, section
+
+    manual_count = count_manual_models(section)
+    if manual_count > 0:
+        print(f"[INFO] No API /v1/models endpoint for '{provider_name}', "
+              f"preserving {manual_count} manually added model(s)")
+        return True, None, section
+
+    print(f"[WARN] API unavailable for '{provider_name}' "
+          f"and no manually added models found. Section unchanged.")
+    return True, None, section
 
 
 def process_provider(
