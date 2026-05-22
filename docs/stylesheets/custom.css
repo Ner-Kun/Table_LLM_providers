@@ -289,7 +289,7 @@
   border-color: #42a5f5;
 }
 
-/* ── SCREENSHOT GALLERY ─────────────────────────────────────────── */
+/* SCREENSHOT GALLERY*/
 
 .screenshot-gallery {
   display: grid;
@@ -342,7 +342,7 @@
   }
 }
 
-/* ── MODELS MODAL ─────────────────────────────────────────────────── */
+/* MODELS MODAL*/
 
 .models-modal {
   display: none;
@@ -829,7 +829,7 @@
   color: #2196f3;
 }
 
-/* ── SVG ICONS ────────────────────────────────────────────────────── */
+/* SVG ICONS*/
 
 .provider-meta__item svg,
 .requirement-icon svg,
@@ -883,7 +883,7 @@
   color: #bdbdbd;
 }
 
-/* ── PROVIDER META & REQUIREMENT TOOLTIPS ─────────────────────────── */
+/* PROVIDER META & REQUIREMENT TOOLTIPS*/
 
 .provider-meta {
   display: inline-flex;
@@ -1099,7 +1099,7 @@
   }
 }
 
-/* ── GLASS HEADER ──────────────────────────────────────────────────── */
+/* GLASS HEADER─*/
 
 [data-md-color-scheme="slate"] .md-header {
   background: rgba(0, 0, 0, 0.55) !important;
@@ -1148,7 +1148,7 @@
   background: rgba(255, 255, 255, 0.92) !important;
 }
 
-/* ── HEADER STATS ──────────────────────────────────────────────────── */
+/* HEADER STATS */
 
 .header-stats {
   display: flex;
@@ -1227,4 +1227,56 @@
   .header-stats {
     display: none;
   }
+}
+
+/* DRAWER STATS (mobile sidebar)─ */
+
+.drawer-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.8rem;
+  flex-shrink: 0;
+  opacity: 0.7;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+[data-md-color-scheme="default"] .drawer-stats {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.drawer-stats .header-stat-number {
+  font-size: 0.8rem;
+}
+
+.drawer-stats .header-stat-date {
+  font-size: 0.65rem;
+}
+
+.drawer-stats .header-stat-time {
+  font-size: 0.5rem;
+}
+
+.drawer-stats .header-stat-label {
+  font-size: 0.45rem;
+}
+
+.drawer-stats .header-stat-divider {
+  height: 1.2rem;
+}
+
+/* DRAWER HEADER (mobile logo area) */
+
+[data-md-color-scheme="slate"] .md-nav--primary .md-nav__title {
+  background: rgba(0, 0, 0, 0.55) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  color: #e8e8e8 !important;
+}
+
+[data-md-color-scheme="default"] .md-nav--primary .md-nav__title {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  color: #374151 !important;
 }

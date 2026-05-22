@@ -1,6 +1,6 @@
 (() => {
-  const container = document.querySelector('.md-header__inner');
-  if (!container) return;
+  const headerInner = document.querySelector('.md-header__inner');
+  if (!headerInner) return;
 
   const stats = document.createElement('div');
   stats.className = 'header-stats';
@@ -16,11 +16,30 @@
       '<span class="header-stat-label">Model updates</span>' +
     '</div>';
 
-  const search = container.querySelector('.md-search');
+  const search = headerInner.querySelector('.md-search');
   if (search) {
-    container.insertBefore(stats, search);
+    headerInner.insertBefore(stats, search);
   } else {
-    container.appendChild(stats);
+    headerInner.appendChild(stats);
+  }
+
+  const drawerTitle = document.querySelector('.md-nav--primary > .md-nav__title');
+  const drawerStats = document.createElement('div');
+  drawerStats.className = 'drawer-stats';
+  drawerStats.innerHTML =
+    '<div class="header-stat">' +
+      '<span class="header-stat-number" id="drawer-stat-providers">0</span>' +
+      '<span class="header-stat-label">providers</span>' +
+    '</div>' +
+    '<div class="header-stat-divider"></div>' +
+    '<div class="header-stat header-stat-models">' +
+      '<span class="header-stat-date" id="drawer-stat-models-date">&mdash;</span>' +
+      '<span class="header-stat-time" id="drawer-stat-models-time"></span>' +
+      '<span class="header-stat-label">Model updates</span>' +
+    '</div>';
+
+  if (drawerTitle && drawerTitle.parentElement) {
+    drawerTitle.parentElement.insertBefore(drawerStats, drawerTitle.nextSibling);
   }
 
   let base = '';
@@ -36,8 +55,8 @@
   fetch(`${base}../models_data.json`)
     .then(r => r.json())
     .then(data => {
-      const el = document.getElementById('stat-providers');
-      if (el && data._providers_count) {
+      const hProv = document.getElementById('stat-providers');
+      if (hProv && data._providers_count) {
         const target = data._providers_count;
         if (target > 0) {
           const duration = 800;
@@ -45,23 +64,34 @@
           function frame(now) {
             const t = Math.min((now - start) / duration, 1);
             const ease = 1 - (1 - t) ** 3;
-            el.textContent = Math.round(ease * target);
+            hProv.textContent = Math.round(ease * target);
             if (t < 1) requestAnimationFrame(frame);
           }
           requestAnimationFrame(frame);
         } else {
-          el.textContent = target;
+          hProv.textContent = target;
         }
       }
 
-      const dateEl = document.getElementById('stat-models-date');
-      const timeEl = document.getElementById('stat-models-time');
-      if (dateEl && timeEl && data._models_updated) {
+      const dProv = document.getElementById('drawer-stat-providers');
+      if (dProv && data._providers_count) {
+        dProv.textContent = data._providers_count;
+      }
+
+      const hDate = document.getElementById('stat-models-date');
+      const hTime = document.getElementById('stat-models-time');
+      if (hDate && hTime && data._models_updated) {
         const parts = data._models_updated.split(' ');
-        dateEl.textContent = parts[0] || '\u2014';
-        timeEl.textContent = parts.slice(1).join(' ') || '';
+        hDate.textContent = parts[0] || '\u2014';
+        hTime.textContent = parts.slice(1).join(' ') || '';
+      }
+      const dDate = document.getElementById('drawer-stat-models-date');
+      const dTime = document.getElementById('drawer-stat-models-time');
+      if (dDate && dTime && data._models_updated) {
+        const parts = data._models_updated.split(' ');
+        dDate.textContent = parts[0] || '\u2014';
+        dTime.textContent = parts.slice(1).join(' ') || '';
       }
     })
-    .catch(() => {
-    });
+    .catch(() => {});
 })();
