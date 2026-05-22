@@ -5,169 +5,159 @@
 
 ---
 
-### NVIDIA NIM
+### NVIDIA NIM <span class="provider-meta"><button type="button" class="provider-meta__item provider-meta__status--official" data-tooltip="Official service" aria-label="Official service"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 16 10"/></svg></button><button type="button" class="provider-meta__item provider-meta__testing provider-meta__testing--tested" data-tooltip="Tested by the author" aria-label="Tested by the author"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></button></span>
 
-| Requirements | Limits | 🔗Models | Reliability | Testing |
-|:---|:---:|:---:|:---:|:---:|
-| ✉️ <br> 🔑 <br> 📱 | RPM - 40 | [🌐](https://build.nvidia.com/models)<br> • DeepSeek v4 flash/pro <br> • kimi-k2 <br> • glm-4.7/5.1 | ⭐⭐⭐ | ✅ |
-
-| 🔗 Registration | 🔗 API key | 🔗 Base URL |
+| Requirements | Limits | Models |
 |:---|:---:|:---:|
-| [🌐](https://build.nvidia.com/explore/discover) | [🌐](https://build.nvidia.com/settings/api-keys) | `https://integrate.api.nvidia.com/v1` |
+| <span class="requirements-list"><button type="button" class="requirement-icon" data-tooltip="Standard registration" aria-label="Standard registration"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffa726" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></button><button type="button" class="requirement-icon" data-tooltip="Phone verification required" aria-label="Phone verification required"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#66bb6a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></button><button type="button" class="requirement-icon" data-tooltip="Requires an Nvidia account (no graphics card needed)" aria-label="Requires an Nvidia account (no graphics card needed)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ab47bc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></button></span> | RPM - 40 | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://build.nvidia.com/models)<br><!-- MODELS_START -->+123 more models. <a class="models-show-all" data-provider="NVIDIA NIM">Show all</a><!-- MODELS_END --> |
+
+| Registration | API key | Base URL |
+|:---:|:---:|:---:|
+| [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://build.nvidia.com/explore/discover) | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://build.nvidia.com/settings/api-keys) | `https://integrate.api.nvidia.com/v1` |
 
 !!! danger "Disadvantages"
     - Problematic phone verification (SMS can be delayed)
-    - <span class="text-red">**Models are unstable during peak hours (US daytime)**</span>
-    - Requires an Nvidia account <span class="text-green">**(no graphics card needed)**</span>
+    - <span class="text-red">Models are unstable during peak hours</span>(US daytime)
 
 ---
+### LLM7 <span class="provider-meta"><button type="button" class="provider-meta__item provider-meta__status--official-partner" data-tooltip="Official Partner" aria-label="Official Partner"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></button><button type="button" class="provider-meta__item provider-meta__testing provider-meta__testing--tested" data-tooltip="Tested by the author" aria-label="Tested by the author"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></button></span>
 
-### LLM7
+| Requirements | Limits | Models |
+|:---|:---:|:---:|
+| <span class="requirements-list"><button type="button" class="requirement-icon" data-tooltip="Standard registration" aria-label="Standard registration"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffa726" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></button></span> | RPM - 20<br>RPH - 100<br>TPR - 128k | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://api.llm7.io/v1/models)<br><!-- MODELS_START -->+8 more models. <a class="models-show-all" data-provider="LLM7">Show all</a><!-- MODELS_END --> |
 
-| Requirements | Limits | 🔗Models | Reliability | Testing |
-| :---: | :---: | :---: | :---: | :---: |
-| 📝❗ | • RPM - 20 <br> • RPH - 100 | [🌐](https://api.llm7.io/v1/models)<br> • GLM-4.6V-Flash <br> • codestral-latest | ⭐⭐ | ✅ |
-
-| 🔗 Registration | 🔗 API key | 🔗 Base URL |
+| Registration | API key | Base URL |
 |:---:|:---:|:---:|
-| [🌐](https://token.llm7.io/) | [🌐](https://token.llm7.io/) | `https://api.llm7.io/v1` |
+| [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://token.llm7.io/) | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://token.llm7.io/) | `https://api.llm7.io/v1` |
 
 !!! danger "Disadvantages"
     - Few models available.
-    - <span class="text-orange">**Unstable list of models (they may disappear).**</span>
+    - <strong class="text-red">Unstable list of models</strong> (they may disappear)
+    - Function calling is not available.
 
 ---
+### Google AI Studio <span class="provider-meta"><button type="button" class="provider-meta__item provider-meta__status--official" data-tooltip="Official service" aria-label="Official service"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 16 10"/></svg></button><button type="button" class="provider-meta__item provider-meta__testing provider-meta__testing--tested" data-tooltip="Tested by the author" aria-label="Tested by the author"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></button></span>
 
-### Google AI Studio
+| Requirements | Limits | Models |
+|:---|:---:|:---:|
+| <span class="requirements-list"><button type="button" class="requirement-icon" data-tooltip="Standard registration" aria-label="Standard registration"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffa726" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></button></span> | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://aistudio.google.com/app/rate-limit)<br>Individual limits for each model | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://aistudio.google.com/app/rate-limit)<br> • Gemini 3.5 Flash<br> • Gemini 3 Flash/Lite<br> • Gemma 4 31B/26B<br><!-- MODELS_START --><!-- MODELS_END --> |
 
-| Requirements | Limits | 🔗Models | Reliability | Testing |
-| :---: | :---: | :---: | :---: | :---: |
-| ✉️ <br> 🔑 | Individual limits for each model<br>[🌐](https://aistudio.google.com/app/rate-limit) | [🌐](https://aistudio.google.com/app/rate-limit)<br> • Gemini 3 Flash/Flash Lite <br> • Gemma 4 31B/26B | ⭐⭐⭐⭐⭐ | ✅ |
-
-| 🔗 Registration | 🔗 API key | 🔗 Base URL |
-| :---: | :---: | :---: |
-| [🌐](https://aistudio.google.com/) | [🌐](https://aistudio.google.com/app/api-keys) | `https://generativelanguage.googleapis.com/v1beta/openai/` |
+| Registration | API key | Base URL |
+|:---:|:---:|:---:|
+| [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://aistudio.google.com/) | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://aistudio.google.com/app/api-keys) | `https://generativelanguage.googleapis.com/v1beta/openai/` |
 
 !!! danger "Disadvantages"
     - The best models are not available
 
 ---
+### Airforce <span class="provider-meta"><button type="button" class="provider-meta__item provider-meta__status--official-partner" data-tooltip="Official Partner" aria-label="Official Partner"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></button><button type="button" class="provider-meta__item provider-meta__testing provider-meta__testing--tested" data-tooltip="Tested by the author" aria-label="Tested by the author"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></button></span>
 
-### Airforce
+| Requirements | Limits | Models |
+|:---|:---:|:---:|
+| <span class="requirements-list"><button type="button" class="requirement-icon" data-tooltip="Discord account required" aria-label="Discord account required"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none"><path fill="#8c9eff" d="M40,12c0,0-4.585-3.588-10-4l-0.488,0.976C34.408,10.174,36.654,11.891,39,14c-4.045-2.065-8.039-4-15-4s-10.955,1.935-15,4c2.346-2.109,5.018-4.015,9.488-5.024L18,8c-5.681,0.537-10,4-10,4s-5.121,7.425-6,22c5.162,5.953,13,6,13,6l1.639-2.185C13.857,36.848,10.715,35.121,8,32c3.238,2.45,8.125,5,16,5s12.762-2.55,16-5c-2.715,3.121-5.857,4.848-8.639,5.815L33,40c0,0,7.838-0.047,13-6C45.121,19.425,40,12,40,12z M17.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C21,28.209,19.433,30,17.5,30z M30.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C34,28.209,32.433,30,30.5,30z"/></svg></button><button type="button" class="requirement-icon" data-tooltip="To use the free plan, you must verify your account. Use Discord or Google, or buy credits." aria-label="To use the free plan, you must verify your account. Use Discord or Google, or buy credits."><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ab47bc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></button></span> | RPM - 1<br>RPD - 1000 | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://api.airforce/models/)<br><!-- MODELS_START -->+131 more models. <a class="models-show-all" data-provider="Airforce">Show all</a><!-- MODELS_END --> |
 
-| Requirements | Limits | 🔗Models | Reliability | Testing |
-| :---: | :---: | :---: | :---: | :---: |
-| 🔑 | • RPM - 1 <br> • RPD - 1000 | [🌐](https://panel.api.airforce/models/)<br> • 130+ | ⭐⭐⭐⭐ | ✅ |
-
-| 🔗 Registration | 🔗 API key | 🔗 Base URL |
+| Registration | API key | Base URL |
 |:---:|:---:|:---:|
-| [🌐](https://panel.api.airforce/signup?ref=5zffkQvQGyPPESv6) | [🌐](https://panel.api.airforce/dashboard) | `https://api.airforce/v1` |
+| [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://api.airforce/signup?ref=lr9TtmCj3F0Wc9qw) | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://api.airforce/signup?ref=lr9TtmCj3F0Wc9qw) | `https://api.airforce/v1` |
 
 !!! tip "Features"
-    - Sign up using my link to get 1 day of Premium
+    - <strong class="text-green">Sign up using my link to get 1 day of Premium</strong>
 
 !!! danger "Disadvantages"
-    - Very low RPM.
+    - <span class="text-yellow">The RPM is very low even on paid plans</span> (considering that some models have x5 multipliers)
 
 ---
+### Logfare <span class="provider-meta"><button type="button" class="provider-meta__item provider-meta__status--unofficial" data-tooltip="Unofficial" aria-label="Unofficial"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></button><button type="button" class="provider-meta__item provider-meta__testing provider-meta__testing--tested" data-tooltip="Tested by the author" aria-label="Tested by the author"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></button></span>
 
-### Logfare
+| Requirements | Limits | Models |
+|:---|:---:|:---:|
+| <span class="requirements-list"><button type="button" class="requirement-icon" data-tooltip="Standard registration" aria-label="Standard registration"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffa726" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></button></span> | - | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://logfare.ai/models)<br> • DeepSeek V4 Flash<br> • Kimi K2.6<br><!-- MODELS_START -->+6 more models. <a class="models-show-all" data-provider="Logfare">Show all</a><!-- MODELS_END --> |
 
-| Requirements | Limits | 🔗Models | Reliability | Testing |
-| :---: | :---: | :---: | :---: | :---: |
-| 🔑 | - | [🌐](https://logfare.ai/models)<br> • DeepSeek V4 Flash <br> • Gemini 3 Flash <br> • Kimi K2.6 | - | ⏳ |
-
-| 🔗 Registration | 🔗 API key | 🔗 Base URL |
+| Registration | API key | Base URL |
 |:---:|:---:|:---:|
-| [🌐](https://logfare.ai/register) | [🌐](https://logfare.ai/dashboard) | `https://logfare.ai/v1` |
+| [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://logfare.ai/register) | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://logfare.ai/dashboard) | `https://logfare.ai/v1` |
 
 !!! tip "Features"
-    - <span class="text-green">**There are no limits.**</span>
+    - <strong class="text-green">There are no limits.</strong>
 
 !!! danger "Disadvantages"
-    - They collect your data such as IP, promt and more. They then transfer it to third parties (anonymously). Keep this in mind if this is important to you.
-    - NSFW is allowed, but only if it's not prohibited by law. Otherwise, ban
+    - <span class="text-yellow">They collect your data such as IP, prompt and more.</span>  They then transfer it to third parties (anonymously). Keep this in mind if this is important to you.
+    - <span class="text-yellow">NSFW is allowed, but only if it's not prohibited by law</span>. Otherwise, ban.
+    - There are other models, but during my tests only DS v4 flash and Kimi K2.6 worked.
 
 ---
+### Zydit <span class="provider-meta"><button type="button" class="provider-meta__item provider-meta__status--development" data-tooltip="In Development" aria-label="In Development"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></button><button type="button" class="provider-meta__item provider-meta__testing provider-meta__testing--tested" data-tooltip="Tested by the author" aria-label="Tested by the author"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></button></span>
 
-### Zydit
+| Requirements | Limits | Models |
+|:---|:---:|:---:|
+| <span class="requirements-list"><button type="button" class="requirement-icon" data-tooltip="Standard registration" aria-label="Standard registration"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffa726" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></button></span> | RPM - 10 | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://zydit.in/models)<br><!-- MODELS_START -->+126 more models. <a class="models-show-all" data-provider="Zydit">Show all</a><!-- MODELS_END --> |
 
-| Requirements | Limits | 🔗Models | Reliability | Testing |
-| :---: | :---: | :---: | :---: | :---: |
-| ✉️ <br> 🔑 | • RPM - 10 | 180+ <br> [🌐](https://zydit.in/models) | ⭐⭐⭐⭐ | ✅ |
-
-| 🔗 Registration | 🔗 API key | 🔗 Base URL |
-| :---: | :---: | :---: |
-| [🌐](https://zydit.in/) | [🌐](https://zydit.in/dashboard) | `https://api.zydit.in/v1` |
+| Registration | API key | Base URL |
+|:---:|:---:|:---:|
+| [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://zydit.in/) | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://zydit.in/dashboard) | `https://api.zydit.in/v1` |
 
 !!! tip "Features"
     - Not exactly a provider and not exactly a proxy; Zydit doesn't host models itself, but uses only official providers.
-    - <span class="text-green">**Very large list of models**</span>
-    - <span class="text-green">**Currently in testing, completely free**</span>
 
 !!! danger "Disadvantages"
-    - Very low RPM.
+    - Low RPM
 
 ---
+### Groq <span class="provider-meta"><button type="button" class="provider-meta__item provider-meta__status--official" data-tooltip="Official service" aria-label="Official service"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 16 10"/></svg></button><button type="button" class="provider-meta__item provider-meta__testing provider-meta__testing--tested" data-tooltip="Tested by the author" aria-label="Tested by the author"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></button></span>
 
-### Groq
+| Requirements | Limits | Models |
+|:---|:---:|:---:|
+| <span class="requirements-list"><button type="button" class="requirement-icon" data-tooltip="Standard registration" aria-label="Standard registration"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffa726" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></button></span> | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://console.groq.com/docs/rate-limits#rate-limits)<br>Individual limits for each model | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://cloud.cerebras.ai/)<br> • gpt-oss-120b<br><!-- MODELS_START --><!-- MODELS_END --> |
 
-| Requirements | 🔗Limits | 🔗Models | Reliability | Testing |
-| :---: | :---: | :---: | :---: | :---: |
-| ✉️ <br> 🔑 | [🌐](https://console.groq.com/docs/rate-limits#rate-limits) | [🌐](https://cloud.cerebras.ai/)<br> • gpt-oss-120b <br> • kimi-k2-instruct-0905 | ⭐⭐⭐⭐⭐ | ✅ |
-
-| 🔗 Registration | 🔗 API key | 🔗 Base URL |
-| :---: | :---: | :---: |
-|[🌐](https://console.groq.com/home) | [🌐](https://console.groq.com/keys) | `https://api.groq.com/openai/v1` |
+| Registration | API key | Base URL |
+|:---:|:---:|:---:|
+| [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://console.groq.com/home) | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://console.groq.com/keys) | `https://api.groq.com/openai/v1` |
 
 !!! danger "Disadvantages"
     - Few models available
 
 ---
+### Cerebras <span class="provider-meta"><button type="button" class="provider-meta__item provider-meta__status--official" data-tooltip="Official service" aria-label="Official service"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 16 10"/></svg></button><button type="button" class="provider-meta__item provider-meta__testing provider-meta__testing--tested" data-tooltip="Tested by the author" aria-label="Tested by the author"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></button></span>
 
-### Cerebras
+| Requirements | Limits | Models |
+|:---|:---:|:---:|
+| <span class="requirements-list"><button type="button" class="requirement-icon" data-tooltip="Standard registration" aria-label="Standard registration"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffa726" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></button></span> | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://inference-docs.cerebras.ai/support/rate-limits#free)<br>Individual limits for each model | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://inference-docs.cerebras.ai/support/rate-limits#limits-by-tier)<br> • gpt-oss-120b<br> • qwen-3-235b-a22b-thinking<br> • glm-4.7<br><!-- MODELS_START --><!-- MODELS_END --> |
 
-| Requirements | 🔗Limits | 🔗Models | Reliability | Testing |
-| :---: | :---: | :---: | :---: | :---: |
-| 🔑 <br> ✉️ | Individual limits for each model<br> [🌐](https://inference-docs.cerebras.ai/support/rate-limits#free) | [🌐](https://cloud.cerebras.ai/)<br> • gpt-oss-120b <br> • qwen-3-235b-a22b-thinking <br> • glm-4.7 | ⭐⭐⭐⭐ | ✅ |
-
-| 🔗 Registration | 🔗 API key | 🔗 Base URL |
+| Registration | API key | Base URL |
 |:---:|:---:|:---:|
-| [🌐](https://cloud.cerebras.ai/) | [🌐](https://cloud.cerebras.ai/) | `https://api.cerebras.ai/v1` |
+| [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://cloud.cerebras.ai/) | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://cloud.cerebras.ai/) | `https://api.cerebras.ai/v1` |
 
 !!! danger "Disadvantages"
-    - <span class="text-red">**Some models have a smaller context than the official provider.**</span>
-    - Besides request limits, <span class="text-red">**there are token limits.**</span>
+    - <strong>Some models have a smaller context than the official provider.</strong>
+    - Besides request limits, <span class="text-red">there are token limits.</span>
 
 ---
+### Mistral <span class="provider-meta"><button type="button" class="provider-meta__item provider-meta__status--official" data-tooltip="Official service" aria-label="Official service"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 16 10"/></svg></button><button type="button" class="provider-meta__item provider-meta__testing provider-meta__testing--tested" data-tooltip="Tested by the author" aria-label="Tested by the author"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></button></span>
 
-### Mistral
+| Requirements | Limits | Models |
+|:---|:---:|:---:|
+| <span class="requirements-list"><button type="button" class="requirement-icon" data-tooltip="Standard registration" aria-label="Standard registration"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffa726" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></button><button type="button" class="requirement-icon" data-tooltip="To get the free tier, you must consent to the use of your data." aria-label="To get the free tier, you must consent to the use of your data."><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ab47bc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></button></span> | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://admin.mistral.ai/plateforme/limits)<br>Individual limits for each model | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://docs.mistral.ai/getting-started/models)<br> • Mistral Large 3<br> • Devstral 2<br> • Mistral Medium 3.1<br><!-- MODELS_START --><!-- MODELS_END --> |
 
-| Requirements | Limits | 🔗Models | Reliability | Testing |
-| :---: | :---: | :---: | :---: | :---: |
-| ✉️ <br> 🔑 <br> 📱 | [🌐](https://admin.mistral.ai/plateforme/limits)<br> Individual limits for each model | [🌐](https://docs.mistral.ai/getting-started/models)<br> • Mistral Large 3 <br> • Devstral 2 <br> • Mistral Medium 3.1 | ⭐⭐⭐⭐⭐ | ✅ |
-
-| 🔗 Registration | 🔗 API key | 🔗 Base URL |
-| :---: | :---: | :---: |
-| [🌐](https://mistral.ai/) | [🌐](https://console.mistral.ai/home?profile_dialog=api-keys) | `https://api.mistral.ai/v1/` |
+| Registration | API key | Base URL |
+|:---:|:---:|:---:|
+| [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://mistral.ai/) | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://console.mistral.ai/home?profile_dialog=api-keys) | `https://api.mistral.ai/v1/` |
 
 !!! danger "Disadvantages"
-    - To get the free tier, you must consent to the use of your data.
+    - <strong>To get the free tier, you must consent to the use of your data.</strong>
 
 ---
+### BlazeAI <span class="provider-meta"><button type="button" class="provider-meta__item provider-meta__status--unofficial" data-tooltip="Unofficial" aria-label="Unofficial"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></button><button type="button" class="provider-meta__item provider-meta__testing provider-meta__testing--tested" data-tooltip="Tested by the author" aria-label="Tested by the author"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></button></span>
 
-### BlazeAI
+| Requirements | Limits | Models |
+|:---|:---:|:---:|
+| <span class="requirements-list"><button type="button" class="requirement-icon" data-tooltip="Discord account required" aria-label="Discord account required"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none"><path fill="#8c9eff" d="M40,12c0,0-4.585-3.588-10-4l-0.488,0.976C34.408,10.174,36.654,11.891,39,14c-4.045-2.065-8.039-4-15-4s-10.955,1.935-15,4c2.346-2.109,5.018-4.015,9.488-5.024L18,8c-5.681,0.537-10,4-10,4s-5.121,7.425-6,22c5.162,5.953,13,6,13,6l1.639-2.185C13.857,36.848,10.715,35.121,8,32c3.238,2.45,8.125,5,16,5s12.762-2.55,16-5c-2.715,3.121-5.857,4.848-8.639,5.815L33,40c0,0,7.838-0.047,13-6C45.121,19.425,40,12,40,12z M17.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C21,28.209,19.433,30,17.5,30z M30.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C34,28.209,32.433,30,30.5,30z"/></svg></button></span> | RPM - 20<br>RPD - 1000 | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://blazeai.boxu.dev/#models)<br> • glm-5.1<br> • qwen3.6-max/plus<br> • kimi-k2.6<br> • grok-4.20-fast<br><!-- MODELS_START -->+26 more models. <a class="models-show-all" data-provider="BlazeAI">Show all</a><!-- MODELS_END --> |
 
-| Requirements | Limits | 🔗Models | Reliability | Testing |
-| :---: | :---: | :---: | :---: | :---: |
-| 📝❗ | • RPD - 1000 | [🌐](https://blazeai.boxu.dev/#models)<br> • DeepSeek V4 Flash<br> • Kimi K2.5/2.6<br> • MiniMax M2.7<br> • claude-opus-4.5<br> • qwen3.6-max/plus | ⭐⭐⭐ | ✅ |
-
-| 🔗 Registration | 🔗 API key | 🔗 Base URL |
-| :---: | :---: | :---: |
-| [🌐](https://blazeai.boxu.dev/#dashboard) | [🌐](https://blazeai.boxu.dev/#dashboard) | `https://blazeai.boxu.dev/api/` |
+| Registration | API key | Base URL |
+|:---:|:---:|:---:|
+| [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://blazeai.boxu.dev/#dashboard) | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://blazeai.boxu.dev/#dashboard) | `https://blazeai.boxu.dev/api/` |
 
 !!! danger "Disadvantages"
-    - There are issues with the qwen 3.6 model family. It detects the tools but cannot use them. <span class="text-green">**(If you're only into roleplay, this won't be a problem for you.)**</span>
+    - There are issues with the qwen 3.6 model family. It detects the tools but cannot use them. (If you're only into roleplay, this won't be a problem for you.)
 
 ---
 

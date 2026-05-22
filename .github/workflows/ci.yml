@@ -4,8 +4,13 @@ on:
     branches:
     - master
     - main
+  schedule:
+    - cron: '0 */12 * * *'  # Every 12 hours
+  workflow_dispatch:  # Manual trigger
+
 permissions:
   contents: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -29,11 +34,22 @@ jobs:
         restore-keys: |
           mkdocs-material-
     - run: pip install mkdocs-material
+    - name: Sync providers from JSON config
+      run: python .github/scripts/sync_provider.py
+    - name: Update model lists
+      env:
+        # API keys for providers that require auth to fetch /v1/models
+        # Add new secrets here as needed (Settings → Secrets and variables → Actions)
+        AGENT_ROUTER_API_KEY: ${{ secrets.AGENT_ROUTER_API_KEY }}
+        CROWAI_API_KEY: ${{ secrets.CROWAI_API_KEY }}
+      run: python .github/scripts/update_models.py
     - name: Track provider updates
       run: python .github/scripts/track_updates.py
-    - name: Commit changelog updates
+    - name: Clear providers.json after sync
+      run: echo '[]' > .github/scripts/providers.json
+    - name: Commit updates
       run: |
-        git add docs/changelog.md docs/index.md
-        git diff --staged --quiet || git commit -m "chore: update changelog [skip ci]"
-        git push || true
+        git add docs/changelog.md docs/index.md docs/models_data.json .github/scripts/providers.json docs/*.md
+        git diff --staged --quiet || git commit -m "chore: auto-update models and changelog [skip ci]"
+        git push
     - run: mkdocs gh-deploy --force

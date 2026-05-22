@@ -1,8 +1,20 @@
 # Changelog
 
-!!! info About
-    This page tracks all provider additions, removals, and category changes.
-    Updates are automatically detected and added when changes are pushed to the repository.
+---
+
+### 2026-05-21
+
+**Cleaner tables** - removed rating (planning to improve it so the scoring basis is clear) and testing columns. Provider status and test results are now shown as neat badges right next to the name.
+
+**All icons replaced with SVG** - emojis replaced with clean SVG icons: globe for links, lock for registration, phone, card, warning, and more.
+
+**Hover to learn** - every icon shows a tooltip on hover. On mobile - long press to follow a link (works for warnings).
+
+**Model list in popup** - click "Show all" for any provider to see the full model list. Filter by family (Claude, GPT, Gemini, etc.), click a model name to copy its ID.
+
+**Model lists update automatically** - no more waiting for manual table updates. The site checks available models every 12 hours.
+
+**New "Caution" page** - if a provider raises suspicions but there's no solid proof, it appears here. The warning badge next to the provider name links to this page.
 
 ---
 

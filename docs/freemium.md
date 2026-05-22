@@ -5,97 +5,75 @@
 
 ---
 
-### CrowAI
+### CrowAI <span class="provider-meta"><button type="button" class="provider-meta__item provider-meta__status--development" data-tooltip="In Development" aria-label="In Development"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></button><button type="button" class="provider-meta__item provider-meta__testing provider-meta__testing--tested" data-tooltip="Tested by the author" aria-label="Tested by the author"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></button></span>
 
-| Requirements |                             Limits                              |             🔗Models              | Reliability | Testing |
-| :----------: | :-------------------------------------------------------------: | :-------------------------------: | :---------: | :-----: |
-|      🔑      | [🌐](https://admin.mistral.ai/plateforme/limits)<br> • RPM - 15 | [🌐](https://crowllm.com/pricing) |    ⭐⭐⭐⭐⭐    |    ✅    |
+| Requirements | Limits | Models |
+|:---|:---:|:---:|
+| <span class="requirements-list"><button type="button" class="requirement-icon" data-tooltip="Discord account required" aria-label="Discord account required"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none"><path fill="#8c9eff" d="M40,12c0,0-4.585-3.588-10-4l-0.488,0.976C34.408,10.174,36.654,11.891,39,14c-4.045-2.065-8.039-4-15-4s-10.955,1.935-15,4c2.346-2.109,5.018-4.015,9.488-5.024L18,8c-5.681,0.537-10,4-10,4s-5.121,7.425-6,22c5.162,5.953,13,6,13,6l1.639-2.185C13.857,36.848,10.715,35.121,8,32c3.238,2.45,8.125,5,16,5s12.762-2.55,16-5c-2.715,3.121-5.857,4.848-8.639,5.815L33,40c0,0,7.838-0.047,13-6C45.121,19.425,40,12,40,12z M17.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C21,28.209,19.433,30,17.5,30z M30.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C34,28.209,32.433,30,30.5,30z"/></svg></button></span> | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://docs.crowllm.com/en/docs/guide/pricing#rate-limits)<br>• RPM - 20 | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://crowllm.com/pricing)<br><!-- MODELS_START --><!-- MODELS_END --> |
 
-| 🔗 Registration | 🔗 API key | 🔗 Base URL |
-| :---: | :---: | :---: |
-| [🌐](https://discord.gg/p2e7q34PBt) |[🌐](https://crowllm.com/keys) | `https://crowllm.com/v1` |
+| Registration | API key | Base URL |
+|:---:|:---:|:---:|
+| [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://discord.com/invite/p2e7q34PBt) | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://crowllm.com/keys) | `https://crowllm.com/v1` |
 
 !!! tip "Features"
-    - Model library is actively expanding - more options coming soon.
-    - Complete simple tasks to earn balance credits (not just another API provider!).
-    - If you sign up using my link, <span class="text-green">**you'll receive a $10 bonus in your account**</span>.
+    - Model library is actively expanding - <span class="text-green">more options coming soon.</span>
+    - <span class="text-green">Complete simple tasks to earn balance credits</span> (not just another API provider!).
+    - If you sign up using my link, <strong>you'll receive a $10 bonus in your account.</strong>
 
 ---
 
-### OpenRouter
+### OpenRouter <span class="provider-meta"><button type="button" class="provider-meta__item provider-meta__status--official-partner" data-tooltip="Official Partner" aria-label="Official Partner"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></button><button type="button" class="provider-meta__item provider-meta__testing provider-meta__testing--tested" data-tooltip="Tested by the author" aria-label="Tested by the author"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></button></span>
 
-| Requirements | Limits | 🔗Models | Reliability | Testing |
-|:---:|:---:|:---:|:---:|:---:|
-| ✉️ <br> 🔑 | • RPM - 20 <br> • RPD - 50 / 1000 *after payment | [🌐](https://openrouter.ai/models) | ⭐⭐⭐⭐ | ✅ |
+| Requirements | Limits | Models |
+|:---|:---:|:---:|
+| <span class="requirements-list"><button type="button" class="requirement-icon" data-tooltip="Email required" aria-label="Email required"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#42a5f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></button><button type="button" class="requirement-icon" data-tooltip="Standard registration" aria-label="Standard registration"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffa726" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></button></span> | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://openrouter.ai/docs/api/reference/limits)<br>• RPD - 10 | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://openrouter.ai/models)<br> • deepseek-v4-flash/pro<br> • glm-5/5.1<br><!-- MODELS_START -->+358 more models. <a class="models-show-all" data-provider="OpenRouter">Show all</a><!-- MODELS_END --> |
 
-| 🔗 Registration | 🔗 API key | 🔗 Base URL |
+| Registration | API key | Base URL |
 |:---:|:---:|:---:|
-| [🌐](https://openrouter.ai/) | [🌐](https://openrouter.ai/settings/keys) | `https://openrouter.ai/api/v1` |
+| [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://openrouter.ai/) | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://openrouter.ai/settings/keys) | `https://openrouter.ai/api/v1` |
 
 !!! tip "Features"
-    - <span class="text-green">**Very large list of models.**</span>
-    - <span class="text-green">**Different companies very often publicly test their models, and most of the time they are free.**</span>
+    - <span class="text-green">Very large list of models.</span>
+    - Different companies very often publicly test their models, and most of the time they are free.
     - Not exactly a provider and not exactly a proxy; OpenRouter doesn't host models itself, but uses only official providers.
 
 !!! danger "Disadvantages"
-    - <span class="text-red">**To get an RPD higher than 50, you need to add $10 to your account, and you will get 1000 RPD.**</span>
+    - <span class="text-yellow">To get an RPD higher than 50, you need to add $10 to your account, and you will get 1000 RPD</span>.
     - Stability depends on the providers.
 
 ---
 
-### Agent Router
+### Agent Router <span class="provider-meta"><button type="button" class="provider-meta__item provider-meta__status--unofficial" data-tooltip="Unofficial" aria-label="Unofficial"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></button><button type="button" class="provider-meta__item provider-meta__testing provider-meta__testing--tested" data-tooltip="Tested by the author" aria-label="Tested by the author"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></button></span>
 
-| Requirements | Limits | 🔗Models | Reliability | Testing |
-| :---: | :---: | :---: | :---: | :---: |
-| 📝❗ | — | [🌐](https://agentrouter.org/console/personal)<br> • DeepSeek 3.1/3.2 <br> • glm-4.6/4.5 | ⭐⭐⭐⭐⭐ | ✅ |
+| Requirements | Limits | Models |
+|:---|:---:|:---:|
+| <span class="requirements-list"><button type="button" class="requirement-icon" data-tooltip="Standard registration" aria-label="Standard registration"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffa726" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></button><button type="button" class="requirement-icon" data-tooltip="Email required" aria-label="Email required"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#42a5f5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></button><button type="button" class="requirement-icon" data-tooltip="It is recommended to log in using GitHub." aria-label="It is recommended to log in using GitHub."><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ab47bc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></button></span> | - | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://agentrouter.org/console/personal)<br> • claude-opus-4-6<br> • deepseek-v4-pro/flash<br> • glm-5.1<br><!-- MODELS_START --><!-- MODELS_END --> |
 
-| 🔗 Registration | 🔗 API key | 🔗 Base URL |
+| Registration | API key | Base URL |
 |:---:|:---:|:---:|
-| [🌐](https://agentrouter.org/register?aff=CirT) | [🌐](https://agentrouter.org/console/token) | `https://agentrouter.org/v1` |
+| [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://agentrouter.org/register?aff=CirT) | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://agentrouter.org/console/token) | `https://agentrouter.org/v1` |
 
 !!! tip "Features"
-    - Gives <span class="text-green">**from $100 to $225**</span> for registration **via the link**
-    - <span class="text-green">**You can log in and out of your account once a day and you will be given $25.**</span>
+    - Gives <span class="text-green">from $100 to $225</span> for registration <strong>via the link</strong>.
+    - <span class="text-green">You can log in and out of your account once a day and you will be given $25.</span>
 
 !!! danger "Disadvantages"
-    - Few models available
-    - Exclusively intended for coding; you'll most likely get banned for roleplaying.
+    - Few models available.
+    - Exclusively intended for coding; <span class="text-red">you'll most likely get banned for roleplaying</span>.
 
 ---
 
-### SambaNova Cloud
+### NavyAI <span class="provider-meta"><a href="../caution/#navyai" class="provider-meta__item provider-meta__warning" data-tooltip="Has concerns - see Warning page. Hold to navigate" aria-label="Has concerns - see Warning page. Hold to navigate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ff9800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></a><button type="button" class="provider-meta__item provider-meta__status--official" data-tooltip="Official service" aria-label="Official service"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 16 10"/></svg></button><button type="button" class="provider-meta__item provider-meta__testing provider-meta__testing--tested" data-tooltip="Tested by the author" aria-label="Tested by the author"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></button></span>
 
-| Requirements | Limits | 🔗Models | Reliability | Testing |
-| :---: | :---: | :---: | :---: | :---: |
-| ✉️ <br> 🔑 |[🌐](https://docs.sambanova.ai/docs/en/models/rate-limits#free-tier)<br> • Individual limits for each model | [🌐](https://docs.sambanova.ai/docs/en/models/rate-limits#free-tier)<br> • DeepSeek 3.1/R1-0528 <br> • MiniMax-M2.5 | ⭐⭐⭐⭐ | ✅ |
+| Requirements | Limits | Models |
+|:---|:---:|:---:|
+| <span class="requirements-list"><button type="button" class="requirement-icon" data-tooltip="Discord account required" aria-label="Discord account required"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none"><path fill="#8c9eff" d="M40,12c0,0-4.585-3.588-10-4l-0.488,0.976C34.408,10.174,36.654,11.891,39,14c-4.045-2.065-8.039-4-15-4s-10.955,1.935-15,4c2.346-2.109,5.018-4.015,9.488-5.024L18,8c-5.681,0.537-10,4-10,4s-5.121,7.425-6,22c5.162,5.953,13,6,13,6l1.639-2.185C13.857,36.848,10.715,35.121,8,32c3.238,2.45,8.125,5,16,5s12.762-2.55,16-5c-2.715,3.121-5.857,4.848-8.639,5.815L33,40c0,0,7.838-0.047,13-6C45.121,19.425,40,12,40,12z M17.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C21,28.209,19.433,30,17.5,30z M30.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C34,28.209,32.433,30,30.5,30z"/></svg></button></span> | TPD - 150к<br>RPD - 20 | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://api.navy/dashboard/models)<br><!-- MODELS_START -->+182 more models. <a class="models-show-all" data-provider="NavyAI">Show all</a><!-- MODELS_END --> |
 
-| 🔗 Registration | 🔗 API key | 🔗 Base URL |
-| :---: | :---: | :---: |
-|[🌐](https://cloud.sambanova.ai/dashboard) | [🌐](https://cloud.sambanova.ai/apis) | `https://api.sambanova.ai/v1` |
-
-!!! tip "Features"
-    - <span class="text-green">**Gives $5 upon registration**</span>
-
----
-
-### NavyAI
-
-| Requirements | Limits | 🔗Models | Reliability | Testing |
-| :---: | :---: | :---: | :---: | :---: |
-| 📝❗ | TPD - 150к*<br> RPD - 20* | [🌐](https://api.navy/dashboard/models)<br> +200 | ⭐⭐⭐⭐⭐ | ✅ |
-
-| 🔗 Registration | 🔗 API key | 🔗 Base URL |
+| Registration | API key | Base URL |
 |:---:|:---:|:---:|
-| [🌐](https://api.navy/) | [🌐](https://api.navy/dashboard/keys) | `https://api.navy` |
-
-!!! info "NOTE"
-    * Limits are shown only for the free plan.
+| [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://api.nаvy/) | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://api.navy/dashboard/keys) | `https://api.navy` |
 
 !!! tip "Features"
-    - Stability and speed
-    - Even the cheapest plan has 12m TPD (!!!), which is very generous.
-
-!!! note "Apology"
-    I apologize to NavyAI for the reputational loss this has caused. My mistake was that I didn't fully understand the situation and quickly took sides. It was completely my stupid mistake and I was wrong.
+    - <span class="text-green">Even the cheapest plan has 12m TPD</span>, which is very generous.
 
 ---

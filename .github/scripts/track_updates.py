@@ -4,6 +4,8 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Set, Tuple
 
+from provider_meta import get_plain_provider_name
+
 
 CATEGORIES = {
     "docs/free.md": "Free",
@@ -41,6 +43,7 @@ def extract_providers(content: str) -> Set[str]:
     
     for match in re.finditer(pattern, content, re.MULTILINE):
         provider_name = match.group(1).strip()
+        provider_name = get_plain_provider_name(provider_name)
         if provider_name and provider_name.lower() not in ['features', 'disadvantages', 'notes']:
             providers.add(provider_name)
     
@@ -48,7 +51,7 @@ def extract_providers(content: str) -> Set[str]:
 
 
 def detect_changes() -> Dict[str, List[str]]:
-    """Detect provider additions, deletions, and moves across categories."""
+    """Detect provider additions, deletions, and moves across categories via git diff."""
     changes = {
         "added": [],
         "removed": [],
@@ -114,51 +117,32 @@ def update_changelog(entry: str):
     if not entry:
         print("No changes detected, skipping changelog update.")
         return
-    
+
     today = datetime.now().strftime("%Y-%m-%d")
-    new_content: str = ""
-    
+
     if CHANGELOG_PATH.exists():
         content = CHANGELOG_PATH.read_text(encoding="utf-8")
-        if f"### {today}" in content:
-            lines = content.split("\n")
-            new_lines = []
-            found_today = False
-            inserted = False
-            for i, line in enumerate(lines):
-                new_lines.append(line)
-                
-                if line.strip() == f"### {today}":
-                    found_today = True
-                elif found_today and not inserted:
-                    if line.startswith("### ") or (line.strip() == "" and i + 1 < len(lines) and lines[i + 1].startswith("### ")):
-                        entry_lines = entry.split("\n")
-                        for entry_line in entry_lines[1:]:
-                            if entry_line.strip() and not entry_line.startswith("###"):
-                                new_lines.insert(-1, entry_line)
-                        inserted = True
-            
-            if found_today and not inserted:
-                entry_lines = entry.split("\n")
-                for entry_line in entry_lines[1:]:
-                    if entry_line.strip() and not entry_line.startswith("###"):
-                        new_lines.append(entry_line)
-            
-            new_content = "\n".join(new_lines)
+        entries = re.split(r"^### ", content, flags=re.MULTILINE)
+        header = entries[0]
+        rest = ["### " + e for e in entries[1:]]
+
+        if any(e.startswith(today) for e in rest):
+            entry_items = [line for line in entry.split("\n")[1:] if line.strip() and not line.startswith("###")]
+            rest = [
+                (e + "\n" + "\n".join(entry_items)) if e.startswith(today) else e
+                for e in rest
+            ]
+            new_content = header + "".join(rest)
             print(f"Added new items to existing {today} entry in changelog.")
         else:
-            header_end = content.find("\n### ")
-            if header_end != -1:
-                new_content = content[:header_end] + "\n" + entry + content[header_end:]
-            else:
-                new_content = content.rstrip() + "\n\n" + entry
+            new_content = content.rstrip() + "\n\n" + entry
     else:
         new_content = "# Changelog\n\n"
         new_content += "!!! info \"About\"\n"
         new_content += "    This page tracks all provider additions, removals, and category changes.\n\n"
         new_content += "---\n\n"
         new_content += entry
-    
+
     CHANGELOG_PATH.write_text(new_content, encoding="utf-8")
     print(f"Updated {CHANGELOG_PATH}")
 
@@ -196,14 +180,18 @@ def update_index_latest_updates():
             updates_section += f"* **{date}** — {item}\n"
     
     updates_section += "\n[View all updates →](changelog.md)\n\n"
+    
+    if not INDEX_PATH.exists():
+        print(f"Warning: {INDEX_PATH} does not exist, skipping index update.")
+        return
+        
     index_content = INDEX_PATH.read_text(encoding="utf-8")
     categories_pos = index_content.find("## Categories")
     
     if categories_pos == -1:
-        print("Could not find '## Categories' in index.md")
-        return
-    
-    if "## Latest Updates" in index_content:
+        print("Warning: Could not find '## Categories' in index.md — appending updates to end")
+        new_content = index_content.rstrip() + updates_section
+    elif "## Latest Updates" in index_content:
         start = index_content.find("## Latest Updates")
         end = index_content.find("## Categories", start)
         if end != -1:

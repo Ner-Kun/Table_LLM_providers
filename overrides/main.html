@@ -19,6 +19,18 @@
   <meta name="twitter:title" content="LLM provider table">
   <meta name="twitter:description" content="A table of free, freemium, and paid LLM providers. It includes limits, registration requirements, Base URLs, and links to obtain API keys.">
   
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ base_url }}/images/favicon.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="{{ base_url }}/images/logo-192.png">
+  
+  <!-- Open Graph Image -->
+  <meta property="og:image" content="{{ config.site_url }}images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  
+  <!-- X Image -->
+  <meta name="twitter:image" content="{{ config.site_url }}images/og-image.png">
+  
   <!-- Additional Meta Tags -->
   <meta name="keywords" content="LLM, API, providers, free, freemium, paid, OpenAI, Claude, GPT, AI, language models">
   <meta name="robots" content="index, follow">
@@ -27,4 +39,12 @@
   <!-- GoatCounter analytics -->
   <script data-goatcounter="https://nerkunoff.goatcounter.com/count"
           async src="//gc.zgo.at/count.js"></script>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script type="module" src="{{ base_url }}/javascripts/copy-inline.js"></script>
+  <script type="module" src="{{ base_url }}/javascripts/models-modal.js"></script>
+  <script type="module" src="{{ base_url }}/javascripts/provider-meta.js"></script>
+  <script src="{{ base_url }}/javascripts/header-stats.js"></script>
 {% endblock %}

@@ -1,5 +1,5 @@
 site_name: LLM Providers Table
-site_url: https://ner-kun.github.io/Table_LLM_providers
+site_url: https://ner-kun.github.io/Table_LLM_providers/
 site_author: Ner_Kun
 site_description: Free, freemium, and paid LLM API providers table
 
@@ -10,12 +10,15 @@ nav:
 - Freemium: freemium.md
 - Free: free.md
 - Paid: paid.md
+- Warning: caution.md
 - Dangerous: dangerous.md
 - Changelog: changelog.md
 
 theme:
   name: material
   custom_dir: overrides
+  favicon: images/favicon.png
+  logo: images/logo-192.png
   palette:
   - scheme: slate
     primary: blue grey
@@ -36,7 +39,9 @@ theme:
   - search.highlight
   - content.code.copy
   - content.code.annotate
+  - content.tooltips
   - toc.integrate
+
 
 plugins:
 - search
@@ -59,9 +64,6 @@ extra:
     link: https://t.me/ner_kun_off
   - icon: fontawesome/brands/discord
     link: https://discord.gg/mqch59Bbmw
-
-extra_javascript:
-- javascripts/copy-inline.js
 
 extra_css:
 - stylesheets/custom.css
