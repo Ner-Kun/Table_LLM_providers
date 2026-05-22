@@ -90,7 +90,7 @@
 
 | Requirements | Limits | Models |
 |:---|:---:|:---:|
-|  | - | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://zydit.in/models)<br><!-- MODELS_START -->+125 more models. <a class="models-show-all" data-provider="Zydit">Show all</a><!-- MODELS_END --> |
+| <span class="requirements-list"><button type="button" class="requirement-icon" data-tooltip="Standard registration" aria-label="Standard registration"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffa726" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></button></span> | - | [<span class="link-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>](https://zydit.in/models)<br><!-- MODELS_START --><!-- MODELS_END --> |
 
 | Registration | API key | Base URL |
 |:---:|:---:|:---:|
@@ -98,9 +98,6 @@
 
 !!! tip "Features"
     - Aggregator / API gateway for LLM providers.
-
-!!! danger "Disadvantages"
-    - Low RPM
 
 ---
 ### Groq <span class="provider-meta"><button type="button" class="provider-meta__item provider-meta__status--official" data-tooltip="Official service" aria-label="Official service"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 16 10"/></svg></button><button type="button" class="provider-meta__item provider-meta__testing provider-meta__testing--tested" data-tooltip="Tested by the author" aria-label="Tested by the author"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#4caf50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></button></span>

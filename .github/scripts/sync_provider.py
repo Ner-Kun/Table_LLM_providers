@@ -181,8 +181,10 @@ def validate_provider(entry: Dict[str, Any], index: int) -> None:
         errors.append("'warning_id' must be a string or null")
 
     requirements = entry.get("requirements", [])
-    if not isinstance(requirements, list):
-        errors.append("'requirements' must be a list")
+    if isinstance(requirements, str) and ("requirements-list" in requirements or "requirement-icon" in requirements):
+        pass
+    elif not isinstance(requirements, list):
+        errors.append("'requirements' must be a list or rendered HTML")
     else:
         for req in requirements:
             if req not in VALID_REQUIREMENTS:
@@ -598,7 +600,9 @@ def _parse_first_table(
     if len(cells) < 3:
         return data
 
-    _, limits_raw, models_raw = cells[0], cells[1], cells[2]
+    requirements_raw, limits_raw, models_raw = cells[0], cells[1], cells[2]
+    if requirements_raw and ("requirements-list" in requirements_raw or "requirement-icon" in requirements_raw):
+        data["requirements"] = requirements_raw
 
     limits_url = _extract_md_link(limits_raw)
     if limits_url:
