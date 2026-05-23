@@ -59,6 +59,9 @@ API_KEYS_CONFIG = {
     "Groq": {
         "env": "GROQ_API_KEY",
     },
+    "SwiftRouter": {
+        "env": "SWIFTROUTER_API_KEY",
+    },
 }
 
 

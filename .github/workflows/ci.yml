@@ -46,6 +46,7 @@ jobs:
         MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
         CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
         GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        SWIFTROUTER_API_KEY: ${{ secrets.SWIFTROUTER_API_KEY }}
       run: python .github/scripts/update_models.py
     - name: Track provider updates
       run: python .github/scripts/track_updates.py
