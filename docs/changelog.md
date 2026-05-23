@@ -21,3 +21,7 @@
 ### 2026-05-12
 
 - Initial changelog created
+
+### 2026-05-23
+
+- Added **SwiftRouter** to *Paid*
