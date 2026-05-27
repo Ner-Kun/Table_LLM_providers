@@ -396,7 +396,7 @@ def generate_provider_markdown(entry: Dict[str, Any]) -> str:
     if isinstance(requirements, list) and requirements_notes and "special" not in requirements:
         requirements = requirements + ["special"]
     req_str = "\n".join(requirements) if requirements else ""
-    req_html = render_requirement_icons(req_str, requirements_notes)
+    req_html = render_requirement_icons(str(req_str), requirements_notes)
     models_cell = _build_models_cell(models_url, manual_models, auto_update)
     
     limits_html = render_inline_formatting(limits).replace("\n", "<br>")
@@ -921,7 +921,7 @@ def main() -> None:
         err_console.print(f"[bold red]ERROR[/] {PROVIDERS_JSON} not found")
         sys.exit(1)
 
-    run_sync(dry_run=args.dry_run)
+    run_sync(dry_run=bool(args.dry_run))
 
 
 if __name__ == "__main__":
