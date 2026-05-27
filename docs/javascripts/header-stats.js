@@ -38,7 +38,7 @@
       '<span class="header-stat-label">Model updates</span>' +
     '</div>';
 
-  if (drawerTitle && drawerTitle.parentElement) {
+  if (drawerTitle?.parentElement) {
     drawerTitle.parentElement.insertBefore(drawerStats, drawerTitle.nextSibling);
   }
 

@@ -1,0 +1,4 @@
+httpx
+pydantic
+rich
+mkdocs-material

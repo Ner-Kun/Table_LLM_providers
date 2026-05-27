@@ -15,25 +15,30 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
       with:
         fetch-depth: 0
     - name: Configure Git Credentials
       run: |
         git config user.name github-actions[bot]
         git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-    - uses: actions/setup-python@v5
+    - uses: actions/setup-python@v6
       with:
         python-version: 3.x
+    - uses: astral-sh/setup-uv@v5
+      with:
+        enable-cache: true
+        cache-dependency-glob: .github/scripts/requirements.txt
     - id: cache-id
       run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_OUTPUT
-    - uses: actions/cache@v4
+    - uses: actions/cache@v5
       with:
         key: mkdocs-material-${{ steps.cache-id.outputs.cache_id }}
         path: ~/.cache
         restore-keys: |
           mkdocs-material-
-    - run: pip install mkdocs-material
+    - name: Install Python dependencies
+      run: uv pip install --system -r .github/scripts/requirements.txt
     - name: Sync providers from JSON config
       run: python .github/scripts/sync_provider.py
     - name: Update model lists
@@ -47,11 +52,31 @@ jobs:
         CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
         GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         SWIFTROUTER_API_KEY: ${{ secrets.SWIFTROUTER_API_KEY }}
+        NANO_GPT_API_KEY: ${{ secrets.NANO_GPT_API_KEY }}
+        DEEPINFRA_API_KEY: ${{ secrets.DEEPINFRA_API_KEY }}
       run: python .github/scripts/update_models.py
     - name: Track provider updates
       run: python .github/scripts/track_updates.py
     - name: Clear providers.json after sync
       run: echo '[]' > .github/scripts/providers.json
+    - name: Generate job summary
+      run: |
+        echo "## CI Run Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "| Key | Value |" >> $GITHUB_STEP_SUMMARY
+        echo "|---|---|" >> $GITHUB_STEP_SUMMARY
+        echo "| **Trigger** | ${{ github.event_name }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| **Branch** | ${{ github.ref_name }} |" >> $GITHUB_STEP_SUMMARY
+        echo "| **Commit** | ${{ github.sha }} |" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        if git diff --staged --quiet 2>/dev/null; then
+          echo "**No changes detected**" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "**Changes to be committed:**" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          git diff --staged --stat >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+        fi
     - name: Commit updates
       run: |
         git add docs/changelog.md docs/index.md docs/models_data.json .github/scripts/providers.json docs/*.md

@@ -2,20 +2,17 @@ import re
 import subprocess
 from datetime import datetime
 from pathlib import Path
+from rich.console import Console
 from typing import Dict, List, Set, Tuple
 
+from constants import (
+    CATEGORY_MAP,
+    CHANGELOG_PATH,
+    INDEX_PATH,
+)
 from provider_meta import get_plain_provider_name
 
-
-CATEGORIES = {
-    "docs/free.md": "Free",
-    "docs/freemium.md": "Freemium",
-    "docs/paid.md": "Paid",
-    "docs/dangerous.md": "Dangerous"
-}
-
-CHANGELOG_PATH = Path("docs/changelog.md")
-INDEX_PATH = Path("docs/index.md")
+console = Console()
 
 
 def get_git_diff(file_path: str) -> Tuple[str, str]:
@@ -32,7 +29,7 @@ def get_git_diff(file_path: str) -> Tuple[str, str]:
         
         return old_content, new_content
     except Exception as e:
-        print(f"Warning: Could not get git diff for {file_path}: {e}")
+        console.print(f"[bold yellow]WARN[/] Could not get git diff for {file_path}: {e}")
         return "", Path(file_path).read_text(encoding="utf-8")
 
 
@@ -61,10 +58,14 @@ def detect_changes() -> Dict[str, List[str]]:
     old_providers: Dict[str, Set[str]] = {}
     new_providers: Dict[str, Set[str]] = {}
     
-    for file_path, category in CATEGORIES.items():
-        old_content, new_content = get_git_diff(file_path)
-        old_providers[category] = extract_providers(old_content)
-        new_providers[category] = extract_providers(new_content)
+    for category_key, filename in CATEGORY_MAP.items():
+        if category_key == "caution":
+            continue
+        git_path = f"docs/{filename}"
+        display_name = category_key.capitalize()
+        old_content, new_content = get_git_diff(git_path)
+        old_providers[display_name] = extract_providers(old_content)
+        new_providers[display_name] = extract_providers(new_content)
     
     all_old = {p for providers in old_providers.values() for p in providers}
     all_new = {p for providers in new_providers.values() for p in providers}
@@ -112,10 +113,21 @@ def format_changelog_entry(changes: Dict[str, List[str]], date: str) -> str:
     return "\n".join(lines)
 
 
+def _parse_changelog_date(entry_str: str) -> str:
+    """Extract ISO date (YYYY-MM-DD) from a changelog entry line."""
+    match = re.match(r"^###\s+(\d{4}-\d{2}-\d{2})", entry_str)
+    return match.group(1) if match else ""
+
+
+def _sort_changelog_entries(entries: list[str]) -> list[str]:
+    """Sort changelog entries in reverse chronological order (newest first)."""
+    return sorted(entries, key=_parse_changelog_date, reverse=True)
+
+
 def update_changelog(entry: str):
     """Update or create changelog.md with new entry."""
     if not entry:
-        print("No changes detected, skipping changelog update.")
+        console.print("[bold]No changes detected, skipping changelog update.[/]")
         return
 
     today = datetime.now().strftime("%Y-%m-%d")
@@ -133,9 +145,11 @@ def update_changelog(entry: str):
                 for e in rest
             ]
             new_content = header + "".join(rest)
-            print(f"Added new items to existing {today} entry in changelog.")
+            console.print(f"[bold green]OK[/] Added new items to existing {today} entry in changelog.")
         else:
-            new_content = content.rstrip() + "\n\n" + entry
+            rest = _sort_changelog_entries(rest)
+            new_content = header + entry + "".join(rest)
+            console.print(f"[bold green]OK[/] Added new {today} entry at the top of changelog.")
     else:
         new_content = "# Changelog\n\n"
         new_content += "!!! info \"About\"\n"
@@ -144,13 +158,13 @@ def update_changelog(entry: str):
         new_content += entry
 
     CHANGELOG_PATH.write_text(new_content, encoding="utf-8")
-    print(f"Updated {CHANGELOG_PATH}")
+    console.print(f"[bold green]OK[/] Updated {CHANGELOG_PATH}")
 
 
 def update_index_latest_updates():
     """Update index.md with latest 3 updates from changelog."""
     if not CHANGELOG_PATH.exists():
-        print("Changelog doesn't exist yet, skipping index update.")
+        console.print("[bold yellow]WARN[/] Changelog doesn't exist yet, skipping index update.")
         return
     
     changelog_content = CHANGELOG_PATH.read_text(encoding="utf-8")
@@ -171,52 +185,49 @@ def update_index_latest_updates():
     latest_entries = entries[:3]
     
     if not latest_entries:
-        print("No entries found in changelog.")
+        console.print("[bold yellow]WARN[/] No entries found in changelog.")
         return
-    updates_section = "\n## Latest Updates\n\n"
+    updates_section = "## Latest Updates\n\n"
     
     for date, items in latest_entries:
         for item in items:
             updates_section += f"* **{date}** — {item}\n"
     
-    updates_section += "\n[View all updates →](changelog.md)\n\n"
+    updates_section += "\n[View all updates](changelog.md)\n\n"
     
     if not INDEX_PATH.exists():
-        print(f"Warning: {INDEX_PATH} does not exist, skipping index update.")
+        console.print(f"[bold yellow]WARN[/] {INDEX_PATH} does not exist, skipping index update.")
         return
         
     index_content = INDEX_PATH.read_text(encoding="utf-8")
     categories_pos = index_content.find("## Categories")
     
     if categories_pos == -1:
-        print("Warning: Could not find '## Categories' in index.md — appending updates to end")
-        new_content = index_content.rstrip() + updates_section
+        console.print("[bold yellow]WARN[/] Could not find '## Categories' in index.md — appending updates to end")
+        new_content = index_content.rstrip() + "\n\n" + updates_section
     elif "## Latest Updates" in index_content:
         start = index_content.find("## Latest Updates")
         end = index_content.find("## Categories", start)
         if end != -1:
-            new_content = index_content[:start] + updates_section + index_content[end:]
+            new_content = index_content[:start].rstrip() + "\n\n" + updates_section + index_content[end:]
         else:
-            print("Warning: Could not find end of Latest Updates section")
+            console.print("[bold yellow]WARN[/] Could not find end of Latest Updates section")
             return
     else:
-        new_content = index_content[:categories_pos] + updates_section + index_content[categories_pos:]
+        new_content = index_content[:categories_pos].rstrip() + "\n\n" + updates_section + index_content[categories_pos:]
     
     INDEX_PATH.write_text(new_content, encoding="utf-8")
-    print(f"Updated {INDEX_PATH} with latest updates.")
+    console.print(f"[bold green]OK[/] Updated {INDEX_PATH} with latest updates.")
 
 
 def main():
-    """Main entry point."""
-    print("Tracking provider changes...")
-    
+    console.print("[bold]Tracking provider changes...[/]")
     changes = detect_changes()
     today = datetime.now().strftime("%Y-%m-%d")
     entry = format_changelog_entry(changes, today)
     update_changelog(entry)
     update_index_latest_updates()
-    
-    print("Done!")
+    console.print("[bold green]OK[/] Done!")
 
 
 if __name__ == "__main__":

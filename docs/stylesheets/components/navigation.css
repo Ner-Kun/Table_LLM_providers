@@ -1,0 +1,19 @@
+/* NAVIGATION */
+
+[data-md-color-scheme="slate"] .md-nav__link--active {
+  color: #42a5f5;
+}
+
+[data-md-color-scheme="slate"] .md-nav__link:hover {
+  color: #42a5f5;
+}
+
+/* DRAWER HEADER (mobile logo area) */
+
+[data-md-color-scheme="slate"] .md-nav--primary .md-nav__title {
+  background: rgba(0, 0, 0, 0.55) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  color: #e8e8e8 !important;
+}
+

@@ -29,22 +29,23 @@
 
 
 FIELD DESCRIPTIONS
-    name               (string, required)   — Provider display name.
-    category           (string, required)   — "free" | "freemium" | "paid" | "dangerous"
-    service_status     (string, required)   — "official" | "official-partner" | "development" | "unofficial"
-    testing_status     (string|null)        — "tested" | "untested" | "in-progress" | null
-    requirements       (string[])           — Requirement icon keys (see below).
-    requirements_notes (string)             — Extra text after requirement icons.
-    limits             (string)             — Rate limits. Use "—" for none.
-    limits_url         (string|null)        — URL to rate-limits page (globe icon).
-    models_url         (string|null)        — URL to full models list (globe icon).
-    manual_models      (string[])           — Static model names (shown if auto_update_models=false).
-    auto_update_models (boolean|null)        — true = enable auto-update via API markers.
-    registration_url   (string, required)   — Sign-up page URL.
-    api_key_url        (string|null)        — API key page URL.
-    base_url           (string, required)   — API endpoint, e.g. https://api.example.com/v1
-    features           (string[])           — List of feature bullet points.
-    disadvantages      (string[])           — List of disadvantage bullet points.
+    name                (string, required)          — Provider display name.
+    category            (string, required)          — "free" | "freemium" | "paid" | "dangerous"
+    service_status      (string|string[], required)  — Single status or array of statuses.
+                        First is primary. Valid values: "official" | "official-partner" | "aggregator" | "development" | "unofficial" | "unknown" | "deprecated" | "community" | "mirror" | "experimental"
+    testing_status      (string|null)        — "tested" | "untested" | "in-progress" | null
+requirements            (string[])           — Requirement icon keys (see below).
+    requirements_notes  (string)             — Extra text after requirement icons.
+    limits              (string)             — Rate limits. Use "—" for none.
+    limits_url          (string|null)        — URL to rate-limits page (globe icon).
+    models_url          (string|null)        — URL to full models list (globe icon).
+    manual_models       (string[])           — Static model names (shown if auto_update_models=false).
+    auto_update_models  (boolean|null)      — true = enable auto-update via API markers.
+    registration_url    (string, required)   — Sign-up page URL.
+    api_key_url         (string|null)        — API key page URL.
+    base_url            (string, required)   — API endpoint, e.g. https://api.example.com/v1
+    features            (string[])           — List of feature bullet points.
+    disadvantages       (string[])           — List of disadvantage bullet points.
 
 REQUIREMENT ICON KEYS
     "email"        — Email required
@@ -107,173 +108,181 @@ import re
 import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
+from pydantic import BaseModel, Field, field_validator
+from rich.console import Console
 
+from constants import (
+    ADMONITION_RE,
+    BACKTICK_RE,
+    CATEGORY_MAP,
+    DOCS_DIR,
+    HEADING_RE,
+    INLINE_COLOR_RE,
+    INLINE_TAG_MAP,
+    INLINE_TAG_RE,
+    MD_LINK_RE,
+    META_STATUS_RE,
+    META_TESTING_RE,
+    MODELS_MARKER_RE,
+    PROVIDERS_JSON,
+    VALID_CATEGORIES,
+    VALID_REQUIREMENTS,
+    VALID_SERVICE_STATUSES,
+    VALID_TESTING_STATUSES,
+)
 from provider_meta import (
     get_plain_provider_name,
     render_link_icon,
     render_provider_meta_badges,
     render_requirement_icons,
-    VALID_SVG_REQUIREMENTS,
 )
 
-SCRIPT_DIR = Path(__file__).resolve().parent
-REPO_ROOT = SCRIPT_DIR.parent.parent
-DOCS_DIR = REPO_ROOT / "docs"
-PROVIDERS_JSON = SCRIPT_DIR / "providers.json"
-
-CATEGORY_MAP: Dict[str, str] = {
-    "freemium": "freemium.md",
-    "free": "free.md",
-    "paid": "paid.md",
-    "caution": "caution.md",
-    "dangerous": "dangerous.md",
-}
-
-VALID_CATEGORIES = set(CATEGORY_MAP.keys())
-VALID_TESTING_STATUSES = {"tested", "untested", "in-progress", None}
-VALID_SERVICE_STATUSES = {"official", "official-partner", "development", "unofficial"}
-VALID_REQUIREMENTS = VALID_SVG_REQUIREMENTS
-HEADING_RE = re.compile(r"^### (.+)$")
+console = Console()
+err_console = Console(stderr=True)
 
 
-# Validation
-class ValidationError(Exception):
-    """Raised when a provider entry fails validation."""
+# Pydantic
+class ProviderModel(BaseModel):
+    """Validates a single provider entry from providers.json."""
 
+    name: str = Field(min_length=1)
+    category: str
+    service_status: str | list[str]
+    testing_status: Optional[str] = None 
+    warning_id: Optional[str] = None
+    requirements: List[str] = Field(default_factory=list)
+    requirements_notes: str = ""
+    limits: str = "—"
+    limits_url: Optional[str] = None
+    models_url: Optional[str] = None
+    manual_models: List[str] = Field(default_factory=list)
+    auto_update_models: Optional[bool] = None
+    registration_url: str = Field(min_length=1)
+    api_key_url: Optional[str] = None
+    base_url: str = Field(min_length=1)
+    features: List[str] = Field(default_factory=list)
+    disadvantages: List[str] = Field(default_factory=list)
 
-def validate_provider(entry: Dict[str, Any], index: int) -> None:
-    """Validate a single provider entry. Raises ValidationError on failure."""
-    errors: List[str] = []
+    @field_validator("category")
+    @classmethod
+    def _check_category(cls, v: str) -> str:
+        if v not in VALID_CATEGORIES:
+            raise ValueError(f"'category' must be one of {sorted(VALID_CATEGORIES)}, got {v!r}")
+        return v
 
-    name = entry.get("name")
-    if not isinstance(name, str) or not name.strip():
-        errors.append("'name' is required and must be a non-empty string")
+    @field_validator("service_status", mode="before")
+    @classmethod
+    def _check_service_status(cls, v: str | list[str]) -> str | list[str]:
+        if isinstance(v, str):
+            v = [v]
+        if not isinstance(v, list):
+            raise ValueError(
+                f"'service_status' must be a string or list of strings, got {type(v).__name__}"
+            )
+        for status in v:
+            if status not in VALID_SERVICE_STATUSES:
+                raise ValueError(
+                    f"'service_status' values must be one of {sorted(VALID_SERVICE_STATUSES)}, "
+                    f"got {status!r}"
+                )
+        return v if len(v) > 1 else v[0]
 
-    category = entry.get("category")
-    if category not in VALID_CATEGORIES:
-        errors.append(
-            f"'category' must be one of {sorted(VALID_CATEGORIES)}, got {category!r}"
-        )
+    @field_validator("testing_status")
+    @classmethod
+    def _check_testing_status(cls, v: Optional[str]) -> Optional[str]:
+        if v is not None and v not in VALID_TESTING_STATUSES:
+            raise ValueError(
+                f"'testing_status' must be one of "
+                f"{sorted(s for s in VALID_TESTING_STATUSES if s is not None)} or None, "
+                f"got {v!r}"
+            )
+        return v
 
-    reg_url = entry.get("registration_url")
-    if not isinstance(reg_url, str) or not reg_url.strip():
-        errors.append("'registration_url' is required and must be a non-empty string")
-
-    base_url = entry.get("base_url")
-    if not isinstance(base_url, str) or not base_url.strip():
-        errors.append("'base_url' is required and must be a non-empty string")
-
-    service_status = entry.get("service_status")
-    if service_status not in VALID_SERVICE_STATUSES:
-        errors.append(
-            f"'service_status' must be one of {sorted(VALID_SERVICE_STATUSES)}, got {service_status!r}"
-        )
-
-    testing_status = entry.get("testing_status")
-    if testing_status is not None and testing_status not in VALID_TESTING_STATUSES:
-        errors.append(
-            f"'testing_status' must be one of {sorted(s for s in VALID_TESTING_STATUSES if s is not None)} or null, "
-            f"got {testing_status!r}"
-        )
-
-    warning_id = entry.get("warning_id")
-    if warning_id is not None and not isinstance(warning_id, str):
-        errors.append("'warning_id' must be a string or null")
-
-    requirements = entry.get("requirements", [])
-    if isinstance(requirements, str) and ("requirements-list" in requirements or "requirement-icon" in requirements):
-        pass
-    elif not isinstance(requirements, list):
-        errors.append("'requirements' must be a list or rendered HTML")
-    else:
-        for req in requirements:
+    @field_validator("requirements", mode="before")
+    @classmethod
+    def _check_requirements(cls, v: Any) -> Any:
+        if isinstance(v, str) and ("requirements-list" in v or "requirement-icon" in v):
+            return v
+        if not isinstance(v, list):
+            raise ValueError("'requirements' must be a list or rendered HTML")
+        for req in v:
             if req not in VALID_REQUIREMENTS:
-                errors.append(
+                raise ValueError(
                     f"Invalid requirement {req!r}; must be one of {sorted(VALID_REQUIREMENTS)}"
                 )
+        return v
 
-    req_notes = entry.get("requirements_notes", "")
-    if not isinstance(req_notes, str):
-        errors.append("'requirements_notes' must be a string")
+    @field_validator("requirements_notes")
+    @classmethod
+    def _check_requirements_notes(cls, v: Any) -> str:
+        if not isinstance(v, str):
+            raise ValueError("'requirements_notes' must be a string")
+        return v
 
-    limits = entry.get("limits", "—")
-    if not isinstance(limits, str):
-        errors.append("'limits' must be a string")
+    @field_validator("limits")
+    @classmethod
+    def _check_limits(cls, v: Any) -> str:
+        if not isinstance(v, str):
+            raise ValueError("'limits' must be a string")
+        return v
 
-    limits_url = entry.get("limits_url")
-    if limits_url is not None and not isinstance(limits_url, str):
-        errors.append("'limits_url' must be a string or null")
+    @field_validator("limits_url", "models_url", "api_key_url")
+    @classmethod
+    def _check_optional_url(cls, v: Any) -> Any:
+        if v is not None and not isinstance(v, str):
+            raise ValueError(f"Must be a string or null, got {type(v).__name__}")
+        return v
 
-    models_url = entry.get("models_url")
-    if models_url is not None and not isinstance(models_url, str):
-        errors.append("'models_url' must be a string or null")
+    @field_validator("warning_id")
+    @classmethod
+    def _check_warning_id(cls, v: Any) -> Any:
+        if v is not None and not isinstance(v, str):
+            raise ValueError("'warning_id' must be a string or null")
+        return v
 
-    manual_models = entry.get("manual_models", [])
-    if not isinstance(manual_models, list):
-        errors.append("'manual_models' must be a list")
-    else:
-        for m in manual_models:
+    @field_validator("manual_models")
+    @classmethod
+    def _check_manual_models(cls, v: Any) -> List[str]:
+        if not isinstance(v, list):
+            raise ValueError("'manual_models' must be a list")
+        for m in v:
             if not isinstance(m, str):
-                errors.append(f"Each item in 'manual_models' must be a string, got {type(m).__name__}")
+                raise ValueError(
+                    f"Each item in 'manual_models' must be a string, got {type(m).__name__}"
+                )
+        return v
 
-    api_key_url = entry.get("api_key_url")
-    if api_key_url is not None and not isinstance(api_key_url, str):
-        errors.append("'api_key_url' must be a string or null")
-
-    features = entry.get("features", [])
-    if not isinstance(features, list):
-        errors.append("'features' must be a list")
-    else:
-        for f in features:
+    @field_validator("features")
+    @classmethod
+    def _check_features(cls, v: Any) -> List[str]:
+        if not isinstance(v, list):
+            raise ValueError("'features' must be a list")
+        for f in v:
             if not isinstance(f, str):
-                errors.append(f"Each item in 'features' must be a string, got {type(f).__name__}")
+                raise ValueError(f"Each item in 'features' must be a string, got {type(f).__name__}")
+        return v
 
-    disadvantages = entry.get("disadvantages", [])
-    if not isinstance(disadvantages, list):
-        errors.append("'disadvantages' must be a list")
-    else:
-        for d in disadvantages:
+    @field_validator("disadvantages")
+    @classmethod
+    def _check_disadvantages(cls, v: Any) -> List[str]:
+        if not isinstance(v, list):
+            raise ValueError("'disadvantages' must be a list")
+        for d in v:
             if not isinstance(d, str):
-                errors.append(f"Each item in 'disadvantages' must be a string, got {type(d).__name__}")
+                raise ValueError(
+                    f"Each item in 'disadvantages' must be a string, got {type(d).__name__}"
+                )
+        return v
 
-    auto_update = entry.get("auto_update_models")
-    if auto_update is not None and not isinstance(auto_update, bool):
-        errors.append("'auto_update_models' must be a boolean (true/false) or null")
-
-    if errors:
-        label = name or f"entry #{index}"
-        raise ValidationError(f"Provider {label}:\n  " + "\n  ".join(errors))
-
-# Inline formatting
-
-# Mapping of tag names
-_INLINE_TAG_MAP: Dict[str, Tuple[Optional[str], Optional[str]]] = {
-    "bold": ("strong", None),
-    "italic": ("em", None),
-    "bold italic": ("strong", "em"),
-    "italic bold": ("strong", "em"),
-    "b": ("strong", None),
-    "i": ("em", None),
-    "bi": ("strong", "em"),
-    "ib": ("strong", "em"),
-}
-_INLINE_COLORS = {"green", "red", "orange", "blue", "yellow", "purple"}
-
-_INLINE_TAG_RE = re.compile(
-    r'\[('
-    r'bold\s+italic|italic\s+bold|' # combined full
-    r'bi|ib|' # combined short
-    r'bold|italic|b|i' # single
-    r')(?:\s+(' + '|'.join(_INLINE_COLORS) + r'))?' # optional color
-    r'\](.*?)\[/\1(?:\s+\2)?\]', # content + closing tag
-    re.DOTALL,
-)
-_INLINE_COLOR_RE = re.compile(
-    r'\[(' + '|'.join(_INLINE_COLORS) + r')\](.*?)\[/\1\]',
-    re.DOTALL,
-)
+    @field_validator("auto_update_models")
+    @classmethod
+    def _check_auto_update(cls, v: Any) -> Any:
+        if v is not None and not isinstance(v, bool):
+            raise ValueError("'auto_update_models' must be a boolean (true/false) or null")
+        return v
 
 
+# Markdown generation
 def render_inline_formatting(text: str) -> str:
     """Convert custom inline tags in text to HTML."""
     def _replace_tag(m: re.Match) -> str:
@@ -281,7 +290,7 @@ def render_inline_formatting(text: str) -> str:
         color = m.group(2)
         content = m.group(3)
 
-        entry = _INLINE_TAG_MAP.get(tag_names)
+        entry = INLINE_TAG_MAP.get(tag_names)
         if entry is None:
             return m.group(0)
 
@@ -298,17 +307,16 @@ def render_inline_formatting(text: str) -> str:
                 return f'<{outer_tag}><{inner_tag}>{content}</{inner_tag}></{outer_tag}>'
             else:
                 return f'<{outer_tag}>{content}</{outer_tag}>'
-    result = _INLINE_TAG_RE.sub(_replace_tag, text)
+    result = INLINE_TAG_RE.sub(_replace_tag, text)
 
     def _replace_color(m: re.Match) -> str:
         color = m.group(1)
         content = m.group(2)
         return f'<span class="text-{color}">{content}</span>'
-    result = _INLINE_COLOR_RE.sub(_replace_color, result)
+    result = INLINE_COLOR_RE.sub(_replace_color, result)
     return result
 
 
-# Markdown generation
 def _build_models_cell(
     models_url: Optional[str],
     manual_models: List[str],
@@ -357,6 +365,7 @@ def _build_admonition_block(title: str, items: List[str]) -> str:
         lines.append(f"    - {render_inline_formatting(item)}")
     return "\n".join(lines)
 
+
 def generate_provider_markdown(entry: Dict[str, Any]) -> str:
     """
     Generate a complete markdown block for a single provider."""
@@ -365,6 +374,8 @@ def generate_provider_markdown(entry: Dict[str, Any]) -> str:
 
     name = entry["name"]
     service_status = entry.get("service_status", "")
+    if isinstance(service_status, str):
+        service_status = [service_status]
     testing_status = entry.get("testing_status")
     requirements = entry.get("requirements", [])
     limits = entry.get("limits", "—")
@@ -381,6 +392,7 @@ def generate_provider_markdown(entry: Dict[str, Any]) -> str:
     warning_id = entry.get("warning_id") or ""
     testing_str = testing_status or ""
     meta_badges = render_provider_meta_badges(service_status, testing_str, warning_id)
+    service_status = service_status[0] if service_status else ""
     if isinstance(requirements, list) and requirements_notes and "special" not in requirements:
         requirements = requirements + ["special"]
     req_str = "\n".join(requirements) if requirements else ""
@@ -551,24 +563,15 @@ def sync_provider(file_path: Path, entry: Dict[str, Any], dry_run: bool = False)
         return "ADDED"
 
 
-# Markdown extraction for partial-update merge
-_MD_LINK_RE = re.compile(r"\[([^\]]*)\]\(([^)]*)\)")
-_BACKTICK_RE = re.compile(r"`([^`]+)`")
-_ADMONITION_RE = re.compile(r'^!!!\s+(tip|danger)\s+"(.+)"\s*$')
-_META_STATUS_RE = re.compile(r"provider-meta__status--(\w+)")
-_META_TESTING_RE = re.compile(r"provider-meta__testing--([\w-]+)")
-_MODELS_MARKER_RE = re.compile(r"<!--\s*MODELS_START\s*-->")
-
-
 def _extract_md_link(text: str) -> Optional[str]:
     """Extract URL from a markdown link like [text](url). Returns None if not found."""
-    m = _MD_LINK_RE.search(text)
+    m = MD_LINK_RE.search(text)
     return m.group(2) if m else None
 
 
 def _extract_backtick(text: str) -> Optional[str]:
     """Extract content between backticks like `content`. Returns None if not found."""
-    m = _BACKTICK_RE.search(text)
+    m = BACKTICK_RE.search(text)
     return m.group(1) if m else None
 
 
@@ -607,7 +610,7 @@ def _parse_first_table(
     limits_url = _extract_md_link(limits_raw)
     if limits_url:
         data["limits_url"] = limits_url
-        limits_text = _MD_LINK_RE.sub("", limits_raw).strip()
+        limits_text = MD_LINK_RE.sub("", limits_raw).strip()
         limits_text = limits_text.replace('<span class="link-icon">', "").replace("</span>", "")
         limits_text = limits_text.replace("[]( )", "").strip()
         limits_text = limits_text.lstrip("<br>").lstrip("<br/>").lstrip("<br />").strip()
@@ -622,12 +625,12 @@ def _parse_first_table(
     if models_url:
         data["models_url"] = models_url
 
-    data["auto_update_models"] = bool(_MODELS_MARKER_RE.search(models_raw))
+    data["auto_update_models"] = bool(MODELS_MARKER_RE.search(models_raw))
 
     manual_models = []
     for part in re.split(r"<br\s*/?>", models_raw):
         part = part.strip()
-        part_no_link = _MD_LINK_RE.sub("", part).strip()
+        part_no_link = MD_LINK_RE.sub("", part).strip()
         part_no_link = re.sub(r'\s*<span class="link-icon">.*?</span>\s*', "", part_no_link, flags=re.DOTALL).strip()
         if part_no_link.startswith("•") or part_no_link.startswith("-"):
             item = part_no_link[1:].strip()
@@ -676,11 +679,11 @@ def _parse_heading_badges(
     """Parse provider heading to extract service_status and testing_status from badges."""
     data: Dict[str, Any] = {}
 
-    m = _META_STATUS_RE.search(line)
+    m = META_STATUS_RE.search(line)
     if m:
         data["service_status"] = m.group(1)
 
-    m = _META_TESTING_RE.search(line)
+    m = META_TESTING_RE.search(line)
     if m:
         val = m.group(1)
         if val == "tested":
@@ -703,7 +706,7 @@ def _parse_admonition_blocks(
 
     for i in range(start, end):
         line = lines[i].strip()
-        m = _ADMONITION_RE.match(line)
+        m = ADMONITION_RE.match(line)
         if m:
             if current_key and items:
                 data[current_key] = items
@@ -809,26 +812,97 @@ def merge_with_existing(entry: Dict[str, Any]) -> Dict[str, Any]:
 def load_providers(json_path: Path) -> List[Dict[str, Any]]:
     """Load, merge with existing markdown data, and validate all providers."""
     try:
-        data = json.loads(json_path.read_text(encoding="utf-8"))
+        raw_data = json.loads(json_path.read_text(encoding="utf-8"))
     except json.JSONDecodeError as e:
-        print(f"[ERROR] Invalid JSON in {json_path}: {e}", file=sys.stderr)
+        err_console.print(f"[bold red]ERROR[/] Invalid JSON in {json_path}: {e}")
         sys.exit(1)
 
-    if not isinstance(data, list):
-        print(
-            f"[ERROR] {json_path} must contain a JSON array, got {type(data).__name__}",
-            file=sys.stderr,
+    if not isinstance(raw_data, list):
+        err_console.print(
+            f"[bold red]ERROR[/] {json_path} must contain a JSON array, "
+            f"got {type(raw_data).__name__}",
         )
         sys.exit(1)
 
-    merged_providers = []
-    for i, entry in enumerate(data):
+    merged_providers: List[Dict[str, Any]] = []
+    for i, entry in enumerate(raw_data):
         merged = merge_with_existing(entry)
+        try:
+            ProviderModel.model_validate(merged)
+        except Exception as e:
+            label = entry.get("name") or f"entry #{i}"
+            err_console.print(f"[bold red]ERROR[/] Provider {label}: {e}")
+            sys.exit(1)
         merged_providers.append(merged)
-
-    for i, entry in enumerate(merged_providers):
-        validate_provider(entry, i)
     return merged_providers
+
+
+def run_sync(dry_run: bool = False) -> None:
+    """Sync all providers from JSON config to markdown files.
+
+    Adds new providers, updates existing ones, and moves between categories.
+    Can be called from other scripts (e.g. dev_update.py).
+    Gracefully skips if providers.json does not exist.
+    """
+    if not PROVIDERS_JSON.exists():
+        console.print(f"[bold blue]SKIP[/] {PROVIDERS_JSON} not found, skipping sync")
+        return
+
+    providers = load_providers(PROVIDERS_JSON)
+    console.print(f"[bold green]OK[/] Loaded {len(providers)} provider(s) from {PROVIDERS_JSON}")
+
+    any_changes = False
+
+    for entry in providers:
+        provider_name = entry["name"]
+        target_category = entry["category"]
+        target_file_name = CATEGORY_MAP[target_category]
+        target_file_path = DOCS_DIR / target_file_name
+
+        if not target_file_path.exists():
+            err_console.print(
+                f"[bold red]ERROR[/] Target file {target_file_path} does not exist",
+            )
+            continue
+
+        found = find_provider_across_files(provider_name)
+        if found is not None:
+            current_category, current_file_path = found
+            if current_category != target_category:
+                remove_status = remove_provider(
+                    current_file_path, provider_name, dry_run=dry_run
+                )
+                if remove_status == "REMOVED":
+                    console.print(
+                        f"[bold cyan]MOVE[/] {provider_name}: {current_category}.md -> {target_file_name}"
+                    )
+                    any_changes = True
+                elif remove_status and remove_status.startswith("WOULD_REMOVE"):
+                    console.print(
+                        f"[bold magenta]DRY-RUN[/] {remove_status}: {provider_name} "
+                        f"from {current_category}.md"
+                    )
+                    any_changes = True
+
+        status = sync_provider(target_file_path, entry, dry_run=dry_run)
+        if status == "ADDED":
+            console.print(f"[bold green]ADD[/] {provider_name} -> {target_file_name}")
+            any_changes = True
+        elif status.startswith("UPDATED"):
+            console.print(
+                f"[bold green]UPDATE[/] {provider_name} -> {target_file_name} ({status})"
+            )
+            any_changes = True
+        elif status.startswith("WOULD_"):
+            console.print(
+                f"[bold magenta]DRY-RUN[/] {status}: {provider_name} -> {target_file_name}"
+            )
+            any_changes = True
+        else:
+            console.print(f"[bold blue]SKIP[/] {provider_name} ({status})")
+
+    if not any_changes:
+        console.print("[bold]No changes to apply.[/]")
 
 
 def main() -> None:
@@ -844,53 +918,10 @@ def main() -> None:
     args = parser.parse_args()
 
     if not PROVIDERS_JSON.exists():
-        print(f"[ERROR] {PROVIDERS_JSON} not found", file=sys.stderr)
+        err_console.print(f"[bold red]ERROR[/] {PROVIDERS_JSON} not found")
         sys.exit(1)
 
-    providers = load_providers(PROVIDERS_JSON)
-    print(f"Loaded {len(providers)} provider(s) from {PROVIDERS_JSON}")
-
-    any_changes = False
-
-    for entry in providers:
-        provider_name = entry["name"]
-        target_category = entry["category"]
-        target_file_name = CATEGORY_MAP[target_category]
-        target_file_path = DOCS_DIR / target_file_name
-
-        if not target_file_path.exists():
-            print(f"[ERROR] Target file {target_file_path} does not exist", file=sys.stderr)
-            continue
-
-        found = find_provider_across_files(provider_name)
-        if found is not None:
-            current_category, current_file_path = found
-            if current_category != target_category:
-                remove_status = remove_provider(
-                    current_file_path, provider_name, dry_run=args.dry_run
-                )
-                if remove_status == "REMOVED":
-                    print(f"[MOVE] {provider_name}: {current_category}.md -> {target_file_name}")
-                    any_changes = True
-                elif remove_status and remove_status.startswith("WOULD_REMOVE"):
-                    print(f"[DRY-RUN] {remove_status}: {provider_name} from {current_category}.md")
-                    any_changes = True
-
-        status = sync_provider(target_file_path, entry, dry_run=args.dry_run)
-        if status == "ADDED":
-            print(f"[ADD] {provider_name} -> {target_file_name}")
-            any_changes = True
-        elif status.startswith("UPDATED"):
-            print(f"[UPDATE] {provider_name} -> {target_file_name} ({status})")
-            any_changes = True
-        elif status.startswith("WOULD_"):
-            print(f"[DRY-RUN] {status}: {provider_name} -> {target_file_name}")
-            any_changes = True
-        else:
-            print(f"[SKIP] {provider_name} ({status})")
-
-    if not any_changes:
-        print("No changes to apply.")
+    run_sync(dry_run=args.dry_run)
 
 
 if __name__ == "__main__":

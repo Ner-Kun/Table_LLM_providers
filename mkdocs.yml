@@ -23,15 +23,6 @@ theme:
   - scheme: slate
     primary: blue grey
     accent: cyan
-    toggle:
-      icon: material/brightness-4
-      name: Switch to light mode
-  - scheme: default
-    primary: blue grey
-    accent: cyan
-    toggle:
-      icon: material/brightness-7
-      name: Switch to dark mode
   features:
   - navigation.footer
   - navigation.top
@@ -42,7 +33,6 @@ theme:
   - content.tooltips
   - toc.integrate
 
-
 plugins:
 - search
 
@@ -52,6 +42,7 @@ markdown_extensions:
 - admonition
 - pymdownx.details
 - pymdownx.superfences
+- pymdownx.tilde
 - pymdownx.emoji:
     emoji_index: !!python/name:material.extensions.emoji.twemoji ""
     emoji_generator: !!python/name:material.extensions.emoji.to_svg ""
@@ -67,3 +58,17 @@ extra:
 
 extra_css:
 - stylesheets/custom.css
+- stylesheets/icons.css
+- stylesheets/components/tables.css
+- stylesheets/components/admonitions.css
+- stylesheets/components/accessibility.css
+- stylesheets/components/code-blocks.css
+- stylesheets/components/navigation.css
+- stylesheets/components/additional.css
+- stylesheets/components/screenshot-gallery.css
+- stylesheets/components/glass-header.css
+- stylesheets/components/header-stats.css
+- stylesheets/modal/modal.css
+- stylesheets/providers/source-badge.css
+- stylesheets/providers/service-status.css
+- stylesheets/providers/provider-meta.css

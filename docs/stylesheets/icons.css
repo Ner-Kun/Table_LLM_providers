@@ -1,0 +1,25 @@
+/* SVG ICONS */
+
+.provider-meta__item svg,
+.requirement-icon svg,
+.link-icon svg {
+  width: 1.2em;
+  height: 1.2em;
+  display: block;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.link-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.link-icon svg {
+  width: 1.2em;
+  height: 1.2em;
+}

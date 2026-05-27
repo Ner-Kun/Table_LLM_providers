@@ -2,146 +2,14 @@ import re
 from html import escape
 from typing import Tuple
 
+from constants import (
+    PROVIDER_META_TOOLTIPS,
+    REQUIREMENT_TOOLTIPS,
+    SERVICE_STATUS_TOOLTIPS,
+    VALID_SVG_REQUIREMENTS,
+    WARNING_TOOLTIP,
+)
 from icons import SVG_ICONS
-
-FAMILY_TIER_PREFIXES = [
-    # Tier 1 — top priority
-    ("claude-", 1),
-    # Tier 2 — major commercial families
-    ("deepseek-reasoner", 2),
-    ("deepseek-chat", 2),
-    ("deepseek-coder", 2),
-    ("deepseek", 2),
-    ("mimo", 2),
-    ("glm", 2),
-    ("gpt", 2),
-    ("gemini", 2),
-    ("kimi", 2),
-    ("qwen3.6", 2),
-    ("qwen3.5", 2),
-    ("qwen-vl", 2),
-    ("qwen-coder", 2),
-    ("qwen", 2),
-    ("grok", 2),
-    ("minimax", 2),
-    ("o-pro", 2),
-    ("o-mini", 2),
-    ("o-", 2),
-    # Tier 3 — open / open weights + established commercial
-    ("llama", 3),
-    ("mistral", 3),
-    ("codestral", 3),
-    ("devstral", 3),
-    ("gemma-4", 3),
-    ("gemma-3", 3),
-    ("gemma", 3),
-    ("phi-4", 3),
-    ("phi", 3),
-    ("mixtral", 3),
-    ("magistral", 3),
-    ("ministral", 3),
-    ("hermes", 3),
-    ("command", 3),
-    ("nemotron", 3),
-    ("granite", 3),
-    ("nova", 3),
-    ("sonar", 3),
-    # Tier 4 — niche / specialized / embeddings / image / audio
-    ("yi", 4),
-    ("bge", 4),
-    ("flux", 4),
-    ("dall-e", 4),
-    ("whisper", 4),
-    ("text-embedding", 4),
-    ("titan-embed", 4),
-    ("cohere-embed", 4),
-    ("embed", 4),
-    ("voyage", 4),
-    ("elevenlabs", 4),
-    ("recraft", 4),
-    ("runway", 4),
-    ("sora", 4),
-    ("jamba", 4),
-    ("stable-diffusion", 4),
-    ("veo", 4),
-    ("ideogram", 4),
-    ("imagen", 4),
-    ("bart", 4),
-    ("distilbert", 4),
-    ("m2m", 4),
-    ("voxtral", 4),
-    ("melotts", 4),
-    ("mm-poly", 4),
-    ("smart-turn", 4),
-    ("liquid", 4),
-    ("mercury", 4),
-    ("osmosis", 4),
-    ("morph", 4),
-    ("longcat", 4),
-    ("lyria", 4),
-    ("unsloth", 4),
-    ("venice", 4),
-    ("v0", 4),
-    ("ring", 4),
-    ("ray", 4),
-    ("reka", 4),
-    ("rednote", 4),
-    ("sarvam", 4),
-    ("seed", 4),
-    ("solar", 4),
-    ("step", 4),
-    ("tako", 4),
-    ("tngtech", 4),
-    ("topazlabs", 4),
-    ("trinity", 4),
-    ("allenai", 4),
-    ("alpha", 4),
-    ("aura", 4),
-    ("baichuan", 4),
-    ("big-pickle", 4),
-    ("canopylabs", 4),
-    ("chutesai", 4),
-    ("cogito", 4),
-    ("ernie", 4),
-    ("hunyuan", 4),
-    ("hy", 4),
-    ("hy3-free", 4),
-    ("indictrans", 4),
-    ("jais", 4),
-    ("kat-coder", 4),
-    ("ling", 4),
-    ("ling-flash-free", 4),
-    ("lucid", 4),
-    ("mai", 4),
-    ("nano-banana", 4),
-    ("nousresearch", 4),
-    ("palmyra", 4),
-    ("pangu", 4),
-    ("pixtral", 4),
-    ("plamo", 4),
-    ("qvq", 4),
-    ("qwerky", 4),
-    ("rnj", 4),
-    ("allam", 4),
-    ("auto", 4),
-    ("groq", 4),
-    ("model-router", 4),
-]
-
-
-def get_tier_for_family(family: str) -> int:
-    """Return tier level for a known family; unknown families get tier 5."""
-    for prefix, tier in FAMILY_TIER_PREFIXES:
-        if family.startswith(prefix):
-            return tier
-    return 5
-
-
-PROVIDER_META_TOOLTIPS = {
-    "tested": "Tested by the author",
-    "untested": "Not tested yet",
-    "in-progress": "Currently being tested",
-}
 
 TESTING_STATUS_SVG_MAP = {
     "tested": "testing-tested",
@@ -154,24 +22,6 @@ TESTING_STATUS_CSS_MAP = {
     "untested": "provider-meta__testing--untested",
     "in-progress": "provider-meta__testing--in-progress",
 }
-
-REQUIREMENT_TOOLTIPS = {
-    "email": "Email required",
-    "registration": "Standard registration",
-    "phone": "Phone verification required",
-    "card": "Bank card required",
-    "special": "Special registration conditions",
-    "discord": "Discord account required",
-}
-
-SERVICE_STATUS_TOOLTIPS = {
-    "official": "Official service",
-    "official-partner": "Official Partner",
-    "development": "In Development",
-    "unofficial": "Unofficial",
-}
-
-VALID_SVG_REQUIREMENTS = {"email", "registration", "phone", "card", "special", "discord"}
 
 
 def get_plain_provider_name(provider_name: str) -> str:
@@ -211,9 +61,6 @@ def build_tooltip_svg(svg: str, tooltip: str, class_name: str) -> str:
     )
 
 
-WARNING_TOOLTIP = "Has concerns - see Warning page. Hold to navigate"
-
-
 def render_warning_badge(warning_id: str) -> str:
     """Render a clickable warning badge linking to caution page section."""
     svg = SVG_ICONS.get("warning-caution", "")
@@ -240,16 +87,22 @@ def render_link_icon() -> str:
     return f'<span class="link-icon">{SVG_ICONS["globe"]}</span>'
 
 
-def render_provider_meta_badges(service_status: str, testing_cell: str, warning_id: str = "") -> str:
-    """Render provider service status and testing badges."""
+def render_provider_meta_badges(service_status: str | list[str], testing_cell: str, warning_id: str = "") -> str:
+    """Render provider service status and testing badges.
+    
+    service_status can be a single string or a list of strings.
+    When a list, all statuses are rendered as badges.
+    """
     badges = []
 
     if warning_id:
         badges.append(render_warning_badge(warning_id))
-    status_badge = render_service_status_badge(service_status)
-    if status_badge:
-        badges.append(status_badge)
-
+    if isinstance(service_status, str):
+        service_status = [service_status]
+    for status in service_status:
+        status_badge = render_service_status_badge(status)
+        if status_badge:
+            badges.append(status_badge)
     testing_statuses = ("tested", "untested", "in-progress")
     status = next((s for s in testing_statuses if s in testing_cell), "")
     if status:

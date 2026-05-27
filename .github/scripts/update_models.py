@@ -1,14 +1,26 @@
+import asyncio
 import io
 import json
 import os
 import re
 import sys
-import time
 
-from provider_meta import get_display_name, get_plain_provider_name, get_tier_for_family
+from scrapers import SCRAPERS
+
+from constants import (
+    API_KEYS_CONFIG,
+    CACHE_PATH,
+    DOCS_DIR,
+    FALLBACK_MODELS_PATHS,
+    PROVIDERS_JSON,
+    REPO_ROOT,
+    SETTINGS,
+    get_tier_for_family,
+)
+from provider_meta import get_plain_provider_name
 from models_dev_client import (
     build_flat_index,
-    get_model_metadata,
+    get_model_entry,
     get_models_dev_data,
 )
 
@@ -19,50 +31,41 @@ if isinstance(stdout, io.TextIOWrapper) and hasattr(stdout, "reconfigure"):
 elif sys.platform == "win32" and hasattr(stdout, "buffer"):
     sys.stdout = io.TextIOWrapper(stdout.buffer, encoding="utf-8")
 
-import urllib.error  # noqa: E402
+import httpx  # noqa: E402
 import urllib.parse  # noqa: E402
-import urllib.request  # noqa: E402
 from datetime import datetime, timezone  # noqa: E402
 from pathlib import Path  # noqa: E402
-from typing import Any, Dict, List, Optional, Tuple  # noqa: E402
+from rich.console import Console  # noqa: E402
+from typing import Any, Dict, List, Mapping, Optional, Tuple  # noqa: E402
 
-SCRIPT_DIR = Path(__file__).resolve().parent
-REPO_ROOT = SCRIPT_DIR.parent.parent
-DOCS_DIR = REPO_ROOT / "docs"
-CACHE_PATH = DOCS_DIR / "models_data.json"
-PROVIDERS_JSON = SCRIPT_DIR / "providers.json"
+console = Console()
 
-FAMILY_KEY_OVERRIDES = {
-    "gpt-oss-120b": "gpt-oss",
-    "gpt-oss-20b": "gpt-oss",
+DEFAULT_HEADERS = {
+    "Accept": "application/json",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
 }
+PROVIDER_HEADING_RE = re.compile(r"^###\s+(.+)$", re.MULTILINE)
+BASE_URL_RE = re.compile(r"\|\s*`(https?://[^`]+)`\s*\|")
+MANUAL_MODEL_RE = re.compile(r"•\s+\S+")
+META_FILES = ("free.md", "freemium.md", "paid.md")
 
-# API keys configuration: provider name -> auth settings
-# header: HTTP header name (default: "Authorization")
-# prefix: prefix before the key value (default: "Bearer", empty string = no prefix)
-API_KEYS_CONFIG = {
-    "Agent Router": {
-        "env": "AGENT_ROUTER_API_KEY",
-    },
-    "CrowAI": {
-        "env": "CROWAI_API_KEY",
-    },
-    "Google AI Studio": {
-        "env": "GOOGLE_AI_STUDIO_API_KEY",
-    },
-    "Mistral": {
-        "env": "MISTRAL_API_KEY",
-    },
-    "Cerebras": {
-        "env": "CEREBRAS_API_KEY",
-    },
-    "Groq": {
-        "env": "GROQ_API_KEY",
-    },
-    "SwiftRouter": {
-        "env": "SWIFTROUTER_API_KEY",
-    },
-}
+
+_PROVIDER_SEMAPHORE = asyncio.Semaphore(SETTINGS.get("max_concurrent", 10))
+
+
+def load_dotenv(path: Path) -> None:
+    """Load KEY=VALUE pairs from a .env file into os.environ."""
+    if not path.exists():
+        return
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, val = line.partition("=")
+        key = key.strip()
+        val = val.strip().strip('"\'')
+        if key:
+            os.environ.setdefault(key, val)
 
 
 def load_current_tasks() -> List[Dict[str, Any]]:
@@ -80,12 +83,30 @@ def load_current_tasks() -> List[Dict[str, Any]]:
     return []
 
 
-def get_base_url_for_provider(provider_name: str, section: str) -> Optional[str]:
+def load_provider_base_urls() -> Dict[str, str]:
+    """Load provider name -> base_url map from providers.json once per run."""
+    base_urls: Dict[str, str] = {}
+    for task in load_current_tasks():
+        if not isinstance(task, dict):
+            continue
+        name = task.get("name")
+        base_url = task.get("base_url")
+        if isinstance(name, str) and isinstance(base_url, str) and base_url.strip():
+            base_urls[get_plain_provider_name(name)] = base_url.rstrip("/")
+    return base_urls
+
+
+def get_base_url_for_provider(
+    provider_name: str,
+    section: str,
+    provider_base_urls: Optional[Mapping[str, str]] = None,
+) -> Optional[str]:
     """Try providers.json first, fall back to parsing .md."""
-    tasks = load_current_tasks()
-    for task in tasks:
-        if task.get("name") == provider_name and task.get("base_url"):
-            return task["base_url"].rstrip("/")
+    if provider_base_urls:
+        plain_name = get_plain_provider_name(provider_name)
+        base_url = provider_base_urls.get(plain_name)
+        if base_url:
+            return base_url
     return extract_base_url(section)
 
 
@@ -115,77 +136,6 @@ def get_auth_headers(provider_name: str) -> Dict[str, str]:
     value = f"{prefix} {api_key}".strip()
     return {header: value}
 
-# priority config 
-
-PRIORITY = {
-    "tier1": {
-        "keywords": ["claude", "opus", "sonnet", "haiku"],
-        "weight": 100,
-    },
-    "tier2": {
-        "keywords": [
-            "deepseek-ai",
-            "deepseek",
-            "gpt",
-            "gemini",
-            "glm",
-            "mimo",
-            "kimi",
-            "qwen",
-            "minimax",
-            "grok",
-        ],
-        "weight": 80,
-    },
-    "tier3": {
-        "keywords": [
-            "gemma",
-            "llama",
-            "mistral",
-            "codestral",
-            "devstral",
-        ],
-        "weight": 60,
-    },
-    "tier4": {
-        "keywords": [
-            "command",
-            "jamba",
-            "mixtral",
-            "phi",
-            "hermes",
-        ],
-        "weight": 40,
-    },
-    "tier5": {
-        "keywords": [
-            "gpt-oss-120b",
-            "gpt-oss-20b",
-            "gpt-oss",
-            "gpt-4o",
-            "gpt-4",
-            "embed",
-            "instruct",
-            "mini",
-            "image",
-            "nemotron",
-            "alpaca",
-            "openbuddy",
-            "codegemma",
-            "codellama",
-        ],
-        
-        "weight": 10,
-    },
-}
-
-SETTINGS = {
-    "timeout_seconds": 15,
-    "marker_start": "<!-- MODELS_START -->",
-    "marker_end": "<!-- MODELS_END -->",
-    "request_delay": 1,
-    "skip_files": ["changelog.md", "dangerous.md", "index.md", "index_full.md"],
-}
 
 # helpers
 def load_cache() -> dict:
@@ -200,7 +150,7 @@ def save_cache(data: dict):
     with open(CACHE_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     models_count = len(data.get("_models", {}))
-    print(f"[OK] Cache saved ({len(data)} providers, {models_count} unique models)")
+    console.print(f"[bold green]OK[/] Cache saved ({len(data)} providers, {models_count} unique models)")
 
 
 def read_markdown(path: Path) -> str:
@@ -217,8 +167,7 @@ def find_provider_sections(content: str) -> List[Tuple[str, str]]:
     Split markdown into provider sections.
     Returns list of (provider_name, section_content).
     """
-    pattern = r"^###\s+(.+)$"
-    parts = re.split(pattern, content, flags=re.MULTILINE)
+    parts = PROVIDER_HEADING_RE.split(content)
 
     sections = []
     for i in range(1, len(parts), 2):
@@ -234,7 +183,7 @@ def extract_base_url(section: str) -> Optional[str]:
     """
     Find Base URL in a provider section.
     """
-    matches = re.findall(r"\|\s*`(https?://[^`]+)`\s*\|", section)
+    matches = BASE_URL_RE.findall(section)
     if matches:
         return matches[-1].rstrip("/")
     return None
@@ -245,10 +194,6 @@ def has_markers(section: str) -> bool:
     return (
         SETTINGS["marker_start"] in section and SETTINGS["marker_end"] in section
     )
-
-
-# API URLs
-FALLBACK_MODELS_PATHS = ["/v1beta/models", "/api/models", "/models"]
 
 
 def build_models_urls(base_url: str) -> List[str]:
@@ -278,117 +223,97 @@ def build_models_urls(base_url: str) -> List[str]:
     return urls
 
 
+def parse_models_payload(data: Any) -> Optional[List[Dict[str, Any]]]:
+    """Extract a model list from common OpenAI-compatible API response shapes."""
+    if isinstance(data, dict):
+        if isinstance(data.get("data"), list):
+            data = data["data"]
+        elif isinstance(data.get("models"), list):
+            data = data["models"]
+        else:
+            return None
+    if not isinstance(data, list):
+        return None
+    return [item for item in data if isinstance(item, dict)]
+
+
 # fetch models
-def fetch_models(
+async def fetch_models(
     api_urls: List[str],
-    headers: Optional[Dict[str, str]] = None,
+    headers: Optional[Mapping[str, str]] = None,
     timeout: int = 15,
     max_retries: int = 2,
+    provider_label: str = "",
+    client: Optional[httpx.AsyncClient] = None,
 ) -> Optional[List[Dict[str, Any]]]:
     """
     Fetch model list from model endpoint URLs, trying each in sequence.
     Falls back to alternative paths if the primary URL fails.
     Returns list of model dicts, or None if all URLs fail.
     """
-    for idx, api_url in enumerate(api_urls):
-        if idx > 0:
-            print(f"  Fallback {idx}: trying {api_url}")
+    tag = f"[{provider_label}] " if provider_label else ""
+    req_headers = dict(DEFAULT_HEADERS)
+    if headers:
+        req_headers.update(headers)
 
-        retries = max_retries if idx == 0 else 0
-        for attempt in range(retries + 1):
-            try:
-                req = urllib.request.Request(api_url, method="GET")
-                if headers:
-                    for k, v in headers.items():
-                        req.add_header(k, v)
-                req.add_header("Accept", "application/json")
+    close_client = client is None
+    if client is None:
+        client = httpx.AsyncClient(timeout=timeout)
 
-                with urllib.request.urlopen(req, timeout=timeout) as resp:
-                    data = json.loads(resp.read().decode())
-                    if isinstance(data, list):
-                        return data
-                    if isinstance(data, dict) and "data" in data:
-                        return data["data"]
-                    if isinstance(data, dict) and "models" in data:
-                        return data["models"]
+    try:
+        for idx, api_url in enumerate(api_urls):
+            if idx > 0:
+                console.print(f"{tag}[bold]Fallback {idx}:[/] trying {api_url}")
+
+            retries = max_retries if idx == 0 else 0
+            for attempt in range(retries + 1):
+                try:
+                    resp = await client.get(api_url, headers=req_headers, timeout=timeout)
+                    resp.raise_for_status()
+                    models = parse_models_payload(resp.json())
+                    if models is not None:
+                        return models
                     if idx == 0:
-                        print("Unexpected JSON format, trying fallbacks...")
+                        console.print(f"{tag}[bold]Unexpected JSON format, trying fallbacks...[/]")
                     else:
-                        print(f"Unexpected JSON format from {api_url}")
+                        console.print(f"{tag}[bold]Unexpected JSON format from[/] {api_url}")
                     break
-            except (
-                urllib.error.URLError,
-                urllib.error.HTTPError,
-                json.JSONDecodeError,
-                OSError,
-            ) as e:
-                print(f"[WARN] {'Attempt ' + str(attempt + 1) + '/' + str(retries + 1) + ' for ' if retries > 0 else ''}{api_url} failed: {e}")
-                if attempt < retries:
-                    wait = 2 ** attempt
-                    print(f"  Retrying in {wait}s...")
-                    time.sleep(wait)
-                else:
-                    print(f"[ERR] Failed to fetch {api_url}")
-    return None
-
-
-def get_model_tier(model_id: str, display_name: str) -> Tuple[int, str]:
-    """
-    Determine tier and keyword for a model.
-
-    Checks both full ID and display name (without provider prefix).
-    Returns (tier_level, keyword) where:
-    - lower tier_level = higher priority (tier 1 is best)
-    - keyword is the matching keyword from PRIORITY
-
-    Tier 5 acts as a low-priority exclusion/fallback tier: if a model matches
-    any tier5 keyword, it is classified as tier5 even if it also matches a
-    higher tier keyword such as "gpt" or "deepseek".
-    """
-    search_targets = [model_id.lower(), display_name.lower()]
-
-    for kw in PRIORITY["tier5"]["keywords"]:
-        for target in search_targets:
-            if kw in target:
-                family_key = FAMILY_KEY_OVERRIDES.get(kw, kw)
-                return (5, family_key or kw)
-
-    for tier_name, tier_config in PRIORITY.items():
-        if tier_name == "tier5":
-            continue
-        for kw in tier_config["keywords"]:
-            for target in search_targets:
-                if kw in target:
-                    family_key = FAMILY_KEY_OVERRIDES.get(kw, kw)
-                    return (int(tier_name.replace("tier", "")), family_key or kw)
-
-    return (99, "other")
+                except (httpx.RequestError, httpx.HTTPStatusError, json.JSONDecodeError, ValueError) as e:
+                    prefix = f"Attempt {attempt + 1}/{retries + 1} for " if retries > 0 else ""
+                    console.print(f"{tag}[bold yellow]WARN[/] {prefix}{api_url} failed: {e}")
+                    if attempt < retries:
+                        wait = 2 ** attempt
+                        console.print(f"{tag}  Retrying in {wait}s...")
+                        await asyncio.sleep(wait)
+                    else:
+                        console.print(f"{tag}[bold red]ERR[/] Failed to fetch {api_url}")
+        return None
+    finally:
+        if close_client:
+            await client.aclose()
 
 
 def resolve_model_family(
     model_id: str,
-    display_name: str,
     flat_index: Optional[Dict[str, Dict[str, Any]]],
 ) -> Tuple[int, str, Optional[Dict[str, Any]]]:
-    """
-    Determine model family and return metadata.
-
-    Priority:
-        1. Flat index from models.dev (if model found)
-        2. Current PRIORITY heuristic (fallback)
+    """Determine model family from models.dev flat index.
 
     Returns:
         (tier_level, family_key, metadata_or_None)
+
+    If flat_index is unavailable or model is unknown, returns (5, "other", None).
     """
-    if flat_index and model_id in flat_index:
-        entry = flat_index[model_id]
+    if not flat_index:
+        return (5, "other", None)
+
+    entry = get_model_entry(flat_index, model_id)
+    if entry:
         family = entry.get("family")
         if family:
             tier = get_tier_for_family(family)
-            metadata = get_model_metadata(flat_index, model_id)
-            return (tier, family, metadata)
-    tier, keyword = get_model_tier(model_id, display_name)
-    return (tier, keyword, None)
+            return (tier, family, entry)
+    return (5, "other", None)
 
 
 def build_family_map(
@@ -399,12 +324,9 @@ def build_family_map(
     families: Dict[str, List[str]] = {}
 
     for model_id in model_ids:
-        display = get_display_name(model_id)
-        tier, family_key, _ = resolve_model_family(model_id, display, flat_index)
+        tier, family_key, _ = resolve_model_family(model_id, flat_index)
         family_key = family_key if family_key and tier < 99 else "other"
-        if family_key not in families:
-            families[family_key] = []
-        families[family_key].append(model_id)
+        families.setdefault(family_key, []).append(model_id)
 
     return families
 
@@ -444,17 +366,16 @@ def inject_models_into_section(
     end_idx = section.find(end_marker)
 
     if start_idx == -1 or end_idx == -1:
-        print(f"[DEBUG] Markers not found: start={start_idx}, end={end_idx}")
+        console.print(f"[bold]DEBUG[/] Markers not found: start={start_idx}, end={end_idx}")
         return section
 
     if end_idx <= start_idx:
-        print(f"[DEBUG] Invalid marker order: start={start_idx}, end={end_idx}")
+        console.print(f"[bold]DEBUG[/] Invalid marker order: start={start_idx}, end={end_idx}")
         return section
     before = section[: start_idx + len(start_marker)]
     after = section[end_idx:]
     new_section = f"{before}{models_text}{after}"
 
-    print(f"[DEBUG] Replaced content between markers ({len(section)} -> {len(new_section)} chars)")
     return new_section
 
 
@@ -466,18 +387,20 @@ def _build_families_structure(
 ) -> Dict[str, Dict[str, Any]]:
     """Build families dict with deduplicated model IDs.
 
-    Model metadata is collected into a shared global_models dict
+    Model metadata is collected into the provided global_models dict
     instead of being duplicated per-provider.
     """
     family_map = build_family_map(all_ids, flat_index)
 
     families: Dict[str, Dict[str, Any]] = {}
     for fam_key, model_ids in family_map.items():
-        for mid in model_ids:
-            if flat_index and mid not in global_models:
-                meta = get_model_metadata(flat_index, mid)
+        if flat_index:
+            for mid in model_ids:
+                if mid in global_models:
+                    continue
+                meta = get_model_entry(flat_index, mid)
                 if meta:
-                    global_models[mid] = meta
+                    global_models[mid] = meta.copy()
         families[fam_key] = {"models": model_ids}
 
     return families
@@ -487,207 +410,323 @@ def count_manual_models(section: str) -> int:
     """Count manually listed models in section (before MODELS_START)."""
     idx = section.find(SETTINGS["marker_start"])
     before = section[:idx] if idx != -1 else section
-    return len(re.findall(r'•\s+\S+', before))
+    return len(MANUAL_MODEL_RE.findall(before))
+
+
+def build_provider_headers(provider_name: str) -> Tuple[Dict[str, str], Dict[str, str]]:
+    """Build request headers and return auth headers separately for logging."""
+    auth = get_auth_headers(provider_name)
+    headers = dict(DEFAULT_HEADERS)
+    headers.update(auth)
+    return headers, auth
+
+
+def extract_model_ids(models: List[Dict[str, Any]]) -> List[str]:
+    """Return stable, deduplicated model IDs from API model dicts."""
+    ids = (
+        model_id
+        for model in models
+        if isinstance(model_id := model.get("id"), str) and model_id
+    )
+    return list(dict.fromkeys(ids))
+
+
+def build_models_dev_pricing(
+    all_ids: List[str],
+    global_models: Mapping[str, Dict[str, Any]],
+) -> Dict[str, Any]:
+    """Build fallback pricing from models.dev metadata."""
+    pricing: Dict[str, Any] = {"badge": "Reference", "models": {}}
+    pricing_models = pricing["models"]
+
+    for mid in all_ids:
+        meta = global_models.get(mid)
+        if not meta:
+            continue
+        cost = meta.get("cost")
+        if not isinstance(cost, dict) or not cost:
+            continue
+        limit = meta.get("limit")
+        pricing_models[mid] = {
+            "input": cost.get("input"),
+            "output": cost.get("output"),
+            "cache": cost.get("cache_read") or cost.get("cache_write"),
+            "source_provider": meta.get("source_provider"),
+            "context": limit.get("context") if isinstance(limit, dict) else None,
+        }
+
+    return pricing
+
+
+def merge_pricing(
+    provider_cache: Dict[str, Any],
+    scraper_pricing: Optional[Dict[str, Any]],
+    models_pricing: Dict[str, Any],
+) -> None:
+    """Attach scraper pricing and models.dev fallback pricing to provider cache."""
+    fallback_models = models_pricing.get("models", {})
+    if scraper_pricing:
+        scraper_models = scraper_pricing.setdefault("models", {})
+        for mid, pricing in fallback_models.items():
+            scraper_models.setdefault(mid, pricing)
+        provider_cache["pricing"] = scraper_pricing
+        provider_cache["pricing_fallback"] = models_pricing
+        if scraper_pricing.get("metadata"):
+            provider_cache["metadata"] = scraper_pricing["metadata"]
+    elif fallback_models:
+        provider_cache["pricing"] = models_pricing
 
 
 def _handle_api_failure(
-    plain_name: str, cache: dict, section: str, provider_name: str
+    plain_name: str, cache: dict, section: str
 ) -> Tuple[bool, Optional[str], str]:
     """Try cache fallback on API failure, then check for manual models."""
     cached = cache.get(plain_name)
     if cached and cached.get("models_text"):
-        print(f"[WARN] Using cached data from {cached.get('timestamp', 'unknown')}")
+        console.print(f"[bold yellow]WARN[/] [{plain_name}] Using cached data from {cached.get('timestamp', 'unknown')}")
         section = inject_models_into_section(
             section, cached["models_text"], SETTINGS["marker_start"], SETTINGS["marker_end"]
         )
-        print("[OK] Updated with cached models")
+        console.print(f"[bold green]OK[/] [{plain_name}] Updated with cached models")
         return True, None, section
 
     manual_count = count_manual_models(section)
     if manual_count > 0:
-        print(f"[INFO] No API /v1/models endpoint for '{provider_name}', "
-              f"preserving {manual_count} manually added model(s)")
+        console.print(f"[bold]INFO[/] [{plain_name}] No API /v1/models endpoint, "
+            f"preserving {manual_count} manually added model(s)")
         return True, None, section
 
-    print(f"[WARN] API unavailable for '{provider_name}' "
-          f"and no manually added models found. Section unchanged.")
+    console.print(f"[bold yellow]WARN[/] [{plain_name}] API unavailable "
+        f"and no manually added models found. Section unchanged.")
     return True, None, section
 
 
-def process_provider(
+async def process_provider_async(
     provider_name: str,
     section: str,
     cache: dict,
     flat_index: Optional[Dict[str, Dict[str, Any]]] = None,
     global_models: Optional[Dict[str, Dict[str, Any]]] = None,
+    provider_base_urls: Optional[Mapping[str, str]] = None,
+    client: Optional[httpx.AsyncClient] = None,
 ) -> Tuple[bool, Optional[str], str]:
     """
     Process one provider section.
 
     Returns (success, error_message, updated_section).
     """
-    print(f"\n{'='*50}")
-    print(f"Processing: {provider_name}")
-    print(f"{'='*50}")
-
+    plain_name = get_plain_provider_name(provider_name)
+    console.print(f"\n[bold]Processing:[/] {plain_name}")
     if not has_markers(section):
-        print("[SKIP] No markers found, skipping")
+        console.print("[bold blue]SKIP[/] No markers found, skipping")
         return True, None, section
 
-    base_url = get_base_url_for_provider(provider_name, section)
+    base_url = get_base_url_for_provider(provider_name, section, provider_base_urls)
     if not base_url:
         msg = f"Could not find Base URL for '{provider_name}'"
-        print(f"[ERR] {msg}")
+        console.print(f"[bold red]ERR[/] {msg}")
         return False, msg, section
 
-    print(f"Base URL: {base_url}")
+    console.print(f"Base URL: {base_url}")
     api_urls = build_models_urls(base_url)
-    print(f"API URL:  {api_urls[0]}")
+    console.print(f"API URL:  {api_urls[0]}")
     if len(api_urls) > 1:
-        print(f"Fallbacks: {', '.join(api_urls[1:])}")
+        console.print(f"Fallbacks: {', '.join(api_urls[1:])}")
 
-    headers = { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36" }
-    auth = get_auth_headers(provider_name)
-    headers.update(auth)
+    headers, auth = build_provider_headers(provider_name)
     if auth:
-        print(f"[AUTH] Using API key ({list(auth.keys())[0]})")
+        console.print(f"[bold yellow]AUTH[/] Using API key ({list(auth.keys())[0]})")
     else:
-        print("[AUTH] No API key, requesting without auth")
+        console.print("[bold]AUTH[/] No API key, requesting without auth")
 
-    models = fetch_models(api_urls, headers=headers, timeout=SETTINGS["timeout_seconds"])
-    plain_name = get_plain_provider_name(provider_name)
+    async with _PROVIDER_SEMAPHORE:
+        models = await fetch_models(
+            api_urls,
+            headers=headers,
+            timeout=SETTINGS["timeout_seconds"],
+            provider_label=plain_name,
+            client=client,
+        )
 
     if models is None:
-        return _handle_api_failure(plain_name, cache, section, provider_name)
+        return _handle_api_failure(plain_name, cache, section)
 
-    print(f"Fetched {len(models)} models total")
+    console.print(f"[bold]{plain_name}:[/] Fetched {len(models)} models total")
 
-    if SETTINGS.get("request_delay", 0) > 0:
-        time.sleep(SETTINGS["request_delay"])
-
-    all_ids = list(dict.fromkeys(m.get("id", "") for m in models if m.get("id")))
-    families = _build_families_structure(all_ids, flat_index, global_models if global_models is not None else {})
-    print(f"Built family map: {len(families)} families")
+    all_ids = extract_model_ids(models)
+    global_models = global_models if global_models is not None else {}
+    families = _build_families_structure(all_ids, flat_index, global_models)
+    console.print(f"[bold]{plain_name}:[/] Built family map: {len(families)} families")
 
     models_text = format_models_output(len(models), plain_name)
-    print(f"Formatted output: {models_text}")
 
-    cache[plain_name] = {
+    provider_cache = {
         "all": all_ids,
         "families": families,
         "models_text": models_text,
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "total_count": len(models),
     }
+    cache[plain_name] = provider_cache
+
+    scraper_pricing = None
+    if plain_name in SCRAPERS:
+        console.print(f"[bold]{plain_name}:[/] Fetching pricing...")
+        async with _PROVIDER_SEMAPHORE:
+            scraper_pricing = await SCRAPERS[plain_name].fetch_pricing()
+        if scraper_pricing:
+            console.print(f"[bold green]OK[/] [{plain_name}] Scraper returned {len(scraper_pricing['models'])} prices")
+        else:
+            console.print(f"[bold yellow]WARN[/] [{plain_name}] Scraper failed")
+
+    models_pricing = build_models_dev_pricing(all_ids, global_models)
+    merge_pricing(provider_cache, scraper_pricing, models_pricing)
+    if not scraper_pricing and models_pricing.get("models"):
+        console.print(f"[bold green]OK[/] [{plain_name}] Using models.dev pricing ({len(models_pricing['models'])} models)")
 
     section = inject_models_into_section(
         section, models_text, SETTINGS["marker_start"], SETTINGS["marker_end"]
     )
-    print("[OK] Section updated")
+    console.print(f"[bold green]OK[/] [{plain_name}] Section updated")
 
     return True, None, section
 
 
 # main
-def process_file(
+async def process_file_async(
     file_path: Path, cache: dict, flat_index: Optional[Dict[str, Dict[str, Any]]] = None,
     global_models: Optional[Dict[str, Dict[str, Any]]] = None,
+    provider_base_urls: Optional[Mapping[str, str]] = None,
+    client: Optional[httpx.AsyncClient] = None,
 ) -> Tuple[bool, int, int]:
     """
     Process one markdown file.
+    All providers in the file are fetched concurrently.
 
     Returns (file_changed, success_count, fail_count).
     """
-    print(f"\n{'#'*60}")
-    print(f"# File: {file_path.name}")
-    print(f"{'#'*60}")
-
+    console.print(f"\n[bold]File:[/] {file_path.name}")
     content = read_markdown(file_path)
     sections = find_provider_sections(content)
 
     if not sections:
-        print("  No provider sections found")
+        console.print("  No provider sections found")
         return False, 0, 0
+
+    header_match = PROVIDER_HEADING_RE.search(content)
+    if header_match:
+        prefix = content[: header_match.start()]
+    else:
+        prefix = content
+
+    tasks = [
+        process_provider_async(
+            name,
+            section,
+            cache,
+            flat_index,
+            global_models,
+            provider_base_urls,
+            client,
+        )
+        for name, section in sections
+    ]
+    results = await asyncio.gather(*tasks, return_exceptions=True)
 
     success_count = 0
     fail_count = 0
     changed = False
     new_sections = []
 
-    header_match = re.search(r"^###\s+(.+)$", content, re.MULTILINE)
-    if header_match:
-        prefix = content[: header_match.start()]
-    else:
-        prefix = content
+    for (provider_name, section), result in zip(sections, results):
+        if isinstance(result, BaseException):
+            console.print(f"[bold red]ERR[/] {get_plain_provider_name(provider_name)} raised: {result}")
+            fail_count += 1
+            new_sections.append((provider_name, section))
+            continue
 
-    for provider_name, section in sections:
-        original_section = section
-        ok, _, updated_section = process_provider(
-            provider_name, section, cache, flat_index, global_models
-        )
+        ok, _, updated_section = result
         if ok:
             success_count += 1
-            if updated_section != original_section:
+            if updated_section != section:
                 changed = True
         else:
             fail_count += 1
         new_sections.append((provider_name, updated_section))
 
     if changed:
-        result = prefix
-        for name, body in new_sections: 
-            result += f"### {name}{body}"
-        write_markdown(file_path, result)
-        print(f"\n[OK] File saved: {file_path}")
+        result_content = prefix + "".join(
+            f"### {name}{body}"
+            for name, body in new_sections
+        )
+        write_markdown(file_path, result_content)
+        console.print(f"\n[bold green]OK[/] File saved: {file_path}")
 
     return changed, success_count, fail_count
 
 
-def main():
-    print("=" * 60)
-    print("LLM Provider Models Auto-Updater")
-    print("=" * 60)
-    print(f"Started: {datetime.now(timezone.utc).isoformat()}")
+async def main_async() -> None:
+    console.print("[bold]LLM Provider Models Auto-Updater[/]")
+    console.print(f"Started: {datetime.now(timezone.utc).isoformat()}")
+
+    env_file = REPO_ROOT / ".env"
+    if env_file.exists():
+        load_dotenv(env_file)
+        console.print(f"[bold green]OK[/] Loaded env variables from {env_file}")
+    else:
+        console.print(f"[bold]INFO[/] No .env file found at {env_file}")
 
     cache = load_cache()
-    print(f"Cache loaded: {len(cache)} entries")
+    console.print(f"Cache loaded: {len(cache)} entries")
 
-    print("  Loading models.dev data...")
-    models_dev_data = get_models_dev_data()
-    flat_index = build_flat_index(models_dev_data) if models_dev_data else None
-    if flat_index:
-        print(f"[OK] models.dev flat index: {len(flat_index)} models")
-    else:
-        print("[WARN] models.dev unavailable, using PRIORITY fallback only")
+    console.print("  Loading models.dev data...")
+    async with httpx.AsyncClient(timeout=SETTINGS["timeout_seconds"]) as client:
+        models_dev_data = await get_models_dev_data(client)
+        flat_index = build_flat_index(models_dev_data) if models_dev_data else None
+        if flat_index:
+            console.print(f"[bold green]OK[/] models.dev flat index: {len(flat_index)} models")
+        else:
+            console.print("[bold yellow]WARN[/] models.dev unavailable, all models will be grouped as 'other'")
 
-    skip_files = set(SETTINGS.get("skip_files", []))
-    md_files = [
-        p for p in sorted(DOCS_DIR.glob("*.md"))
-        if p.name not in skip_files
-    ]
-    print(f"Found {len(md_files)} markdown files (skipped: {len(skip_files)})")
+        skip_files = set(SETTINGS.get("skip_files", []))
+        md_files = [
+            p for p in sorted(DOCS_DIR.glob("*.md"))
+            if p.name not in skip_files
+        ]
+        console.print(f"Found {len(md_files)} markdown files (skipped: {len(skip_files)})")
 
-    global_models: Dict[str, Dict[str, Any]] = {}
+        provider_base_urls = load_provider_base_urls()
+        if provider_base_urls:
+            console.print(f"Provider config loaded: {len(provider_base_urls)} base URLs")
 
-    total_success = 0
-    total_fail = 0
-    total_changed = 0
+        global_models: Dict[str, Dict[str, Any]] = {}
 
-    for file_path in md_files:
-        changed, ok, fail = process_file(file_path, cache, flat_index, global_models)
-        if changed:
-            total_changed += 1
-        total_success += ok
-        total_fail += fail
-        if SETTINGS.get("request_delay", 0) > 0:
-            time.sleep(SETTINGS["request_delay"])
-    meta_files = ["free.md", "freemium.md", "paid.md"]
+        total_success = 0
+        total_fail = 0
+        total_changed = 0
+
+        for file_path in md_files:
+            changed, ok, fail = await process_file_async(
+                file_path,
+                cache,
+                flat_index,
+                global_models,
+                provider_base_urls,
+                client,
+            )
+            if changed:
+                total_changed += 1
+            total_success += ok
+            total_fail += fail
+            if SETTINGS.get("request_delay", 0) > 0:
+                await asyncio.sleep(SETTINGS["request_delay"])
+
     total_providers = 0
-    for fname in meta_files:
+    for fname in META_FILES:
         path = DOCS_DIR / fname
         if path.exists():
             content = path.read_text(encoding="utf-8")
-            total_providers += len(re.findall(r"^###\s+", content, re.MULTILINE))
+            total_providers += len(PROVIDER_HEADING_RE.findall(content))
     cache["_models"] = global_models
     cache["_providers_count"] = total_providers
     timestamps = []
@@ -700,13 +739,16 @@ def main():
         cache["_models_updated"] = dt.strftime("%Y-%m-%d %H:%M UTC")
     save_cache(cache)
 
-    print(f"\n{'='*60}")
-    print(f"Results: {total_success} OK, {total_fail} failed")
-    print(f"Files changed: {total_changed}/{len(md_files)}")
-    print(f"Finished: {datetime.now(timezone.utc).isoformat()}")
-    print(f"{'='*60}")
+    console.print(f"\nResults: [bold green]{total_success} OK[/], [bold red]{total_fail} failed[/]")
+    console.print(f"Files changed: {total_changed}/{len(md_files)}")
+    console.print(f"Finished: {datetime.now(timezone.utc).isoformat()}")
     if total_fail > 0:
         sys.exit(1)
+
+
+def main():
+    """Sync entry point — wraps the async main."""
+    asyncio.run(main_async())
 
 
 if __name__ == "__main__":
