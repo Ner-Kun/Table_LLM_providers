@@ -1,1 +1,76 @@
-[]
+[
+    {
+        "name": "FreeModel",
+        "category": "free",
+        "service_status": "unknown",
+        "testing_status": "tested",
+        "requirements": ["registration", "phone"],
+        "requirements_notes": "If you are not from China (or do not have a Chinese number), you will need to complete verification via Telegram.",
+        "limits": "• Monthly spending cap — $250–300\n• Daily limit - 5 hours of active usage (max $10)\n• Weekly limit - $66",
+        "manual_models": ["gpt-5.5", "opus-4.7", "sonnet-4.6", "haiku-4-5"],
+        "auto_update_models": true,
+        "registration_url": "https://freemodel.dev/invite/FRE-f4de255b",
+        "api_key_url": "https://freemodel.dev/dashboard/keys",
+        "base_url": "https://api.freemodel.dev",
+        "features": [
+            "[green]+$10 bonus[/green] for registration via referral link - the bonus can be used [bold]on top of[/bold] the regular limits."
+        ],
+        "disadvantages": [
+            "Service status regarding API endpoints is [yellow]unclear[/yellow] — proceed with caution.",
+            "Not recommended for handling [red]confidential or sensitive data[/red].",
+            "It is recommended to use a [yellow]fake Telegram account[/yellow] for verification to protect your privacy."
+        ]
+    },
+    {
+        "name": "NanoGPT",
+        "service_status": ["aggregator", "official-partner"],
+        "requirements": ["registration"]
+    },
+    {
+        "name": "OpenRouter",
+        "service_status": ["aggregator", "official-partner"],
+        "requirements": ["registration"]
+    },
+    {
+        "name": "NavyAI",
+        "service_status": ["aggregator"],
+        "requirements": ["discord"]
+    },
+    {
+        "name": "NVIDIA NIM",
+        "service_status": ["official", "aggregator"],
+        "requirements": ["registration", "phone", "special"],
+        "requirements_notes": "Requires an Nvidia account (no graphics card needed)."
+    },
+    {
+        "name": "LLM7",
+        "service_status": ["aggregator"],
+        "requirements": ["registration"]
+    },
+    {
+        "name": "Airforce",
+        "service_status": ["aggregator", "official-partner"],
+        "requirements": ["discord", "special"],
+        "requirements_notes": "To use the free plan, you must verify your account. Use Discord or Google, or buy credits."
+    },
+    {
+        "name": "Logfare",
+        "service_status": ["experimental"],
+        "requirements": ["registration"]
+    },
+    {
+        "name": "Zydit",
+        "service_status": ["development", "aggregator"],
+        "requirements": ["registration"]
+    },
+    {
+        "name": "BlazeAI",
+        "service_status": ["aggregator", "unknown"],
+        "requirements": ["discord"]
+    },
+    {
+        "name": "SwiftRouter",
+        "service_status": ["aggregator", "unknown"],
+        "requirements": ["discord", "registration"]
+    }
+]
