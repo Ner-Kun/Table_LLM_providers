@@ -1,0 +1,189 @@
+/* PROVIDER META \ REQUIREMENT TOOLTIPS */
+
+.provider-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: 0.35rem;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.provider-meta__item,
+.requirement-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  min-height: 2rem;
+  padding: 0.15rem 0.35rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.provider-meta__rating {
+  letter-spacing: -0.08em;
+  padding-right: 0.45rem;
+}
+
+.provider-meta__testing {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Testing status colors */
+.provider-meta__testing--tested {
+  color: #4caf50;
+}
+.provider-meta__testing--untested {
+  color: #f44336;
+}
+.provider-meta__testing--in-progress {
+  color: #ff9800;
+}
+
+[data-md-color-scheme="slate"] .provider-meta__testing--tested {
+  color: #66bb6a;
+}
+[data-md-color-scheme="slate"] .provider-meta__testing--untested {
+  color: #ef5350;
+}
+[data-md-color-scheme="slate"] .provider-meta__testing--in-progress {
+  color: #ffa726;
+}
+
+/* Warning badge */
+.provider-meta__warning {
+  color: #ff9800;
+  text-decoration: none;
+}
+
+[data-md-color-scheme="slate"] .provider-meta__warning {
+  color: #ffa726;
+}
+
+.requirements-list {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.requirement-icon {
+  min-width: 2.25rem;
+  min-height: 2.25rem;
+  font-size: 1rem;
+}
+
+.provider-meta__item:hover,
+.requirement-icon:hover,
+.provider-meta__item:focus-visible,
+.requirement-icon:focus-visible {
+  transform: translateY(-1px);
+}
+
+.provider-meta__item:focus-visible,
+.requirement-icon:focus-visible {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 2px;
+}
+
+/* Tooltip */
+.provider-tooltip {
+  position: fixed;
+  z-index: 9000;
+  max-width: min(18rem, calc(100vw - 1rem));
+  padding: 0.5rem 0.65rem;
+  border-radius: 0.45rem;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.24);
+  transition: opacity 0.15s ease, visibility 0.15s ease;
+}
+
+.provider-tooltip--visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.provider-tooltip--pinned {
+  pointer-events: auto;
+}
+
+.provider-tooltip::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  border-left: 0.35rem solid transparent;
+  border-right: 0.35rem solid transparent;
+}
+
+.provider-tooltip[data-side="top"]::after {
+  bottom: -0.35rem;
+}
+
+.provider-tooltip[data-side="bottom"]::after {
+  top: -0.35rem;
+}
+
+[data-md-color-scheme="slate"] .provider-meta__item,
+[data-md-color-scheme="slate"] .requirement-icon {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-md-color-scheme="slate"] .provider-meta__item:hover,
+[data-md-color-scheme="slate"] .requirement-icon:hover,
+[data-md-color-scheme="slate"] .provider-meta__item:focus-visible,
+[data-md-color-scheme="slate"] .requirement-icon:focus-visible {
+  background: rgba(66, 165, 245, 0.14);
+  border-color: rgba(66, 165, 245, 0.45);
+}
+
+[data-md-color-scheme="slate"] .provider-tooltip {
+  background: #141414;
+  border: 1px solid #2a2a2a;
+  color: #e8e8e8;
+}
+
+[data-md-color-scheme="slate"] .provider-tooltip[data-side="top"]::after {
+  border-top: 0.35rem solid #141414;
+}
+
+[data-md-color-scheme="slate"] .provider-tooltip[data-side="bottom"]::after {
+  border-bottom: 0.35rem solid #141414;
+}
+
+
+@media screen and (max-width: 768px) {
+  .provider-meta {
+    gap: 0.2rem;
+    margin-left: 0.25rem;
+  }
+
+  .provider-meta__item,
+  .requirement-icon {
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+  }
+
+  .provider-tooltip {
+    font-size: 0.78rem;
+  }
+}

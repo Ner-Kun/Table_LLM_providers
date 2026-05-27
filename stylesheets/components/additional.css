@@ -1,0 +1,24 @@
+/* ADDITIONAL IMPROVEMENTS */
+
+[data-md-color-scheme="slate"] hr {
+  border-color: #1a1a1a;
+}
+
+[data-md-color-scheme="slate"] .md-typeset blockquote {
+  border-left: 4px solid #1a1a1a;
+  background-color: #0a0a0a;
+}
+
+[data-md-color-scheme="slate"] .md-footer {
+  background-color: #0a0a0a;
+  border-top: 1px solid #1a1a1a;
+}
+
+[data-md-color-scheme="slate"] .md-search__input {
+  background-color: #0a0a0a;
+  border: 1px solid #1a1a1a;
+}
+
+[data-md-color-scheme="slate"] .md-search__input:focus {
+  border-color: #42a5f5;
+}

@@ -1,5 +1,7 @@
 if (!window.location.pathname.includes("/changelog")) {
   const processedCodes = new WeakSet();
+  const copyIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width: 1em; height: 1em;"><path d="M19 21H8V7h11m0-2H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2m-3-4H4a2 2 0 0 0-2 2v14h2V3h12V1Z"/></svg>';
+  const checkIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width: 1em; height: 1em;"><path d="M21 7 9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59 21 7Z"/></svg>';
 
   function enhanceCodeElement(code) {
     if (processedCodes.has(code)) return;
@@ -20,7 +22,7 @@ if (!window.location.pathname.includes("/changelog")) {
     wrapper.appendChild(code);
 
     code.style.cursor = "pointer";
-    code.style.transition = "all 0.2s ease";
+    code.style.transition = "background-color 0.2s ease, color 0.2s ease, transform 0.2s ease";
     code.setAttribute("title", "Click to copy");
 
     const button = document.createElement("button");
@@ -34,7 +36,8 @@ if (!window.location.pathname.includes("/changelog")) {
     button.style.background = "transparent";
     button.style.cursor = "pointer";
     button.style.transition = "transform 0.2s ease";
-    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width: 1em; height: 1em;"><path d="M19 21H8V7h11m0-2H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2m-3-4H4a2 2 0 0 0-2 2v14h2V3h12V1Z"/></svg>';
+    button.innerHTML = `<span class="t-icon-swap" data-state="a"><span class="t-icon" data-icon="a">${copyIcon}</span><span class="t-icon" data-icon="b">${checkIcon}</span></span>`;
+    const iconSwap = button.querySelector(".t-icon-swap");
 
     function copyText(e) {
       e.stopPropagation();
@@ -42,7 +45,7 @@ if (!window.location.pathname.includes("/changelog")) {
 
       const text = code.textContent;
       navigator.clipboard.writeText(text).then(() => {
-        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width: 1em; height: 1em;"><path d="M21 7 9 19l-5.5-5.5 1.41-1.41L9 16.17 19.59 5.59 21 7Z"/></svg>';
+        iconSwap.dataset.state = "b";
         button.style.transform = "scale(1.3)";
         setTimeout(() => {
           button.style.transform = "scale(1)";
@@ -52,7 +55,7 @@ if (!window.location.pathname.includes("/changelog")) {
         code.style.transform = "scale(1.05)";
 
         setTimeout(() => {
-          button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="width: 1em; height: 1em;"><path d="M19 21H8V7h11m0-2H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2m-3-4H4a2 2 0 0 0-2 2v14h2V3h12V1Z"/></svg>';
+          iconSwap.dataset.state = "a";
           code.style.backgroundColor = "";
           code.style.color = "";
           code.style.transform = "";

@@ -1,0 +1,22 @@
+/* GLASS HEADER */
+
+[data-md-color-scheme="slate"] .md-header {
+  background: rgba(0, 0, 0, 0.55) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+  transition: background 0.35s ease, box-shadow 0.35s ease !important;
+  will-change: backdrop-filter;
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  [data-md-color-scheme="slate"] .md-header {
+    background: #0a0a0a !important;
+  }
+}
+
+[data-md-color-scheme="slate"] .md-header[data-md-state="shadow"] {
+  background: rgba(0, 0, 0, 0.85) !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06) !important;
+}
+

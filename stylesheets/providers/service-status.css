@@ -1,0 +1,64 @@
+/* SERVICE STATUS COLORS */
+
+.provider-meta__status--official {
+  color: #4caf50;
+}
+.provider-meta__status--official-partner {
+  color: #7c4dff;
+}
+.provider-meta__status--development {
+  color: #ff9800;
+}
+.provider-meta__status--unofficial {
+  color: #9e9e9e;
+}
+.provider-meta__status--aggregator {
+  color: #26c6da;
+}
+.provider-meta__status--unknown {
+  color: #757575;
+}
+.provider-meta__status--deprecated {
+  color: #616161;
+}
+.provider-meta__status--community {
+  color: #42a5f5;
+}
+.provider-meta__status--mirror {
+  color: #78909c;
+}
+.provider-meta__status--experimental {
+  color: #ff7043;
+}
+
+/* Slate theme overrides for status colors */
+[data-md-color-scheme="slate"] .provider-meta__status--official {
+  color: #66bb6a;
+}
+[data-md-color-scheme="slate"] .provider-meta__status--official-partner {
+  color: #b388ff;
+}
+[data-md-color-scheme="slate"] .provider-meta__status--development {
+  color: #ffa726;
+}
+[data-md-color-scheme="slate"] .provider-meta__status--unofficial {
+  color: #bdbdbd;
+}
+[data-md-color-scheme="slate"] .provider-meta__status--aggregator {
+  color: #4dd0e1;
+}
+[data-md-color-scheme="slate"] .provider-meta__status--unknown {
+  color: #9e9e9e;
+}
+[data-md-color-scheme="slate"] .provider-meta__status--deprecated {
+  color: #757575;
+}
+[data-md-color-scheme="slate"] .provider-meta__status--community {
+  color: #64b5f6;
+}
+[data-md-color-scheme="slate"] .provider-meta__status--mirror {
+  color: #90a4ae;
+}
+[data-md-color-scheme="slate"] .provider-meta__status--experimental {
+  color: #ff8a65;
+}

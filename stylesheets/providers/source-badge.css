@@ -1,0 +1,28 @@
+/* SOURCE BADGE */
+
+.models-source-badge {
+  background: var(--md-primary-fg-color, #7c3aed);
+  color: #fff;
+  font-size: 0.6rem;
+  padding: 2px 8px;
+  border-radius: 10px;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+
+.models-source-warn {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+/* Show all link in table */
+.models-show-all {
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+[data-md-color-scheme="slate"] .models-show-all {
+  color: #42a5f5;
+}
+

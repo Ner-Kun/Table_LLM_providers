@@ -1,0 +1,43 @@
+/* SCREENSHOT GALLERY */
+
+.screenshot-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.screenshot-item {
+  background: var(--md-default-bg-color--lighter, #141414);
+  border: 1px solid #2a2a2a;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.screenshot-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.screenshot-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: zoom-in;
+}
+
+.screenshot-item figcaption {
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: var(--md-default-fg-color--light, #b0b0b0);
+  text-align: center;
+  border-top: 1px solid #2a2a2a;
+}
+
+
+@media screen and (max-width: 768px) {
+  .screenshot-gallery {
+    grid-template-columns: 1fr;
+  }
+}

@@ -55,6 +55,34 @@
     
       <link rel="stylesheet" href="../stylesheets/custom.css">
     
+      <link rel="stylesheet" href="../stylesheets/icons.css">
+    
+      <link rel="stylesheet" href="../stylesheets/components/tables.css">
+    
+      <link rel="stylesheet" href="../stylesheets/components/admonitions.css">
+    
+      <link rel="stylesheet" href="../stylesheets/components/accessibility.css">
+    
+      <link rel="stylesheet" href="../stylesheets/components/code-blocks.css">
+    
+      <link rel="stylesheet" href="../stylesheets/components/navigation.css">
+    
+      <link rel="stylesheet" href="../stylesheets/components/additional.css">
+    
+      <link rel="stylesheet" href="../stylesheets/components/screenshot-gallery.css">
+    
+      <link rel="stylesheet" href="../stylesheets/components/glass-header.css">
+    
+      <link rel="stylesheet" href="../stylesheets/components/header-stats.css">
+    
+      <link rel="stylesheet" href="../stylesheets/modal/modal.css">
+    
+      <link rel="stylesheet" href="../stylesheets/providers/source-badge.css">
+    
+      <link rel="stylesheet" href="../stylesheets/providers/service-status.css">
+    
+      <link rel="stylesheet" href="../stylesheets/providers/provider-meta.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -167,21 +195,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
-    
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
-    
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
-      </label>
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="cyan"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
     
   
 </form>
@@ -501,10 +515,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#2026-05-21" class="md-nav__link">
+  <a href="#2026-05-27" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2026-05-21
+        2026-05-27
       
     </span>
   </a>
@@ -512,10 +526,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2026-05-12" class="md-nav__link">
+  <a href="#2026-05-26" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2026-05-12
+        2026-05-26
       
     </span>
   </a>
@@ -534,10 +548,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2026-05-26" class="md-nav__link">
+  <a href="#2026-05-21" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2026-05-26
+        2026-05-21
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2026-05-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2026-05-12
       
     </span>
   </a>
@@ -571,6 +596,23 @@
 
 <h1 id="changelog">Changelog</h1>
 <hr />
+<h3 id="2026-05-27">2026-05-27</h3>
+<p><strong>Model popup upgraded</strong> - the "Show all" popup now shows pricing, context limits, and feature icons (tools, vision, reasoning, web search, code) right inside each model card. Models are grouped by family and you can search with a short delay so it feels smooth.</p>
+<p><strong>New service status badges</strong> - providers can now show badges like "Aggregator", "Community", "Mirror", "Experimental" etc. right next to their name, so you know what kind of service it is at a glance.</p>
+<p><strong>Better adding providers</strong> - it's now easier for me to add and update providers. The system validates data, supports text formatting (colors, bold), warning badges, and can move providers between pages without breaking anything.</p>
+<p><strong>Behind the scenes</strong> - all update scripts were rewritten to be faster and more reliable. Model pricing is now fetched live from provider APIs where available.</p>
+<hr />
+<h3 id="2026-05-26">2026-05-26</h3>
+<ul>
+<li>Added <strong>NanoGPT</strong> to <em>Freemium</em></li>
+<li>Added <strong>DeepInfra</strong> to <em>Paid</em></li>
+</ul>
+<hr />
+<h3 id="2026-05-23">2026-05-23</h3>
+<ul>
+<li>Added <strong>SwiftRouter</strong> to <em>Paid</em></li>
+</ul>
+<hr />
 <h3 id="2026-05-21">2026-05-21</h3>
 <p><strong>Cleaner tables</strong> - removed rating (planning to improve it so the scoring basis is clear) and testing columns. Provider status and test results are now shown as neat badges right next to the name.</p>
 <p><strong>All icons replaced with SVG</strong> - emojis replaced with clean SVG icons: globe for links, lock for registration, phone, card, warning, and more.</p>
@@ -582,15 +624,6 @@
 <h3 id="2026-05-12">2026-05-12</h3>
 <ul>
 <li>Initial changelog created</li>
-</ul>
-<h3 id="2026-05-23">2026-05-23</h3>
-<ul>
-<li>Added <strong>SwiftRouter</strong> to <em>Paid</em></li>
-</ul>
-<h3 id="2026-05-26">2026-05-26</h3>
-<ul>
-<li>Added <strong>NanoGPT</strong> to <em>Freemium</em></li>
-<li>Added <strong>DeepInfra</strong> to <em>Paid</em></li>
 </ul>
 
 

@@ -1,0 +1,20 @@
+/* CODE BLOCKS */
+
+[data-md-color-scheme="slate"] .md-typeset code {
+  background-color: #0a0a0a;
+  color: #e8e8e8;
+  border: 1px solid #1a1a1a;
+}
+
+[data-md-color-scheme="slate"] .md-typeset pre > code {
+  background-color: #0a0a0a;
+  border: 1px solid #1a1a1a;
+}
+
+[data-md-color-scheme="slate"] .md-clipboard {
+  color: #b0b0b0;
+}
+
+[data-md-color-scheme="slate"] .md-clipboard:hover {
+  color: #e8e8e8;
+}
