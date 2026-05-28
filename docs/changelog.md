@@ -2,6 +2,17 @@
 
 ---
 
+### 2026-05-28
+
+- Added **warning** to *FreeModel*
+
+---
+### 2026-05-27
+
+- Added **FreeModel** to *Free*
+
+---
+
 ### 2026-05-27
 
 **Model popup upgraded** - the "Show all" popup now shows pricing, context limits, and feature icons (tools, vision, reasoning, web search, code) right inside each model card. Models are grouped by family and you can search with a short delay so it feels smooth.

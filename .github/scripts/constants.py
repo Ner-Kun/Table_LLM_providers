@@ -252,6 +252,7 @@ BACKTICK_RE: re.Pattern = re.compile(r"`([^`]+)`")
 ADMONITION_RE: re.Pattern = re.compile(r'^!!!\s+(tip|danger)\s+"(.+)"\s*$')
 META_STATUS_RE: re.Pattern = re.compile(r"provider-meta__status--(\w+)")
 META_TESTING_RE: re.Pattern = re.compile(r"provider-meta__testing--([\w-]+)")
+META_WARNING_RE: re.Pattern = re.compile(r'href="[^"]*#([^"]+)"[^>]*provider-meta__warning')
 MODELS_MARKER_RE: re.Pattern = re.compile(r"<!--\s*MODELS_START\s*-->")
 
 

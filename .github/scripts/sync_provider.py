@@ -34,6 +34,10 @@ FIELD DESCRIPTIONS
     service_status      (string|string[], required)  — Single status or array of statuses.
                         First is primary. Valid values: "official" | "official-partner" | "aggregator" | "development" | "unofficial" | "unknown" | "deprecated" | "community" | "mirror" | "experimental"
     testing_status      (string|null)        — "tested" | "untested" | "in-progress" | null
+    warning_id          (string|null)        — Anchor ID in caution.md for the warning section.
+                        Renders a clickable warning badge linking to the provider's
+                        concerns on the Warning page. Must match the MkDocs-generated
+                        anchor (slugified heading, e.g. "freemodel" for "FreeModel").
 requirements            (string[])           — Requirement icon keys (see below).
     requirements_notes  (string)             — Extra text after requirement icons.
     limits              (string)             — Rate limits. Use "—" for none.
@@ -123,6 +127,7 @@ from constants import (
     MD_LINK_RE,
     META_STATUS_RE,
     META_TESTING_RE,
+    META_WARNING_RE,
     MODELS_MARKER_RE,
     PROVIDERS_JSON,
     VALID_CATEGORIES,
@@ -150,7 +155,7 @@ class ProviderModel(BaseModel):
     service_status: str | list[str]
     testing_status: Optional[str] = None 
     warning_id: Optional[str] = None
-    requirements: List[str] = Field(default_factory=list)
+    requirements: str | list[str] = Field(default_factory=list)
     requirements_notes: str = ""
     limits: str = "—"
     limits_url: Optional[str] = None
@@ -393,10 +398,13 @@ def generate_provider_markdown(entry: Dict[str, Any]) -> str:
     testing_str = testing_status or ""
     meta_badges = render_provider_meta_badges(service_status, testing_str, warning_id)
     service_status = service_status[0] if service_status else ""
-    if isinstance(requirements, list) and requirements_notes and "special" not in requirements:
-        requirements = requirements + ["special"]
-    req_str = "\n".join(requirements) if requirements else ""
-    req_html = render_requirement_icons(str(req_str), requirements_notes)
+    if isinstance(requirements, str):
+        req_html = render_requirement_icons(requirements, requirements_notes)
+    else:
+        if isinstance(requirements, list) and requirements_notes and "special" not in requirements:
+            requirements = requirements + ["special"]
+        req_str = "\n".join(requirements) if requirements else ""
+        req_html = render_requirement_icons(str(req_str), requirements_notes)
     models_cell = _build_models_cell(models_url, manual_models, auto_update)
     
     limits_html = render_inline_formatting(limits).replace("\n", "<br>")
@@ -454,8 +462,15 @@ def remove_provider(file_path: Path, provider_name: str, dry_run: bool = False) 
 
 
 def find_provider_across_files(provider_name: str) -> Optional[Tuple[str, Path]]:
-    """Search for a provider in all category markdown files."""
+    """Search for a provider in regular category markdown files.
+    
+    Only searches 'free', 'freemium', and 'paid' categories.
+    'caution' and 'dangerous' files contain narrative sections, not provider entries.
+    """
+    provider_categories = {"free", "freemium", "paid"}
     for category, file_name in CATEGORY_MAP.items():
+        if category not in provider_categories:
+            continue
         file_path = DOCS_DIR / file_name
         if not file_path.exists():
             continue
@@ -676,8 +691,12 @@ def _parse_links_table(
 def _parse_heading_badges(
     line: str,
 ) -> Dict[str, Any]:
-    """Parse provider heading to extract service_status and testing_status from badges."""
+    """Parse provider heading to extract service_status, testing_status and warning_id from badges."""
     data: Dict[str, Any] = {}
+
+    m = META_WARNING_RE.search(line)
+    if m:
+        data["warning_id"] = m.group(1)
 
     m = META_STATUS_RE.search(line)
     if m:
@@ -761,11 +780,17 @@ def _get_block_range(
 
 
 def extract_existing_provider_data(provider_name: str) -> Optional[Dict[str, Any]]:
-    """Extract existing provider data from category markdown files.
+    """Extract existing provider data from regular category markdown files.
+
+    Only searches 'free', 'freemium', and 'paid' categories.
+    'caution' and 'dangerous' files contain narrative sections, not provider entries.
 
     Returns a dict with all extractable fields, or None if provider not found.
     """
+    provider_categories = {"free", "freemium", "paid"}
     for category, file_name in CATEGORY_MAP.items():
+        if category not in provider_categories:
+            continue
         file_path = DOCS_DIR / file_name
         if not file_path.exists():
             continue
@@ -831,7 +856,9 @@ def load_providers(json_path: Path) -> List[Dict[str, Any]]:
             ProviderModel.model_validate(merged)
         except Exception as e:
             label = entry.get("name") or f"entry #{i}"
-            err_console.print(f"[bold red]ERROR[/] Provider {label}: {e}")
+            err_console.print(f"[bold red]ERROR[/] Provider {label}:")
+            err_console.print(f"  {str(e).replace(chr(10), chr(10) + '  ')}")
+            err_console.print("")
             sys.exit(1)
         merged_providers.append(merged)
     return merged_providers

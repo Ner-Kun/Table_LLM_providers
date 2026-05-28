@@ -103,5 +103,21 @@ All of this *could* be a series of unfortunate coincidences, inappropriate jokes
 
 I leave this as an open observation. Everyone has a head on their shoulders: it's not just for eating, but for thinking too. Let everyone draw their own conclusions based on the available facts.
 
+---
+
+### FreeModel
+
+#### Source of Information
+
+One of the FreeModel users reached out to me with the following story.
+
+#### The Incident
+
+A user topped up his account with **$100**. He was having trouble accessing **Claude**, so he contacted support. Instead of trying to resolve the issue or even explain what was wrong, **they simply banned him** - meaning he effectively **lost his money**.
+
+!!! warning "Important"
+    **Do not pay FreeModel.** Use only the free plan. Paying them is **entirely at your own risk** - there is no guarantee you will get what you pay for, nor that your account will remain active.
+
+---
 !!! quote "P.S."
     I also want to say that if this table becomes unavailable, stops updating (and I have big plans for it), or something like that happens... Maybe some of this was true, and that truth was inconvenient for someone.

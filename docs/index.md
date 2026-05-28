@@ -60,10 +60,10 @@ Click or tap the badges and requirement icons to see short explanations.
 
 ## Latest Updates
 
+* **2026-05-28** — Added **warning** to *FreeModel*
+* **2026-05-27** — Added **FreeModel** to *Free*
 * **2026-05-26** — Added **NanoGPT** to *Freemium*
 * **2026-05-26** — Added **DeepInfra** to *Paid*
-* **2026-05-23** — Added **SwiftRouter** to *Paid*
-* **2026-05-12** — Initial changelog created
 
 [View all updates](changelog.md)
 
