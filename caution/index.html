@@ -595,6 +595,133 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#composite-crowllm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Composite &amp; CrowLLM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Composite &amp; CrowLLM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#public-accusations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Public Accusations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-security-question" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Security Question
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fact-1-nvidia-forum-complaint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fact 1: NVIDIA Forum Complaint
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fact-2-tos-and-the-security-paradox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fact 2: ToS and the Security Paradox
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fact-3-were-better-than-openrouter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fact 3: "We're Better Than OpenRouter"
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aggregators-and-black-boxes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aggregators and Black Boxes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#crowllm-and-grok-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CrowLLM and Grok Access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-bottom-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The Bottom Line
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#why-i-didnt-contact-composite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why I Didn't Contact Composite
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#a-final-word-to-aggregators-and-everyone-in-this-snake-pit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A Final Word to Aggregators and Everyone in This Snake Pit
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -769,6 +896,118 @@ This is not a definitive judgment - use your own discretion.</p>
 <p class="admonition-title">Important</p>
 <p><strong>Do not pay FreeModel.</strong> Use only the free plan. Paying them is <strong>entirely at your own risk</strong> - there is no guarantee you will get what you pay for, nor that your account will remain active.</p>
 </div>
+<hr />
+<h3 id="composite-crowllm">Composite &amp; CrowLLM</h3>
+<h4 id="public-accusations">Public Accusations</h4>
+<p>I was sent Discord screenshots where representatives of <strong>Composite</strong> wrote:</p>
+<blockquote>
+<p><em>"They're using stolen API keys. Don't use them if you value security."</em></p>
+</blockquote>
+<p><strong>Meanwhile, Composite itself doesn't hide that it analyzes your prompts</strong> (more on that below).</p>
+<p>No warning. No private inquiry to the other side - straight to a public accusation.</p>
+<p>I read the correspondence between the owners. Yes, <strong>CrowLLM</strong> was more aggressive. But we can cut him some slack here - it was probably an impulsive act. Or maybe that’s just his personality.  Sure, it’s not nice, but what would you have done? 
+To <strong>Composite</strong> I'll say directly: it's not right to talk behind people's backs. But I'm not heavily judging either side. People get emotional under pressure and competition. I understand, but I don't condone it.</p>
+<h4 id="the-security-question">The Security Question</h4>
+<p>Composite makes security a talking point, yet can't back it up.</p>
+<h4 id="fact-1-nvidia-forum-complaint">Fact 1: NVIDIA Forum Complaint</h4>
+<p>There's a thread on the NVIDIA developer forum:
+🔗 <a href="https://forums.developer.nvidia.com/t/third-party-proxy-composite-seabase-xyz-is-rate-limiting-and-monetizing-free-nvidia-nim-api-access-in-violation-of-nvidias-terms/371301">Third-party proxy composite.seabase.xyz - violation of terms?</a></p>
+<p><strong>The gist:</strong>
+- Composite proxies free <strong>NVIDIA NIM endpoints</strong>.
+- It imposes its own rate limits and shows ads - monetization, effectively.
+- Traffic goes through <em>their</em> accounts, not the user's - the source is masked.</p>
+<p>No official response from NVIDIA yet. But <strong>the fact of the complaint alone is already worth considering</strong>.</p>
+<h4 id="fact-2-tos-and-the-security-paradox">Fact 2: ToS and the Security Paradox</h4>
+<p>I reviewed their <a href="https://composite.seabase.xyz/extras/tos.html">TOSl</a>. Notable clause:</p>
+<blockquote>
+<p><em>"Except: Spamming... Roleplaying pedophilic content..."</em></p>
+</blockquote>
+<p>I fully agree with that. <strong>However!</strong></p>
+<p>They don't explicitly claim confidentiality. But how can security exist without confidentiality?</p>
+<blockquote>
+<p>To prohibit certain content, you need to <strong>detect</strong> it.
+That means they <strong>scan</strong> everything passing through their servers.</p>
+</blockquote>
+<p>If you accidentally send something confidential - what chance is there it won't be stored, analyzed, or used?</p>
+<p><strong>And equally important: prompt injection.</strong> Everything goes through their server. You send 100, 1000 requests - all fine. On the 1001st request, a prompt injection could arrive that does something bad.</p>
+<p>Do they do this? I don't know.
+Could they? <strong>Absolutely.</strong></p>
+<p>Murphy's Law: <em>"If shit can happen, it will - and at the worst possible moment."</em></p>
+<p>And this applies to any provider: paid, free, or "official." The user probably won't even realize it happened.</p>
+<h4 id="fact-3-were-better-than-openrouter">Fact 3: "We're Better Than OpenRouter"</h4>
+<p>Their new site literally says they're better than OpenRouter because:
+- supposedly confidentiality,
+- and cheaper because <em>"we optimize your input and output data."</em></p>
+<p><strong>Wait.</strong></p>
+<p>So they process your prompts - and still claim confidentiality? 🤔</p>
+<ul>
+<li>How exactly is this done?</li>
+<li>Is it documented anywhere?</li>
+<li>Or are they using the same approach as <strong>Caveman</strong> or <strong>RTK</strong>? (Just as examples.)</li>
+</ul>
+<p>If so - that's actually clever, because you can already do that yourself.</p>
+<blockquote>
+<p>I'll repeat: I don't know how it works internally.
+But how can "prompt optimization" and "confidentiality" coexist? I genuinely don't know.</p>
+</blockquote>
+<p><strong>And here's what else matters:</strong>
+- Open source? <strong>No.</strong>
+- Independent audit? <strong>No.</strong>
+- Provider list? <strong>No.</strong></p>
+<p>About providers they say: <code>legitimately sourced responses</code>.
+Nobody disputes they <em>could</em> be official. But how do you know <strong>what sits between your prompt and the official models?</strong></p>
+<p><strong>You can't.</strong></p>
+<h4 id="aggregators-and-black-boxes">Aggregators and Black Boxes</h4>
+<p><strong>CrowLLM</strong> updated their ToS but still hasn't disclosed which providers they work with.</p>
+<p>And you know what? <strong>I get it.</strong></p>
+<p>What niche aggregator in their right mind would write <em>"here are my providers"</em>? If the providers are good, competitors will swoop in. It's business.</p>
+<p>But then <strong>Composite</strong> is no different: they never mention they're using <strong>NVIDIA NIM</strong>. In private correspondence, the owner sent "proof" of official access - but the log file had no attachments, so I couldn't verify.</p>
+<p>And nowadays, anything can be convincingly faked with AI.</p>
+<blockquote>
+<p>Maybe they have an agreement with NVIDIA? <strong>Unlikely.</strong>
+More plausible: they're abusing free access through their servers.</p>
+</blockquote>
+<p>That's their right to take that risk. But you, users, should understand what it means.</p>
+<h4 id="crowllm-and-grok-access">CrowLLM and Grok Access</h4>
+<p>On a direct question about abuse, I got this answer:</p>
+<blockquote>
+<p><em>"We don't do it directly. Access is obtained through another official company that provides us with Grok access. I don't know exactly how it's set up."</em></p>
+</blockquote>
+<p>The owner can't tell me directly. <strong>But I can draw conclusions.</strong></p>
+<p><strong>Key point:</strong> even large, "trusted" providers most likely aren't above similar schemes. They just <strong>will never admit it</strong>.</p>
+<ul>
+<li>Using resellers? Possibly.</li>
+<li>Buying access through third parties? Likely.</li>
+<li>Stolen API keys? Possible.</li>
+<li>Abusing free limits through account pools? Who's going to check - and how would you even verify?</li>
+</ul>
+<p><strong>No one admits it. Because admission = reputational damage.</strong>
+<strong>But proving the opposite is nearly impossible too.</strong></p>
+<p>So the question isn't <em>"who does this and how."</em>
+The question is: <strong>are you willing to trust someone who can't - or won't - explain how their operation works?</strong></p>
+<hr />
+<h4 id="the-bottom-line">The Bottom Line</h4>
+<p><strong>I'll keep it short for those tired of reading:</strong></p>
+<p><strong>In this industry, there is no real confidentiality or security - except running models locally.</strong></p>
+<ul>
+<li><strong>A free aggregator/proxy or whatever?</strong> You're product.</li>
+<li><strong>Paid service?</strong> They can promise anything, but the backend is closed - you can't verify.</li>
+<li><strong>Direct key from OpenAI/Anthropic?</strong> They train on your data (unless you explicitly opt out, and even then, no guarantees).</li>
+<li><strong>Accidentally leaked something sensitive?</strong> It's probably already being processed.</li>
+</ul>
+<p><strong>The only way to be certain - run models locally.</strong>
+Everything else is a compromise. The only question is what compromise you're willing to accept.</p>
+<h4 id="why-i-didnt-contact-composite">Why I Didn't Contact Composite</h4>
+<p>You might ask: <em>"Did you reach out to Composite for their side?"</em></p>
+<p><strong>No. I didn't.</strong></p>
+<p>Why? Did they contact the CrowLLM owner first? Doesn't look like it. So why should I? I did the same thing they did.</p>
+<p><strong>If both sides prefer a public showdown and throwing shit at each other, that's their choice.</strong> My job is to document what I see and let you decide.</p>
+<h4 id="a-final-word-to-aggregators-and-everyone-in-this-snake-pit">A Final Word to Aggregators and Everyone in This Snake Pit</h4>
+<p><strong>Look at yourselves first.</strong>
+<strong>If you demand transparency from others - start with yourselves.</strong>
+If you accuse others of breaking rules - make sure you're following them yourselves.</p>
+<p>There are no holy people, just like there are no services; there are only those who can hide their dark nature well.</p>
+<p>That's it.</p>
 <hr />
 <div class="admonition quote">
 <p class="admonition-title">P.S.</p>
