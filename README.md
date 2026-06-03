@@ -19,7 +19,7 @@ A comprehensive table of **free, freemium, and paid LLM API providers** with det
 
 If you notice any discrepancies or have suggestions:
 - **Telegram**: [@ner_kun_off](https://t.me/ner_kun_off)
-- **Discord**: [Join Server](https://discord.gg/mqch59Bbmw)
+- **Discord**: [Join Server](https://discord.gg/wp2b5sHbzB)
 
 ## 📣 Help the Project
 

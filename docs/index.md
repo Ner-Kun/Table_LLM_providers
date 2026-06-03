@@ -10,7 +10,7 @@
 !!! warning "Relevance"
     Providers change limits, models, and sometimes even die...
     *I am just one person, but there are many providers*, so I don't always have time to update table.  
-    If there are any discrepancies with the real situation at the provider, **please inform me!** Via on [Telegram](https://t.me/ner_kun_off) or [DS](https://discord.gg/mqch59Bbmw) - Ner_Kun.
+    If there are any discrepancies with the real situation at the provider, **please inform me!** Via on [Telegram](https://t.me/ner_kun_off) or [DS](https://discord.gg/wp2b5sHbzB) - Ner_Kun.
 
 !!! note "For roleplayers"
     Friends, if you, like me, roleplay with AI in languages other than English and lorebooks don't work or you translate them yourself, check out my project [Lorebook Gemini Translator](https://github.com/Ner-Kun/Lorebook-Gemini-Translator) (It works not only with Gemini).
