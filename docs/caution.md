@@ -119,5 +119,165 @@ A user topped up his account with **$100**. He was having trouble accessing **Cl
     **Do not pay FreeModel.** Use only the free plan. Paying them is **entirely at your own risk** - there is no guarantee you will get what you pay for, nor that your account will remain active.
 
 ---
+
+### Composite & CrowLLM
+
+#### Public Accusations
+
+I was sent Discord screenshots where representatives of **Composite** wrote:
+
+> *"They're using stolen API keys. Don't use them if you value security."*
+
+**Meanwhile, Composite itself doesn't hide that it analyzes your prompts** (more on that below).
+
+No warning. No private inquiry to the other side - straight to a public accusation.
+
+I read the correspondence between the owners. Yes, **CrowLLM** was more aggressive. But we can cut him some slack here - it was probably an impulsive act. Or maybe that’s just his personality.  Sure, it’s not nice, but what would you have done? 
+To **Composite** I'll say directly: it's not right to talk behind people's backs. But I'm not heavily judging either side. People get emotional under pressure and competition. I understand, but I don't condone it.
+
+#### The Security Question
+
+Composite makes security a talking point, yet can't back it up.
+
+#### Fact 1: NVIDIA Forum Complaint
+
+There's a thread on the NVIDIA developer forum:
+🔗 [Third-party proxy composite.seabase.xyz - violation of terms?](https://forums.developer.nvidia.com/t/third-party-proxy-composite-seabase-xyz-is-rate-limiting-and-monetizing-free-nvidia-nim-api-access-in-violation-of-nvidias-terms/371301)
+
+**The gist:**
+- Composite proxies free **NVIDIA NIM endpoints**.
+- It imposes its own rate limits and shows ads - monetization, effectively.
+- Traffic goes through *their* accounts, not the user's - the source is masked.
+
+No official response from NVIDIA yet. But **the fact of the complaint alone is already worth considering**.
+
+#### Fact 2: ToS and the Security Paradox
+
+I reviewed their [TOSl](https://composite.seabase.xyz/extras/tos.html). Notable clause:
+
+> *"Except: Spamming... Roleplaying pedophilic content..."*
+
+I fully agree with that. **However!**
+
+They don't explicitly claim confidentiality. But how can security exist without confidentiality?
+
+> To prohibit certain content, you need to **detect** it.
+> That means they **scan** everything passing through their servers.
+
+If you accidentally send something confidential - what chance is there it won't be stored, analyzed, or used?
+
+**And equally important: prompt injection.** Everything goes through their server. You send 100, 1000 requests - all fine. On the 1001st request, a prompt injection could arrive that does something bad.
+
+Do they do this? I don't know.
+Could they? **Absolutely.**
+
+Murphy's Law: *"If shit can happen, it will - and at the worst possible moment."*
+
+And this applies to any provider: paid, free, or "official." The user probably won't even realize it happened.
+
+#### Fact 3: "We're Better Than OpenRouter"
+
+Their new site literally says they're better than OpenRouter because:
+- supposedly confidentiality,
+- and cheaper because *"we optimize your input and output data."*
+
+**Wait.**
+
+So they process your prompts - and still claim confidentiality? 🤔
+
+- How exactly is this done?
+- Is it documented anywhere?
+- Or are they using the same approach as **Caveman** or **RTK**? (Just as examples.)
+
+If so - that's actually clever, because you can already do that yourself.
+
+> I'll repeat: I don't know how it works internally.
+> But how can "prompt optimization" and "confidentiality" coexist? I genuinely don't know.
+
+**And here's what else matters:**
+- Open source? **No.**
+- Independent audit? **No.**
+- Provider list? **No.**
+
+About providers they say: `legitimately sourced responses`.
+Nobody disputes they *could* be official. But how do you know **what sits between your prompt and the official models?**
+
+**You can't.**
+
+#### Aggregators and Black Boxes
+
+**CrowLLM** updated their ToS but still hasn't disclosed which providers they work with.
+
+And you know what? **I get it.**
+
+What niche aggregator in their right mind would write *"here are my providers"*? If the providers are good, competitors will swoop in. It's business.
+
+But then **Composite** is no different: they never mention they're using **NVIDIA NIM**. In private correspondence, the owner sent "proof" of official access - but the log file had no attachments, so I couldn't verify.
+
+And nowadays, anything can be convincingly faked with AI.
+
+> Maybe they have an agreement with NVIDIA? **Unlikely.**
+> More plausible: they're abusing free access through their servers.
+
+That's their right to take that risk. But you, users, should understand what it means.
+
+#### CrowLLM and Grok Access
+
+On a direct question about abuse, I got this answer:
+
+> *"We don't do it directly. Access is obtained through another official company that provides us with Grok access. I don't know exactly how it's set up."*
+
+The owner can't tell me directly. **But I can draw conclusions.**
+
+**Key point:** even large, "trusted" providers most likely aren't above similar schemes. They just **will never admit it**.
+
+- Using resellers? Possibly.
+- Buying access through third parties? Likely.
+- Stolen API keys? Possible.
+- Abusing free limits through account pools? Who's going to check - and how would you even verify?
+
+**No one admits it. Because admission = reputational damage.**
+**But proving the opposite is nearly impossible too.**
+
+So the question isn't *"who does this and how."*
+The question is: **are you willing to trust someone who can't - or won't - explain how their operation works?**
+
+---
+
+#### The Bottom Line
+
+**I'll keep it short for those tired of reading:**
+
+**In this industry, there is no real confidentiality or security - except running models locally.**
+
+- **A free aggregator/proxy or whatever?** You're product.
+- **Paid service?** They can promise anything, but the backend is closed - you can't verify.
+- **Direct key from OpenAI/Anthropic?** They train on your data (unless you explicitly opt out, and even then, no guarantees).
+- **Accidentally leaked something sensitive?** It's probably already being processed.
+
+**The only way to be certain - run models locally.**
+Everything else is a compromise. The only question is what compromise you're willing to accept.
+
+#### Why I Didn't Contact Composite
+
+You might ask: *"Did you reach out to Composite for their side?"*
+
+**No. I didn't.**
+
+Why? Did they contact the CrowLLM owner first? Doesn't look like it. So why should I? I did the same thing they did.
+
+**If both sides prefer a public showdown and throwing shit at each other, that's their choice.** My job is to document what I see and let you decide.
+
+#### A Final Word to Aggregators and Everyone in This Snake Pit
+
+**Look at yourselves first.**
+**If you demand transparency from others - start with yourselves.**
+If you accuse others of breaking rules - make sure you're following them yourselves.
+
+There are no holy people, just like there are no services; there are only those who can hide their dark nature well.
+
+That's it.
+
+---
 !!! quote "P.S."
     I also want to say that if this table becomes unavailable, stops updating (and I have big plans for it), or something like that happens... Maybe some of this was true, and that truth was inconvenient for someone.
