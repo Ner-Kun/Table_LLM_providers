@@ -1,1 +1,27 @@
-[]
+[
+  {
+    "name": "AI Router",
+    "category": "freemium",
+    "service_status": "aggregator",
+    "testing_status": "untested",
+    "requirements": ["registration"],
+    "requirements_notes": "",
+    "limits": "—",
+    "limits_url": null,
+    "models_url": null,
+    "manual_models": [],
+    "auto_update_models": false,
+    "registration_url": "https://ai-router.dev/register",
+    "api_key_url": "https://ai-router.dev/keys",
+    "base_url": "https://api.ai-router.dev/v1",
+    "features": [
+      "OpenAI-compatible endpoint for existing SDKs, scripts, and coding-agent workflows.",
+      "New users receive [green]20U total credit[/green]: 5U on signup and 15U unlocked after an equal-value top-up.",
+      "Per-key usage, token, and cost visibility."
+    ],
+    "disadvantages": [
+      "The staged 15U portion is not spendable until after an equal-value top-up.",
+      "Model availability and account limits are shown after sign-in."
+    ]
+  }
+]
